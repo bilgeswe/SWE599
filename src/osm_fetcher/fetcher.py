@@ -22,8 +22,9 @@ class OSMFetcher:
         self.cache_dir = cache_dir
         os.makedirs(cache_dir, exist_ok=True)
         
-        # Configure osmnx
-        ox.config(use_cache=True, log_console=True)
+        # Configure osmnx settings (updated for newer versions)
+        ox.settings.use_cache = True
+        ox.settings.log_console = True
     
     def fetch_by_place(self, place_name: str, network_type: str = "drive") -> str:
         """
