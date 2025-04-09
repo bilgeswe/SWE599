@@ -5,10 +5,8 @@ Script to convert OSM data to SUMO format and visualize it.
 import os
 import subprocess
 from pathlib import Path
-
-# SUMO paths
-SUMO_HOME = os.getenv('SUMO_HOME', '/opt/homebrew/opt/sumo/share/sumo')
-SUMO_BIN = '/opt/homebrew/Cellar/sumo/1.20.0.reinstall/bin'
+import sys
+from sumo import SUMO_HOME
 
 def convert_to_sumo(osm_file: str, output_dir: str = "data/sumo"):
     """Convert OSM file to SUMO network format."""
@@ -20,10 +18,9 @@ def convert_to_sumo(osm_file: str, output_dir: str = "data/sumo"):
     
     print(f"Converting {osm_file} to SUMO format...")
     
-    # Run netconvert
-    netconvert = os.path.join(SUMO_BIN, 'netconvert')
+    # Run netconvert using the Python package
     cmd = [
-        netconvert,
+        "netconvert",
         "--osm", osm_file,
         "--output", net_file,
         "--geometry.remove",
@@ -42,12 +39,14 @@ def convert_to_sumo(osm_file: str, output_dir: str = "data/sumo"):
 
 def open_in_sumo_gui(net_file: str):
     """Open the network file in SUMO GUI."""
-    sumo_gui = os.path.join(SUMO_BIN, 'sumo-gui')
-    cmd = [sumo_gui, "-n", net_file]
+    cmd = ["sumo-gui", "-n", net_file]
     print(f"\nOpening {net_file} in SUMO GUI...")
     subprocess.Popen(cmd)  # Using Popen to not block
 
 if __name__ == "__main__":
+    # Add SUMO_HOME/bin to PATH
+    os.environ["PATH"] = os.path.join(SUMO_HOME, "bin") + os.pathsep + os.environ.get("PATH", "")
+    
     # Convert and visualize the Beşiktaş OSM data
     osm_file = "data/osm/Beşiktaş,_Istanbul,_Turkey.osm"
     
