@@ -1,43 +1,98 @@
-# General Rules
-Due Dates:
-Work Plan: March 16, 2025, 23:59 (1 Page)
-Progress Report: April 20, 2025, 23:59
-Final Project: May 18, 2025, 23:59
+# OSM to OpenDRIVE Converter for AV Testing
 
-Project Outline:
-This project consists of a brief survey on the related works, identification of the system requirements, developing/designing a solution for the selected topic from the list given in the following pages. You are expected to prepare the requirements and design documents (both mandatory) as described in SWE 573 implement and test your algorithms/applications on realistic cases. Please use the template and the video.
+This project focuses on converting real-world OpenStreetMap (OSM) data into OpenDRIVE map format using Python, SUMO, and custom tooling — with the goal of enabling autonomous vehicle (AV) testing without a simulation environment.
 
-A)   In order to select advisors and topics, a doodle poll will be sent to you. Instructions will be sent separately. You will choose your topics on a First Come First Served (FCFS) basis. When you select a topic, that topic will be inactive for others and you will not be able to make another selection. Please review the topics beforehand and be prepared for the topic selection day.The topic selection phase will start on Feb 27 at 12:00 and end on Feb 29 at 23:59.
+## 📌 Project Goals
 
-B)   Your minimum 3-page long progress report should be e-mailed to your project advisor (due  April 20, 2025, 23:59. ) & should include:
-- A brief introduction, motivation
-- Description of the selected system/software/application
-- Requirements of the system/software/application
-- Designed system/software/application
+- Use OpenStreetMap (OSM) API to gather real-world road data
+- Convert OSM data to SUMO Net using netconvert
+- Write a Python script to convert SUMO Net to OpenDRIVE format
+- Develop basic AV algorithms to test on the OpenDRIVE map
+- Focus on map-based simulation structure and testing
+- Account for missing elevation data in OSM
 
-Name your file as:  SWE599-Project-Progress-2022F-Lastname-Name.pdf
- 
-10% of your grade will be based on the timetable, 30% of your grade will be based on the progress report, and 60% will be based on the final report.
+## 📅 Timeline & Phases
 
-C)   Your minimum 8 pages long final project report should be e-mailed to your project advisor (due May 18, 2025, 23:59 ) & should include:
-- A brief introduction, motivation
-- Description of the selected system/software/application
-- Requirements of the system/software/application
-- Designed system/software/application
-- Implementation
-- Demonstration of its functionality
-- Conclusions including future work
-- Cited References: List full bibliographic, information about papers and any additional references you may have resorted to. Be sure that all these references are cited in your report. Do not include secondary references (references in other references) you have not seen. You may check electronic resources in our library such as: http://ieeexplore.ieee.org   and http://info.scopus.com/ You may also want to see the link for technical writing at http://www.cs.columbia.edu/~hgs/etc/writing-style.html.
-- While preparing your reports, you MUST avoid plagiarism.
-- You are supposed to send your TURNITIN report to your advisor as well.
-- You are expected to DEMO your project while presenting it to your project advisor.
+### ✅ Phase 1: Environment Setup & Exploration
+**Objectives:**
+- Set up development environment
+- Explore OSM, SUMO, and OpenDRIVE formats
 
-THIS SEMESTER THERE WILL BE A POSTER SESSION
- 
- 
-Name your file as:  SWE599-Project-2023S-Lastname-Name.doc (or docx or pdf)  	
- 
-D) SWE 599 Final Presentation and Demo Deadline:  May 18, 2025, 23:59 
-You MUST present your SWE599 project and demo to your Project Advisor. 
-Note: If you have questions related to your research project, please contact your project advisor. You need to contact your advisor right after the topic assignment. You need to regularly show progress to your advisor. If you do not contact your advisor until the progress report is due and submit one report on the due date, your advisor may not accept it. You need to work through a plan step-by-step under the guidance of your advisor. Otherwise, you may fail the class.
+**Tasks:**
+- [ ] Install Python & required libraries: osmnx, requests, xml, etc.
+- [ ] Install SUMO and verify netconvert tool
+- [ ] Review .osm (XML), SUMO .net.xml, and OpenDRIVE .xodr formats
+
+### 🌐 Phase 2: OSM Data Collection via API
+**Objectives:**
+- Use Overpass API or osmnx to scrape road network data
+
+**Tasks:**
+- [ ] Select region of interest (city or custom bounding box)
+- [ ] Retrieve and save .osm road data
+- [ ] Handle missing elevation (optional: consider SRTM/DEM sources)
+
+### 🔁 Phase 3: Convert OSM → SUMO Net → OpenDRIVE
+**Objectives:**
+- Build conversion pipeline from real-world data to OpenDRIVE format
+
+**Tasks:**
+- [ ] Use SUMO's netconvert to convert .osm → .net.xml
+- [ ] Explore existing tools to convert SUMO Net → OpenDRIVE
+- [ ] Write custom Python script to parse SUMO XML and build .xodr
+- [ ] Validate resulting OpenDRIVE file
+
+### 🤖 Phase 4: AV Algorithm Development
+**Objectives:**
+- Simulate AV logic on OpenDRIVE map structure
+
+**Tasks:**
+- [ ] Design algorithms (lane following, routing, stoplight behavior)
+- [ ] Apply logic on OpenDRIVE map data
+- [ ] Output simulated behavior (paths, decisions, logs)
+
+### 📘 Phase 5: Documentation & Final Report
+**Objectives:**
+- Prepare full documentation and final report
+
+**Tasks:**
+- [ ] Complete technical documentation
+- [ ] Write final report
+- [ ] Create visualizations and demos
+- [ ] Present findings
+
+## ⚙️ Tools and Libraries
+
+- OpenStreetMap API / Overpass API
+- osmnx – OSM data extraction with Python
+- SUMO + netconvert – Create traffic networks
+- Python – Scripting and conversion logic
+- OpenDRIVE – Standardized road format
+- (Optional) DEM / SRTM tools – Elevation data
+
+## 📂 Repository Structure
+
+```
+.
+├── data/
+│   ├── osm/          # Raw OpenStreetMap data
+│   ├── sumo/         # SUMO network files
+│   └── opendrive/    # Converted OpenDRIVE files
+├── src/
+│   ├── osm_fetcher/  # OSM data collection scripts
+│   ├── converter/    # Conversion pipeline
+│   └── av_logic/     # AV testing algorithms
+├── tests/            # Unit tests
+├── docs/             # Documentation
+├── requirements.txt  # Python dependencies
+└── README.md        # Project documentation
+```
+
+## 🚀 Getting Started
+
+Instructions for setting up the development environment will be added soon.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
