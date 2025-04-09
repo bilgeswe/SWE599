@@ -1,5 +1,7 @@
 """
 Tests for the OSM fetcher module.
+This message will be deleted after I, BilgeA. add in more technical details to the progress in commit message.
+Because I accidentally clicked git commit early.
 """
 
 import os
