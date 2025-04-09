@@ -92,7 +92,4 @@ This project focuses on converting real-world OpenStreetMap (OSM) data into Open
 
 Instructions for setting up the development environment will be added soon.
 
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
