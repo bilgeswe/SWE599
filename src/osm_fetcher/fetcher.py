@@ -25,6 +25,8 @@ class OSMFetcher:
         # Configure osmnx settings (updated for newer versions)
         ox.settings.use_cache = True
         ox.settings.log_console = True
+        ox.settings.all_oneway = True
+        ox.settings.simplify_graph = False  # Don't simplify for OSM XML export
     
     def fetch_by_place(self, place_name: str, network_type: str = "drive") -> str:
         """
@@ -40,8 +42,8 @@ class OSMFetcher:
         logger.info(f"Fetching OSM data for {place_name}")
         
         try:
-            # Get the street network
-            G = ox.graph_from_place(place_name, network_type=network_type)
+            # Get the street network without simplification
+            G = ox.graph_from_place(place_name, network_type=network_type, simplify=False)
             
             # Save to OSM file
             output_path = os.path.join(self.cache_dir, f"{place_name.replace(' ', '_')}.osm")
@@ -69,8 +71,11 @@ class OSMFetcher:
         logger.info(f"Fetching OSM data for bbox: {bbox}")
         
         try:
-            # Get the street network
-            G = ox.graph_from_bbox(*bbox, network_type=network_type)
+            # Get the street network without simplification using coordinates directly
+            north, south, east, west = bbox
+            G = ox.graph.graph_from_bbox(north, south, east, west, 
+                                       network_type=network_type, 
+                                       simplify=False)
             
             # Generate filename from coordinates
             filename = f"bbox_{bbox[0]}_{bbox[1]}_{bbox[2]}_{bbox[3]}.osm"
