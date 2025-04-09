@@ -102,4 +102,4 @@ if __name__ == "__main__":
         osm_file = fetcher.fetch_by_bbox(bbox)
         print(f"Downloaded OSM data to: {osm_file}")
     except Exception as e:
-        print(f"Error: {e}") 
+        print(f"Error: {e}")
