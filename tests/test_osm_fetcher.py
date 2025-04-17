@@ -9,17 +9,11 @@ import pytest
 from src.osm_fetcher.fetcher import OSMFetcher
 
 @pytest.fixture
-def fetcher():
-    """Create a temporary OSM fetcher instance."""
-    test_cache_dir = "data/osm/test"
-    os.makedirs(test_cache_dir, exist_ok=True)
-    return OSMFetcher(cache_dir=test_cache_dir)
-
 def test_fetch_by_place(fetcher):
     """Test fetching OSM data by place name."""
-    place_name = "Besiktas, Istanbul"
+    place_name = "Istanbul, Turkey"  # We'll use Istanbul since 43R is in Istanbul
     try:
-        osm_file = fetcher.fetch_by_place(place_name)
+        osm_file = fetcher.fetch_by_place(place_name, network_type="all")  # Changed to 'all' to include bus routes
         assert os.path.exists(osm_file)
         assert osm_file.endswith(".osm")
     except Exception as e:
@@ -27,10 +21,11 @@ def test_fetch_by_place(fetcher):
 
 def test_fetch_by_bbox(fetcher):
     """Test fetching OSM data by bounding box."""
-    # Small area in Istanbul
-    bbox = (41.05, 41.04, 29.01, 29.00)
+    # Coordinates covering the 43R bus route area in Istanbul
+    # These coordinates are approximate and may need adjustment
+    bbox = (41.0697, 41.0297, 29.0324, 28.9724)  # Wider area covering potential 43R route
     try:
-        osm_file = fetcher.fetch_by_bbox(bbox)
+        osm_file = fetcher.fetch_by_bbox(bbox, network_type="all")  # Changed to 'all' to include bus routes
         assert os.path.exists(osm_file)
         assert osm_file.endswith(".osm")
     except Exception as e:
