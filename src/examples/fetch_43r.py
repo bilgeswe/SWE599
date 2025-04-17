@@ -1,5 +1,5 @@
 """
-Example script to fetch and analyze OSM data for Beşiktaş area.
+Example script to fetch and analyze OSM data for Istanbul 43R bus route area.
 """
 
 import os
@@ -32,17 +32,17 @@ def main():
     # Initialize the fetcher
     fetcher = OSMFetcher()
     
-    # Define the area of interest (Beşiktaş, Istanbul)
-    place_name = "Beşiktaş, Istanbul, Turkey"
+    # Define the area of interest (43R bus route area in Istanbul)
+    place_name = "Istanbul, Turkey"
     print(f"\nFetching OSM data for {place_name}...")
     
     try:
-        # Fetch the data
-        osm_file = fetcher.fetch_by_place(place_name)
+        # Fetch the data with bus route information
+        osm_file = fetcher.fetch_by_place(place_name, network_type="all")
         print(f"Successfully downloaded OSM data to: {osm_file}")
         
         # Load the graph for analysis
-        G = ox.graph_from_place(place_name, network_type="drive")
+        G = ox.graph_from_place(place_name, network_type="all")
         
         # Analyze the network
         analyze_network(G)
@@ -60,14 +60,14 @@ def main():
         os.makedirs("data/plots", exist_ok=True)
         
         # Save the plot
-        plot_path = "data/plots/besiktas_network.png"
+        plot_path = "data/plots/43r_route_network.png"
         fig.savefig(plot_path, dpi=300, bbox_inches='tight')
         print(f"Saved network visualization to: {plot_path}")
         
-        # Optional: Try fetching a smaller area by bounding box for more detail
+        # Fetch detailed area using bounding box
         print("\nFetching detailed area using bounding box...")
-        bbox = (41.045, 41.035, 29.005, 28.995)  # Small area in Beşiktaş
-        detailed_osm = fetcher.fetch_by_bbox(bbox)
+        bbox = (41.0697, 41.0297, 29.0324, 28.9724)  # Area covering 43R route
+        detailed_osm = fetcher.fetch_by_bbox(bbox, network_type="all")
         print(f"Successfully downloaded detailed OSM data to: {detailed_osm}")
         
     except Exception as e:

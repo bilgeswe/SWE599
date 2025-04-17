@@ -47,9 +47,8 @@ if __name__ == "__main__":
     # Add SUMO_HOME/bin to PATH
     os.environ["PATH"] = os.path.join(SUMO_HOME, "bin") + os.pathsep + os.environ.get("PATH", "")
     
-    # Convert and visualize the Beşiktaş OSM data
-    osm_file = "data/osm/Beşiktaş,_Istanbul,_Turkey.osm"
-    
+    # Convert and visualize the 43R bus route area in Istanbul
+    osm_file = "data/osm/istanbul_43r.osm"    
     try:
         # Convert to SUMO format
         net_file = convert_to_sumo(osm_file)

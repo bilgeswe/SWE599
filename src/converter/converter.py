@@ -131,8 +131,8 @@ if __name__ == "__main__":
     
     try:
         # Example OSM file (you would need to have this file)
-        osm_file = "data/osm/Besiktas_Istanbul.osm"
-        
+        osm_file = "data/osm/istanbul_43r.osm"
+                
         # Convert OSM to SUMO
         sumo_file = converter.osm_to_sumo(osm_file)
         print(f"Created SUMO network file: {sumo_file}")

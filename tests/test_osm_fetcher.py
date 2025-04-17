@@ -19,7 +19,7 @@ def test_fetch_by_place(fetcher):
     """Test fetching OSM data by place name."""
     place_name = "Istanbul, Turkey"  # We'll use Istanbul since 43R is in Istanbul
     try:
-        osm_file = fetcher.fetch_by_place(place_name, network_type="all")  # Changed to 'all' to include bus routes
+        osm_file = fetcher.fetch_by_place(place_name, network_type="all")  # Changed to 'all' to include bus route 43
         assert os.path.exists(osm_file)
         assert osm_file.endswith(".osm")
     except Exception as e:

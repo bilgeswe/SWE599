@@ -6,7 +6,7 @@ import folium
 import osmnx as ox
 from folium import plugins
 
-def visualize_area(place_name: str = "Beşiktaş, Istanbul, Turkey", 
+def visualize_area(place_name: str = "Istanbul, Turkey",
                   output_file: str = "map.html",
                   network_type: str = 'all'):
     """

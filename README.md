@@ -92,4 +92,18 @@ This project focuses on converting real-world OpenStreetMap (OSM) data into Open
 
 Instructions for setting up the development environment will be added soon.
 
+## 🚌 43R Bus Route Details
+
+The project focuses on Istanbul's 43R bus route as a test case. This route was chosen because:
+- It represents a real-world public transport route
+- Contains various road types and intersections
+- Includes both urban and suburban sections
+- Has well-documented stops and schedule data
+
+The bounding box coordinates for the 43R route area are:
+- North: 41.0697
+- South: 41.0297
+- East: 29.0324
+- West: 28.9724
+
 
