@@ -9,6 +9,12 @@ import pytest
 from src.osm_fetcher.fetcher import OSMFetcher
 
 @pytest.fixture
+def fetcher():
+    """Create a temporary OSM fetcher instance."""
+    test_cache_dir = "data/osm/test"
+    os.makedirs(test_cache_dir, exist_ok=True)
+    return OSMFetcher(cache_dir=test_cache_dir)
+
 def test_fetch_by_place(fetcher):
     """Test fetching OSM data by place name."""
     place_name = "Istanbul, Turkey"  # We'll use Istanbul since 43R is in Istanbul
