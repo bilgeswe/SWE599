@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- OpenDRIVE 1.7.0 Schema -->
+    
+    <!-- Root element -->
+    <xs:element name="OpenDRIVE">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="header" type="headerType"/>
+                <xs:element name="road" type="roadType" maxOccurs="unbounded"/>
+                <xs:element name="junction" type="junctionType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- Header -->
+    <xs:complexType name="headerType">
+        <xs:attribute name="revMajor" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="revMinor" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="version" type="xs:string" use="required"/>
+        <xs:attribute name="date" type="xs:string" use="required"/>
+        <xs:attribute name="north" type="xs:double" use="required"/>
+        <xs:attribute name="south" type="xs:double" use="required"/>
+        <xs:attribute name="east" type="xs:double" use="required"/>
+        <xs:attribute name="west" type="xs:double" use="required"/>
+    </xs:complexType>
+    
+    <!-- Road -->
+    <xs:complexType name="roadType">
+        <xs:sequence>
+            <xs:element name="link" type="linkType" minOccurs="0"/>
+            <xs:element name="planView" type="planViewType"/>
+            <xs:element name="lanes" type="lanesType"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="length" type="xs:double" use="required"/>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="junction" type="xs:string" use="required"/>
+    </xs:complexType>
+    
+    <!-- Link -->
+    <xs:complexType name="linkType">
+        <xs:sequence>
+            <xs:element name="predecessor" type="connectionType" minOccurs="0"/>
+            <xs:element name="successor" type="connectionType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Connection -->
+    <xs:complexType name="connectionType">
+        <xs:attribute name="elementType" type="xs:string" use="required"/>
+        <xs:attribute name="elementId" type="xs:string" use="required"/>
+        <xs:attribute name="contactPoint" type="contactPointType" use="required"/>
+    </xs:complexType>
+    
+    <!-- Contact Point -->
+    <xs:simpleType name="contactPointType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="start"/>
+            <xs:enumeration value="end"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Plan View -->
+    <xs:complexType name="planViewType">
+        <xs:sequence>
+            <xs:element name="geometry" type="geometryType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Geometry -->
+    <xs:complexType name="geometryType">
+        <xs:choice>
+            <xs:element name="line" type="lineType"/>
+            <xs:element name="arc" type="arcType"/>
+            <xs:element name="spiral" type="spiralType"/>
+            <xs:element name="poly3" type="poly3Type"/>
+            <xs:element name="paramPoly3" type="paramPoly3Type"/>
+        </xs:choice>
+        <xs:attribute name="s" type="xs:double" use="required"/>
+        <xs:attribute name="x" type="xs:double" use="required"/>
+        <xs:attribute name="y" type="xs:double" use="required"/>
+        <xs:attribute name="hdg" type="xs:double" use="required"/>
+        <xs:attribute name="length" type="xs:double" use="required"/>
+    </xs:complexType>
+    
+    <!-- Line -->
+    <xs:complexType name="lineType"/>
+    
+    <!-- Arc -->
+    <xs:complexType name="arcType">
+        <xs:attribute name="curvature" type="xs:double" use="required"/>
+    </xs:complexType>
+    
+    <!-- Spiral -->
+    <xs:complexType name="spiralType">
+        <xs:attribute name="curvStart" type="xs:double" use="required"/>
+        <xs:attribute name="curvEnd" type="xs:double" use="required"/>
+    </xs:complexType>
+    
+    <!-- Polynomial -->
+    <xs:complexType name="poly3Type">
+        <xs:attribute name="a" type="xs:double" use="required"/>
+        <xs:attribute name="b" type="xs:double" use="required"/>
+        <xs:attribute name="c" type="xs:double" use="required"/>
+        <xs:attribute name="d" type="xs:double" use="required"/>
+    </xs:complexType>
+    
+    <!-- Parametric Polynomial -->
+    <xs:complexType name="paramPoly3Type">
+        <xs:attribute name="aU" type="xs:double" use="required"/>
+        <xs:attribute name="bU" type="xs:double" use="required"/>
+        <xs:attribute name="cU" type="xs:double" use="required"/>
+        <xs:attribute name="dU" type="xs:double" use="required"/>
+        <xs:attribute name="aV" type="xs:double" use="required"/>
+        <xs:attribute name="bV" type="xs:double" use="required"/>
+        <xs:attribute name="cV" type="xs:double" use="required"/>
+        <xs:attribute name="dV" type="xs:double" use="required"/>
+        <xs:attribute name="pRange" type="pRangeType" use="required"/>
+    </xs:complexType>
+    
+    <!-- P Range -->
+    <xs:simpleType name="pRangeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="arcLength"/>
+            <xs:enumeration value="normalized"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Lanes -->
+    <xs:complexType name="lanesType">
+        <xs:sequence>
+            <xs:element name="laneSection" type="laneSectionType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Lane Section -->
+    <xs:complexType name="laneSectionType">
+        <xs:sequence>
+            <xs:element name="left" type="laneGroupType" minOccurs="0"/>
+            <xs:element name="center" type="laneGroupType"/>
+            <xs:element name="right" type="laneGroupType" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="s" type="xs:double" use="required"/>
+    </xs:complexType>
+    
+    <!-- Lane Group -->
+    <xs:complexType name="laneGroupType">
+        <xs:sequence>
+            <xs:element name="lane" type="laneType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Lane -->
+    <xs:complexType name="laneType">
+        <xs:sequence>
+            <xs:element name="link" type="laneLinkType" minOccurs="0"/>
+            <xs:element name="width" type="widthType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:integer" use="required"/>
+        <xs:attribute name="type" type="laneTypeType" use="required"/>
+        <xs:attribute name="level" type="xs:boolean" use="required"/>
+    </xs:complexType>
+    
+    <!-- Lane Link -->
+    <xs:complexType name="laneLinkType">
+        <xs:sequence>
+            <xs:element name="predecessor" type="laneLinkReferenceType" minOccurs="0"/>
+            <xs:element name="successor" type="laneLinkReferenceType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Lane Link Reference -->
+    <xs:complexType name="laneLinkReferenceType">
+        <xs:attribute name="id" type="xs:integer" use="required"/>
+    </xs:complexType>
+    
+    <!-- Width -->
+    <xs:complexType name="widthType">
+        <xs:attribute name="sOffset" type="xs:double" use="required"/>
+        <xs:attribute name="a" type="xs:double" use="required"/>
+        <xs:attribute name="b" type="xs:double" use="required"/>
+        <xs:attribute name="c" type="xs:double" use="required"/>
+        <xs:attribute name="d" type="xs:double" use="required"/>
+    </xs:complexType>
+    
+    <!-- Lane Type -->
+    <xs:simpleType name="laneTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="driving"/>
+            <xs:enumeration value="stop"/>
+            <xs:enumeration value="shoulder"/>
+            <xs:enumeration value="biking"/>
+            <xs:enumeration value="sidewalk"/>
+            <xs:enumeration value="border"/>
+            <xs:enumeration value="restricted"/>
+            <xs:enumeration value="parking"/>
+            <xs:enumeration value="median"/>
+            <xs:enumeration value="special1"/>
+            <xs:enumeration value="special2"/>
+            <xs:enumeration value="special3"/>
+            <xs:enumeration value="roadWorks"/>
+            <xs:enumeration value="tram"/>
+            <xs:enumeration value="rail"/>
+            <xs:enumeration value="entry"/>
+            <xs:enumeration value="exit"/>
+            <xs:enumeration value="offRamp"/>
+            <xs:enumeration value="onRamp"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Junction -->
+    <xs:complexType name="junctionType">
+        <xs:sequence>
+            <xs:element name="connection" type="junctionConnectionType" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+    </xs:complexType>
+    
+    <!-- Junction Connection -->
+    <xs:complexType name="junctionConnectionType">
+        <xs:sequence>
+            <xs:element name="laneLink" type="junctionLaneLinkType" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="incomingRoad" type="xs:string" use="required"/>
+        <xs:attribute name="connectingRoad" type="xs:string" use="required"/>
+        <xs:attribute name="contactPoint" type="contactPointType" use="required"/>
+    </xs:complexType>
+    
+    <!-- Junction Lane Link -->
+    <xs:complexType name="junctionLaneLinkType">
+        <xs:attribute name="from" type="xs:integer" use="required"/>
+        <xs:attribute name="to" type="xs:integer" use="required"/>
+    </xs:complexType>
+</xs:schema> 
