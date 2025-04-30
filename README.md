@@ -9,7 +9,6 @@ This project focuses on converting real-world OpenStreetMap (OSM) data into Open
 - Write a Python script to convert SUMO Net to OpenDRIVE format
 - Develop basic AV algorithms to test on the OpenDRIVE map
 - Focus on map-based simulation structure and testing
-- Account for missing elevation data in OSM
 
 ## 📅 Timeline & Phases
 
@@ -30,7 +29,6 @@ This project focuses on converting real-world OpenStreetMap (OSM) data into Open
 **Tasks:**
 - [ ] Select region of interest (city or custom bounding box)
 - [ ] Retrieve and save .osm road data
-- [ ] Handle missing elevation (optional: consider SRTM/DEM sources)
 
 ### 🔁 Phase 3: Convert OSM → SUMO Net → OpenDRIVE
 **Objectives:**
@@ -68,7 +66,6 @@ This project focuses on converting real-world OpenStreetMap (OSM) data into Open
 - SUMO + netconvert – Create traffic networks
 - Python – Scripting and conversion logic
 - OpenDRIVE – Standardized road format
-- (Optional) DEM / SRTM tools – Elevation data
 
 ## 📂 Repository Structure
 

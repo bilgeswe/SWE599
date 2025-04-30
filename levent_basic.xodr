@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<OpenDRIVE>
+  <header revMajor="1" revMinor="7"/>
+  <road id="1" name="Road1">
+    <planView>
+      <geometry s="0.0" x="29.0088" y="41.0751" hdg="0.0" length="100.0">
+        <line/>
+      </geometry>
+    </planView>
+    <lanes>
+      <laneSection s="0.0">
+        <center>
+          <lane id="0" type="none"/>
+        </center>
+        <right>
+          <lane id="-1" type="driving"/>
+          <lane id="-2" type="driving"/>
+        </right>
+      </laneSection>
+    </lanes>
+  </road>
+  <road id="2" name="Road2">
+    <planView>
+      <geometry s="0.0" x="29.0128" y="41.0781" hdg="0.0" length="150.0">
+        <line/>
+      </geometry>
+    </planView>
+    <lanes>
+      <laneSection s="0.0">
+        <center>
+          <lane id="0" type="none"/>
+        </center>
+        <right>
+          <lane id="-1" type="driving"/>
+          <lane id="-2" type="driving"/>
+          <lane id="-3" type="driving"/>
+        </right>
+      </laneSection>
+    </lanes>
+  </road>
+</OpenDRIVE>
