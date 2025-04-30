@@ -4,6 +4,16 @@ import osmnx as ox
 import networkx as nx
 import argparse
 
+# Configure OSMnx
+ox.settings.use_cache = True
+ox.settings.cache_folder = 'data/cache'
+ox.settings.all_oneway = True
+ox.settings.useful_tags_path = [
+    'bridge', 'tunnel', 'oneway', 'lanes', 'ref', 'name',
+    'highway', 'maxspeed', 'service', 'access', 'area',
+    'landuse', 'width', 'est_width', 'junction'
+]
+
 def download_network(place_name, output_dir='data/networks'):
     """
     Download road network data for a specified location.
@@ -12,21 +22,44 @@ def download_network(place_name, output_dir='data/networks'):
         place_name (str): Name of the place to download (e.g., "Levent, Istanbul, Turkey")
         output_dir (str): Directory to save the output files
     """
-    # Create output directory if it doesn't exist
+    # Create output directories if they don't exist
     os.makedirs(output_dir, exist_ok=True)
+    os.makedirs('data/cache', exist_ok=True)
     
     # Download the road network using osmnx
     print(f"Downloading road network for {place_name}...")
     print("This may take a few minutes depending on the area size...")
     
     try:
-        # First try with a smaller area
-        G = ox.graph_from_place(place_name, network_type='drive', simplify=False)
+        # Download with custom filter to include all road types
+        custom_filter = (
+            '["highway"]'
+            '["highway"!~"abandoned|construction|proposed|platform|raceway"]'
+            '["area"!~"yes"]'
+            '["service"!~"private"]'
+        )
+        
+        G = ox.graph_from_place(
+            place_name,
+            network_type='all',  # Get all street types
+            simplify=False,      # Don't simplify the graph
+            retain_all=True,     # Keep all nodes
+            truncate_by_edge=True,  # Don't truncate the graph
+            custom_filter=custom_filter
+        )
     except Exception as e:
         print(f"Error downloading full area: {e}")
         print("Trying with a smaller area...")
-        # If that fails, try with a smaller area
-        G = ox.graph_from_place(place_name, network_type='drive', simplify=False, which_result=1)
+        # If that fails, try with a smaller area but same parameters
+        G = ox.graph_from_place(
+            place_name,
+            network_type='all',
+            simplify=False,
+            retain_all=True,
+            truncate_by_edge=True,
+            custom_filter=custom_filter,
+            which_result=1
+        )
     
     # Save as OSM file
     place_name_simple = place_name.split(',')[0].lower().strip()

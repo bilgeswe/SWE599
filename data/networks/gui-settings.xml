@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<viewsettings>
-    <scheme name="real world"/>
-    <delay value="50"/>
-    <viewport zoom="1000" x="29.0158" y="41.0801" angle="0"/>
-    <decal filename="levent.net.xml" centerX="29.0158" centerY="41.0801" width="0.01" height="0.01" rotation="0"/>
-    <gui-settings-file value="gui-settings.xml"/>
-</viewsettings> 
