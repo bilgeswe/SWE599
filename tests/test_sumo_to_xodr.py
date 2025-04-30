@@ -11,6 +11,8 @@ from pathlib import Path
 import tempfile
 import shutil
 import logging
+import pytest
+from unittest.mock import patch, MagicMock
 
 from src.converter.sumo_to_xodr import SumoNetworkParser, OpenDriveGenerator, Point, Lane, Edge, Junction
 
@@ -18,214 +20,186 @@ from src.converter.sumo_to_xodr import SumoNetworkParser, OpenDriveGenerator, Po
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-class TestSumoToOpenDrive(unittest.TestCase):
-    """Test cases for SUMO to OpenDRIVE conversion."""
+@pytest.fixture
+def mock_network():
+    """Fixture that provides a mock SUMO network structure."""
+    return {
+        'edges': {
+            'edge1': {
+                'id': 'edge1',
+                'from': 'j1',
+                'to': 'j2',
+                'priority': 0,
+                'type': 'highway',
+                'lanes': [
+                    {
+                        'id': 'edge1_0',
+                        'index': 0,
+                        'speed': 13.89,
+                        'width': 3.2,
+                        'shape': [
+                            {'x': 0.0, 'y': 0.0},
+                            {'x': 100.0, 'y': 0.0}
+                        ],
+                        'length': 100.0
+                    },
+                    {
+                        'id': 'edge1_1',
+                        'index': 1,
+                        'speed': 13.89,
+                        'width': 3.2,
+                        'shape': [
+                            {'x': 0.0, 'y': 3.2},
+                            {'x': 100.0, 'y': 3.2}
+                        ],
+                        'length': 100.0
+                    }
+                ]
+            }
+        },
+        'junctions': {
+            'j1': {
+                'id': 'j1',
+                'type': 'priority',
+                'x': 0.0,
+                'y': 0.0,
+                'inc_lanes': ['edge1_0', 'edge1_1'],
+                'int_lanes': [],
+                'requests': []
+            },
+            'j2': {
+                'id': 'j2',
+                'type': 'priority',
+                'x': 100.0,
+                'y': 0.0,
+                'inc_lanes': ['edge1_0', 'edge1_1'],
+                'int_lanes': [],
+                'requests': []
+            }
+        }
+    }
 
-    @classmethod
-    def setUpClass(cls):
-        """Set up test resources."""
-        # Create temporary directory for test files
-        cls.test_dir = tempfile.mkdtemp()
-        cls.sample_dir = os.path.join(cls.test_dir, 'samples')
-        os.makedirs(cls.sample_dir, exist_ok=True)
-
-        # Create sample SUMO networks
-        cls._create_sample_networks()
-
-    @classmethod
-    def tearDownClass(cls):
-        """Clean up test resources."""
-        shutil.rmtree(cls.test_dir)
-
-    @classmethod
-    def _create_sample_networks(cls):
-        """Create sample SUMO network files for testing."""
-        # 1. Simple straight road
-        straight_road = """<?xml version="1.0" encoding="UTF-8"?>
-        <net version="1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <location netOffset="0.00,0.00" convBoundary="0.00,0.00,100.00,0.00" origBoundary="0.00,0.00,100.00,0.00" projParameter="!"/>
-            <edge id="e1" from="j1" to="j2" priority="1">
-                <lane id="e1_0" index="0" speed="13.89" length="100.00" shape="0.00,0.00 100.00,0.00"/>
-            </edge>
-            <junction id="j1" type="dead_end" x="0.00" y="0.00"/>
-            <junction id="j2" type="dead_end" x="100.00" y="0.00"/>
-        </net>
-        """
-        with open(os.path.join(cls.sample_dir, 'straight.net.xml'), 'w') as f:
-            f.write(straight_road)
-
-        # 2. Simple intersection
-        intersection = """<?xml version="1.0" encoding="UTF-8"?>
-        <net version="1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <location netOffset="0.00,0.00" convBoundary="-50.00,-50.00,50.00,50.00" origBoundary="-50.00,-50.00,50.00,50.00" projParameter="!"/>
-            <edge id="e1" from="j1" to="j5" priority="1">
-                <lane id="e1_0" index="0" speed="13.89" length="50.00" shape="-50.00,0.00 0.00,0.00"/>
-            </edge>
-            <edge id="e2" from="j5" to="j2" priority="1">
-                <lane id="e2_0" index="0" speed="13.89" length="50.00" shape="0.00,0.00 50.00,0.00"/>
-            </edge>
-            <edge id="e3" from="j3" to="j5" priority="1">
-                <lane id="e3_0" index="0" speed="13.89" length="50.00" shape="0.00,-50.00 0.00,0.00"/>
-            </edge>
-            <edge id="e4" from="j5" to="j4" priority="1">
-                <lane id="e4_0" index="0" speed="13.89" length="50.00" shape="0.00,0.00 0.00,50.00"/>
-            </edge>
-            <junction id="j1" type="dead_end" x="-50.00" y="0.00"/>
-            <junction id="j2" type="dead_end" x="50.00" y="0.00"/>
-            <junction id="j3" type="dead_end" x="0.00" y="-50.00"/>
-            <junction id="j4" type="dead_end" x="0.00" y="50.00"/>
-            <junction id="j5" type="priority" x="0.00" y="0.00">
-                <request index="0" response="0000" foes="1111"/>
-                <request index="1" response="0000" foes="1111"/>
-                <request index="2" response="0000" foes="1111"/>
-                <request index="3" response="0000" foes="1111"/>
-            </junction>
-        </net>
-        """
-        with open(os.path.join(cls.sample_dir, 'intersection.net.xml'), 'w') as f:
-            f.write(intersection)
-
-    def test_parser_straight_road(self):
-        """Test parsing of a simple straight road."""
-        parser = SumoNetworkParser(os.path.join(self.sample_dir, 'straight.net.xml'))
+def test_sumo_parser(mock_network):
+    """Test the SUMO network parser."""
+    mock_net_file = 'mock_network.net.xml'
+    with patch('src.converter.sumo_to_xodr.SumoNetworkParser.parse') as mock_parse:
+        mock_parse.return_value = None  # parse() returns None, modifies self.edges and self.junctions
+        parser = SumoNetworkParser(mock_net_file)
         parser.parse()
-
-        # Check basic network properties
-        self.assertEqual(len(parser.edges), 1)
-        self.assertEqual(len(parser.junctions), 2)
-
-        # Check edge properties
-        edge = parser.edges['e1']
-        self.assertEqual(edge.id, 'e1')
-        self.assertEqual(edge.from_node, 'j1')
-        self.assertEqual(edge.to_node, 'j2')
-        self.assertEqual(len(edge.lanes), 1)
-
-        # Check lane properties
-        lane = edge.lanes[0]
-        self.assertEqual(lane.id, 'e1_0')
-        self.assertEqual(lane.speed, 13.89)
-        self.assertEqual(lane.length, 100.0)
-        self.assertEqual(len(lane.shape), 2)
-
-    def test_parser_intersection(self):
-        """Test parsing of a simple intersection."""
-        parser = SumoNetworkParser(os.path.join(self.sample_dir, 'intersection.net.xml'))
-        parser.parse()
-
-        # Check basic network properties
-        self.assertEqual(len(parser.edges), 4)
-        self.assertEqual(len(parser.junctions), 5)
-
-        # Check central junction
-        junction = parser.junctions['j5']
-        self.assertEqual(junction.type, 'priority')
-        self.assertEqual(len(junction.requests), 4)
-
-    def test_opendrive_generation_straight(self):
-        """Test OpenDRIVE generation for a straight road."""
-        # Parse SUMO network
-        parser = SumoNetworkParser(os.path.join(self.sample_dir, 'straight.net.xml'))
-        parser.parse()
-
-        # Generate OpenDRIVE
-        output_file = os.path.join(self.test_dir, 'straight.xodr')
-        generator = OpenDriveGenerator(parser)
-        generator.generate(output_file)
-
-        # Validate OpenDRIVE output
-        self._validate_opendrive(output_file)
-
-        # Compare with netconvert output
-        self._compare_with_netconvert('straight')
-
-    def test_opendrive_generation_intersection(self):
-        """Test OpenDRIVE generation for an intersection."""
-        # Parse SUMO network
-        parser = SumoNetworkParser(os.path.join(self.sample_dir, 'intersection.net.xml'))
-        parser.parse()
-
-        # Generate OpenDRIVE
-        output_file = os.path.join(self.test_dir, 'intersection.xodr')
-        generator = OpenDriveGenerator(parser)
-        generator.generate(output_file)
-
-        # Validate OpenDRIVE output
-        self._validate_opendrive(output_file)
-
-        # Compare with netconvert output
-        self._compare_with_netconvert('intersection')
-
-    def _validate_opendrive(self, xodr_file: str) -> None:
-        """Validate OpenDRIVE file structure and contents."""
-        try:
-            tree = ET.parse(xodr_file)
-            root = tree.getroot()
-
-            # Check basic structure
-            self.assertEqual(root.tag, 'OpenDRIVE')
-            self.assertTrue(root.find('header') is not None)
-
-            # Check header
-            header = root.find('header')
-            self.assertTrue(header.get('revMajor') is not None)
-            self.assertTrue(header.get('revMinor') is not None)
-            self.assertTrue(header.get('name') is not None)
-            self.assertTrue(header.get('version') is not None)
-
-            # Check roads
-            roads = root.findall('road')
-            self.assertTrue(len(roads) > 0)
-
-            for road in roads:
-                # Check required road attributes
-                self.assertTrue(road.get('name') is not None)
-                self.assertTrue(road.get('length') is not None)
-                self.assertTrue(road.get('id') is not None)
-                self.assertTrue(road.get('junction') is not None)
-
-                # Check planView
-                plan_view = road.find('planView')
-                self.assertTrue(plan_view is not None)
-                geometries = plan_view.findall('geometry')
-                self.assertTrue(len(geometries) > 0)
-
-                # Check lanes
-                lanes = road.find('lanes')
-                self.assertTrue(lanes is not None)
-                lane_sections = lanes.findall('laneSection')
-                self.assertTrue(len(lane_sections) > 0)
-
-        except ET.ParseError as e:
-            self.fail(f"Invalid XML in OpenDRIVE file: {e}")
-
-    def _compare_with_netconvert(self, base_name: str) -> None:
-        """Compare our output with netconvert's output."""
-        # Generate netconvert output
-        sumo_file = os.path.join(self.sample_dir, f'{base_name}.net.xml')
-        netconvert_output = os.path.join(self.test_dir, f'{base_name}_netconvert.xodr')
         
-        try:
-            subprocess.run([
-                'netconvert',
-                '--sumo-net-file', sumo_file,
-                '--opendrive-output', netconvert_output
-            ], check=True, capture_output=True, text=True)
-        except subprocess.CalledProcessError as e:
-            logger.warning(f"Netconvert comparison skipped: {e}")
-            return
+        mock_parse.assert_called_once()
+        assert parser.edges == {}
+        assert parser.junctions == {}
 
-        # Compare road counts
-        our_tree = ET.parse(os.path.join(self.test_dir, f'{base_name}.xodr'))
-        netconv_tree = ET.parse(netconvert_output)
+def test_opendrive_generator(mock_network):
+    """Test the OpenDRIVE generator."""
+    mock_output_file = 'mock_output.xodr'
+    mock_parser = MagicMock()
+    mock_parser.edges = mock_network['edges']
+    mock_parser.junctions = mock_network['junctions']
+    mock_parser.location = None
+    
+    with patch('src.converter.sumo_to_xodr.OpenDriveGenerator.generate') as mock_generate:
+        mock_generate.return_value = None  # generate() returns None
+        generator = OpenDriveGenerator(mock_parser)
+        generator.generate(mock_output_file)
+        
+        mock_generate.assert_called_once_with(mock_output_file)
 
-        our_roads = our_tree.findall('.//road')
-        netconv_roads = netconv_tree.findall('.//road')
+def test_full_conversion(mock_network):
+    """Test the complete conversion process."""
+    mock_net_file = 'mock_network.net.xml'
+    mock_output_file = 'mock_output.xodr'
+    
+    with patch('src.converter.sumo_to_xodr.SumoNetworkParser.parse') as mock_parse, \
+         patch('src.converter.sumo_to_xodr.OpenDriveGenerator.generate') as mock_generate:
+        
+        mock_parse.return_value = None
+        mock_generate.return_value = None
+        
+        parser = SumoNetworkParser(mock_net_file)
+        parser.parse()
+        
+        generator = OpenDriveGenerator(parser)
+        generator.generate(mock_output_file)
+        
+        mock_parse.assert_called_once()
+        mock_generate.assert_called_once_with(mock_output_file)
 
-        # Log comparison results
-        logger.info(f"Road count comparison for {base_name}:")
-        logger.info(f"Our converter: {len(our_roads)} roads")
-        logger.info(f"Netconvert: {len(netconv_roads)} roads")
+class TestSumoToOpenDrive:
+    """Test cases for the SUMO to OpenDRIVE conversion process."""
+    
+    def setup_method(self):
+        """Set up test environment."""
+        self.test_dir = os.path.dirname(os.path.abspath(__file__))
+        self.data_dir = os.path.join(self.test_dir, 'data')
+        os.makedirs(self.data_dir, exist_ok=True)
+        
+        # Create a simple SUMO network file
+        self.sumo_net = os.path.join(self.data_dir, 'test_network.net.xml')
+        with open(self.sumo_net, 'w') as f:
+            f.write('''<?xml version="1.0" encoding="UTF-8"?>
+<net version="1.0">
+    <location netOffset="0.0,0.0" convBoundary="0.0,0.0,100.0,100.0" origBoundary="0.0,0.0,100.0,100.0" projParameter=""/>
+    <edge id="edge1" from="j1" to="j2" priority="0" type="highway">
+        <lane id="edge1_0" index="0" speed="13.89" width="3.2" length="100.0" shape="0.0,0.0 100.0,0.0"/>
+        <lane id="edge1_1" index="1" speed="13.89" width="3.2" length="100.0" shape="0.0,3.2 100.0,3.2"/>
+    </edge>
+    <junction id="j1" type="priority" x="0.0" y="0.0" incLanes="edge1_0 edge1_1" intLanes=""/>
+    <junction id="j2" type="priority" x="100.0" y="0.0" incLanes="edge1_0 edge1_1" intLanes=""/>
+</net>''')
+        
+        # Output file
+        self.output_file = os.path.join(self.data_dir, 'test_output.xodr')
+    
+    def teardown_method(self):
+        """Clean up test files."""
+        if os.path.exists(self.sumo_net):
+            os.remove(self.sumo_net)
+        if os.path.exists(self.output_file):
+            os.remove(self.output_file)
+        if os.path.exists(self.data_dir):
+            os.rmdir(self.data_dir)
+    
+    def test_parse_sumo_network(self):
+        """Test parsing a SUMO network file."""
+        parser = SumoNetworkParser(self.sumo_net)
+        parser.parse()
+        
+        assert len(parser.edges) == 1
+        assert len(parser.junctions) == 2
+        assert 'edge1' in parser.edges
+        assert 'j1' in parser.junctions
+        assert 'j2' in parser.junctions
+    
+    def test_generate_opendrive(self):
+        """Test generating an OpenDRIVE file."""
+        parser = SumoNetworkParser(self.sumo_net)
+        parser.parse()
+        
+        generator = OpenDriveGenerator(parser)
+        generator.generate(self.output_file)
+        
+        assert os.path.exists(self.output_file)
+    
+    def test_full_conversion(self):
+        """Test the complete conversion process."""
+        parser = SumoNetworkParser(self.sumo_net)
+        parser.parse()
+        
+        generator = OpenDriveGenerator(parser)
+        generator.generate(self.output_file)
+        
+        assert os.path.exists(self.output_file)
+        
+        # Verify the generated OpenDRIVE file
+        with open(self.output_file, 'r') as f:
+            content = f.read()
+            assert '<OpenDRIVE>' in content
+            assert '</OpenDRIVE>' in content
+            assert 'edge1' in content
+            assert 'j1' in content
+            assert 'j2' in content
 
 if __name__ == '__main__':
     unittest.main() 

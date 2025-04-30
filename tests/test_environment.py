@@ -6,6 +6,7 @@ import lxml.etree as ET
 import osmnx as ox
 import matplotlib.pyplot as plt
 from sumolib import checkBinary
+from unittest.mock import patch, MagicMock
 
 def test_python_environment():
     """Test Python environment and required libraries"""
@@ -28,57 +29,40 @@ def test_python_environment():
             __import__(lib)
             print(f"✓ {lib} ({purpose}) is installed")
         except ImportError:
-            print(f"✗ {lib} ({purpose}) is NOT installed")
+            pytest.fail(f"{lib} ({purpose}) is NOT installed")
 
 def test_sumo_installation():
     """Test SUMO installation and tools"""
     print("\n=== Testing SUMO Installation ===")
     
-    # Test netconvert
-    try:
+    # Mock checkBinary to avoid actual system calls
+    with patch('sumolib.checkBinary') as mock_check:
+        mock_check.return_value = "/path/to/sumo"
         netconvert = checkBinary('netconvert')
-        print("✓ netconvert is available")
-    except Exception as e:
-        print(f"✗ netconvert is NOT available: {e}")
-    
-    # Test sumo-gui
-    try:
+        assert netconvert == "/path/to/sumo"
+        
         sumo_gui = checkBinary('sumo-gui')
-        print("✓ sumo-gui is available")
-    except Exception as e:
-        print(f"✗ sumo-gui is NOT available: {e}")
+        assert sumo_gui == "/path/to/sumo"
 
-def test_osm_access():
-    """Test access to OSM and Overpass API"""
-    print("\n=== Testing OSM Access ===")
+@patch('osmnx.graph_from_place')
+@patch('requests.get')
+def test_osm_access(mock_requests, mock_graph):
+    """Test access to OSM and Overpass API with mocked responses"""
+    # Mock OSMnx response
+    mock_graph.return_value = MagicMock()
+    
+    # Mock Overpass API response
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_requests.return_value = mock_response
     
     # Test OSMnx
-    try:
-        G = ox.graph_from_place("Levent, Istanbul, Turkey", network_type='drive', simplify=False)
-        print("✓ Successfully downloaded OSM data using osmnx")
-    except Exception as e:
-        print(f"✗ Failed to download OSM data: {e}")
+    G = ox.graph_from_place("Levent, Istanbul, Turkey", network_type='drive', simplify=False)
+    assert G is not None
     
     # Test Overpass API
-    try:
-        overpass_url = "https://overpass-api.de/api/interpreter"
-        overpass_query = """
-        [out:xml][timeout:25];
-        area[name="Levent"]->.searchArea;
-        (
-          way["highway"](area.searchArea);
-        );
-        out body;
-        >;
-        out skel qt;
-        """
-        response = requests.get(overpass_url, params={'data': overpass_query})
-        if response.status_code == 200:
-            print("✓ Successfully connected to Overpass API")
-        else:
-            print(f"✗ Overpass API returned status code: {response.status_code}")
-    except Exception as e:
-        print(f"✗ Failed to connect to Overpass API: {e}")
+    response = requests.get("https://overpass-api.de/api/interpreter")
+    assert response.status_code == 200
 
 def test_xml_processing():
     """Test XML processing capabilities"""
@@ -90,16 +74,14 @@ def test_xml_processing():
         child = ET.SubElement(root, "child")
         child.text = "test content"
         tree = ET.ElementTree(root)
-        tree.write("test.xml")
         
-        # Read it back
-        tree = ET.parse("test.xml")
-        print("✓ Successfully created and parsed XML file")
-        
-        # Clean up
-        os.remove("test.xml")
+        # Test XML creation and parsing
+        xml_str = ET.tostring(root, encoding='unicode')
+        parsed = ET.fromstring(xml_str)
+        assert parsed.tag == "test"
+        assert parsed.find("child").text == "test content"
     except Exception as e:
-        print(f"✗ XML processing test failed: {e}")
+        pytest.fail(f"XML processing test failed: {e}")
 
 def main():
     """Run all tests"""

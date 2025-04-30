@@ -6,38 +6,52 @@ Because I accidentally clicked git commit early.
 
 import os
 import pytest
-from src.osm_fetcher.fetcher import OSMFetcher
+from unittest.mock import patch, MagicMock
+from src.examples.download_network import OSMFetcher
 
 @pytest.fixture
-def fetcher():
-    """Create a temporary OSM fetcher instance."""
-    test_cache_dir = "data/osm/test"
-    os.makedirs(test_cache_dir, exist_ok=True)
-    return OSMFetcher(cache_dir=test_cache_dir)
+def osm_fetcher():
+    """Create a temporary OSM fetcher instance"""
+    return OSMFetcher()
 
-def test_fetch_by_place(fetcher):
-    """Test fetching OSM data by place name."""
-    place_name = "Istanbul, Turkey"  # We'll use Istanbul since 43R is in Istanbul
-    try:
-        osm_file = fetcher.fetch_by_place(place_name, network_type="all")  # Changed to 'all' to include bus route 43
-        assert os.path.exists(osm_file)
-        assert osm_file.endswith(".osm")
-    except Exception as e:
-        pytest.skip(f"Skipping test due to network error: {str(e)}")
+@patch('osmnx.graph_from_place')
+def test_fetch_by_place_name(mock_graph, osm_fetcher):
+    """Test fetching OSM data by place name"""
+    # Mock OSMnx response
+    mock_graph.return_value = MagicMock()
+    
+    # Test with a place name
+    place_name = "Levent, Istanbul, Turkey"
+    G = osm_fetcher.fetch_by_place_name(place_name)
+    assert G is not None
+    mock_graph.assert_called_once_with(place_name, network_type='drive', simplify=False)
 
-def test_fetch_by_bbox(fetcher):
-    """Test fetching OSM data by bounding box."""
-    # Coordinates covering the 43R bus route area in Istanbul
-    # These coordinates are approximate and may need adjustment
-    bbox = (41.0697, 41.0297, 29.0324, 28.9724)  # Wider area covering potential 43R route
-    try:
-        osm_file = fetcher.fetch_by_bbox(bbox, network_type="all")  # Changed to 'all' to include bus routes
-        assert os.path.exists(osm_file)
-        assert osm_file.endswith(".osm")
-    except Exception as e:
-        pytest.skip(f"Skipping test due to network error: {str(e)}")
+@patch('osmnx.graph_from_bbox')
+def test_fetch_by_bbox(mock_graph, osm_fetcher):
+    """Test fetching OSM data by bounding box"""
+    # Mock OSMnx response
+    mock_graph.return_value = MagicMock()
+    
+    # Test with bounding box coordinates
+    north, south, east, west = 41.1, 41.0, 29.1, 29.0
+    G = osm_fetcher.fetch_by_bbox(north, south, east, west)
+    assert G is not None
+    mock_graph.assert_called_once_with(north, south, east, west, network_type='drive', simplify=False)
 
-def test_invalid_place(fetcher):
-    """Test fetching with invalid place name."""
-    with pytest.raises(Exception):
-        fetcher.fetch_by_place("ThisPlaceDoesNotExist12345")
+@patch('osmnx.save_graphml')
+def test_save_osm_data(mock_save, osm_fetcher):
+    """Test saving OSM data to file"""
+    # Mock OSMnx save function
+    mock_save.return_value = None
+    
+    # Create a mock graph
+    G = MagicMock()
+    output_file = "test_network.graphml"
+    
+    # Test saving
+    osm_fetcher.save_osm_data(G, output_file)
+    mock_save.assert_called_once_with(G, output_file)
+    
+    # Clean up
+    if os.path.exists(output_file):
+        os.remove(output_file)
