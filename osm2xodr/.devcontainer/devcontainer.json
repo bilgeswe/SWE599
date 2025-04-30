@@ -1,8 +1,0 @@
-{
-  "name": "osm2xodr",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
-  "remoteUser": "ubuntu"
-}

@@ -24,6 +24,7 @@ wheels/
 venv/
 env/
 ENV/
+.venv/
 
 # IDE
 .idea/
@@ -38,6 +39,7 @@ data/opendrive/*
 !data/osm/.gitkeep
 !data/sumo/.gitkeep
 !data/opendrive/.gitkeep
+cache/
 
 # Logs
 *.log
