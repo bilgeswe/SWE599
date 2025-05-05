@@ -10,12 +10,14 @@ to OpenDRIVE format (.xodr), including:
 - Validation checks
 """
 
-import logging
+import os
 import math
+import logging
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Any
 from xml.etree import ElementTree as ET
 from lxml import etree
+from datetime import datetime
 
 import numpy as np
 from scipy.interpolate import splprep, splev
@@ -32,14 +34,17 @@ class Point:
 
 @dataclass
 class Lane:
-    """Represents a lane with its properties."""
+    """Represents a lane in the network."""
     id: str
     index: int
     width: float
     speed: float
     type: str
-    predecessor: Optional[str] = None
-    successor: Optional[str] = None
+    length: float = 0.0
+    
+    def get(self, key: str, default: Any = None) -> Any:
+        """Get a lane attribute with a default value."""
+        return getattr(self, key, default)
 
 @dataclass
 class Edge:
@@ -52,6 +57,14 @@ class Edge:
     lanes: List[Lane]
     shape: List[Point]
     speed: float
+    
+    @property
+    def length(self) -> float:
+        """Calculate the length of the edge from its lanes."""
+        if self.lanes and len(self.lanes) > 0:
+            # Get length from the first lane
+            return float(self.lanes[0].get('length', 0.0))
+        return 0.0
 
 @dataclass
 class Junction:
@@ -89,10 +102,10 @@ class AdvancedSumoNetworkParser:
             # Parse edges with enhanced geometry
             self._parse_edges(root)
             
-            # Parse junctions with improved connections
+            # Parse junctions with enhanced connection handling
             self._parse_junctions(root)
             
-            # Parse traffic signals with timing information
+            # Parse traffic signals with enhanced timing information
             self._parse_traffic_signals(root)
             
             # Validate the parsed network
@@ -104,45 +117,40 @@ class AdvancedSumoNetworkParser:
 
     def _parse_edges(self, root: etree.Element) -> None:
         """Parse edges with enhanced geometry handling."""
-        for edge_elem in root.findall(".//edge"):
-            edge_id = edge_elem.get("id")
-            if edge_id.startswith(":"):  # Skip internal edges
-                continue
-                
-            # Parse basic edge properties
-            from_node = edge_elem.get("from")
-            to_node = edge_elem.get("to")
-            priority = int(edge_elem.get("priority", "0"))
-            edge_type = edge_elem.get("type", "highway.unknown")
-            speed = float(edge_elem.get("speed", "13.89"))
+        for edge in root.findall(".//edge"):
+            edge_id = edge.get("id")
+            from_node = edge.get("from")
+            to_node = edge.get("to")
+            priority = int(edge.get("priority", "0"))
+            edge_type = edge.get("type", "highway.local")
             
-            # Parse lanes with enhanced properties
+            # Parse lanes
             lanes = []
-            for lane_elem in edge_elem.findall(".//lane"):
-                lane_id = lane_elem.get("id")
-                index = int(lane_elem.get("index"))
-                width = float(lane_elem.get("width", "3.5"))
-                lane_speed = float(lane_elem.get("speed", str(speed)))
-                lane_type = lane_elem.get("type", "driving")
+            for lane in edge.findall(".//lane"):
+                lane_id = lane.get("id")
+                lane_index = int(lane.get("index", "0"))
+                lane_speed = float(lane.get("speed", "13.89"))
+                lane_width = float(lane.get("width", "3.5"))
+                lane_length = float(lane.get("length", "0.0"))
                 
                 lanes.append(Lane(
                     id=lane_id,
-                    index=index,
-                    width=width,
+                    index=lane_index,
+                    width=lane_width,
                     speed=lane_speed,
-                    type=lane_type
+                    type="driving",
+                    length=lane_length
                 ))
             
-            # Parse shape with enhanced geometry
+            # Parse shape
             shape = []
-            shape_elem = edge_elem.find(".//shape")
-            if shape_elem is not None:
-                points = shape_elem.text.strip().split()
-                for point_str in points:
-                    x, y = map(float, point_str.split(","))
-                    shape.append(Point(x, y))
+            for lane in edge.findall(".//lane"):
+                shape_str = lane.find("shape").text if lane.find("shape") is not None else None
+                if shape_str:
+                    points = [tuple(map(float, p.split(","))) for p in shape_str.split()]
+                    shape = [Point(x, y) for x, y in points]
+                    break  # Use first lane's shape
             
-            # Create edge with enhanced geometry
             self.edges[edge_id] = Edge(
                 id=edge_id,
                 from_node=from_node,
@@ -151,339 +159,772 @@ class AdvancedSumoNetworkParser:
                 type=edge_type,
                 lanes=lanes,
                 shape=shape,
-                speed=speed
+                speed=float(edge.get("speed", "13.89"))
             )
 
     def _parse_junctions(self, root: etree.Element) -> None:
-        """Parse junctions with improved connection handling."""
-        for junction_elem in root.findall(".//junction"):
-            junction_id = junction_elem.get("id")
-            junction_type = junction_elem.get("type")
+        """Parse junctions with enhanced connection handling."""
+        # First pass: Create junction objects
+        for junction in root.findall(".//junction"):
+            junction_id = junction.get("id")
+            if junction_id.startswith(":"):  # Skip internal junctions
+                continue
+                
+            junction_type = junction.get("type", "priority")
             
-            # Parse connections
-            connections = []
-            for conn_elem in junction_elem.findall(".//connection"):
-                from_edge = conn_elem.get("from")
-                to_edge = conn_elem.get("to")
-                via_lane = conn_elem.get("via")
-                connections.append((from_edge, to_edge, via_lane))
-            
-            # Parse shape
-            shape = []
-            shape_elem = junction_elem.find(".//shape")
-            if shape_elem is not None:
-                points = shape_elem.text.strip().split()
-                for point_str in points:
-                    x, y = map(float, point_str.split(","))
-                    shape.append(Point(x, y))
-            
+            # Create junction with empty connections
             self.junctions[junction_id] = Junction(
                 id=junction_id,
                 type=junction_type,
-                connections=connections,
-                shape=shape
+                connections=[],
+                shape=[]  # Shape will be added later if needed
             )
+        
+        # Second pass: Add connections
+        for connection in root.findall(".//connection"):
+            from_edge = connection.get("from")
+            to_edge = connection.get("to")
+            from_lane = connection.get("fromLane")
+            to_lane = connection.get("toLane")
+            via_lane = connection.get("via", "")
+            
+            if from_edge and to_edge:
+                # Case 1: Connection between two edges
+                if from_edge in self.edges and to_edge in self.edges:
+                    junction_id = self.edges[from_edge].to_node
+                    if junction_id in self.junctions:
+                        # Construct via lane if not provided
+                        if not via_lane and from_lane is not None and to_lane is not None:
+                            via_lane = f"{from_edge}_{from_lane}_{to_edge}_{to_lane}"
+                        self.junctions[junction_id].connections.append((from_edge, to_edge, via_lane))
+                # Case 2: Connection from junction to edge
+                elif from_edge in self.junctions and to_edge in self.edges:
+                    junction_id = from_edge
+                    if junction_id in self.junctions:
+                        self.junctions[junction_id].connections.append((from_edge, to_edge, via_lane))
+                # Case 3: Connection from edge to junction
+                elif from_edge in self.edges and to_edge in self.junctions:
+                    junction_id = to_edge
+                    if junction_id in self.junctions:
+                        self.junctions[junction_id].connections.append((from_edge, to_edge, via_lane))
+                # Case 4: Connection between junctions
+                elif from_edge in self.junctions and to_edge in self.junctions:
+                    junction_id = from_edge
+                    if junction_id in self.junctions:
+                        self.junctions[junction_id].connections.append((from_edge, to_edge, via_lane))
+                        
+        # Third pass: Add connections for junctions without any
+        for junction_id, junction in self.junctions.items():
+            if not junction.connections:
+                # Find edges that connect to this junction
+                incoming_edges = []
+                outgoing_edges = []
+                for edge_id, edge in self.edges.items():
+                    if edge.to_node == junction_id:
+                        incoming_edges.append(edge_id)
+                    if edge.from_node == junction_id:
+                        outgoing_edges.append(edge_id)
+                
+                # Add default connections between incoming and outgoing edges
+                for from_edge in incoming_edges:
+                    for to_edge in outgoing_edges:
+                        # Add a connection for each lane
+                        from_edge_obj = self.edges[from_edge]
+                        to_edge_obj = self.edges[to_edge]
+                        for i in range(min(len(from_edge_obj.lanes), len(to_edge_obj.lanes))):
+                            via_lane = f"{from_edge}_{i}_{to_edge}_{i}"
+                            junction.connections.append((from_edge, to_edge, via_lane))
 
     def _parse_traffic_signals(self, root: etree.Element) -> None:
-        """Parse traffic signals with timing information."""
-        for tl_elem in root.findall(".//tl-logic"):
-            tl_id = tl_elem.get("id")
-            tl_type = tl_elem.get("type", "static")
+        """Parse traffic signals with enhanced timing information."""
+        for tls in root.findall(".//tlLogic"):
+            signal_id = tls.get("id")
+            signal_type = tls.get("type", "static")
             
             # Parse phases
             phases = []
-            for phase_elem in tl_elem.findall(".//phase"):
-                duration = phase_elem.get("duration")
-                state = phase_elem.get("state")
+            for phase in tls.findall(".//phase"):
                 phases.append({
-                    "duration": duration,
-                    "state": state
+                    "duration": phase.get("duration", "30"),
+                    "state": phase.get("state", "")
                 })
             
-            # Get signal location from junction
-            junction = self.junctions.get(tl_id)
-            location = junction.shape[0] if junction else Point(0, 0)
-            
-            # Parse connections
-            connections = []
-            for conn_elem in root.findall(f".//connection[@tl='{tl_id}']"):
-                from_edge = conn_elem.get("from")
-                to_edge = conn_elem.get("to")
-                connections.append((from_edge, to_edge))
-            
-            self.traffic_signals[tl_id] = TrafficSignal(
-                id=tl_id,
-                type=tl_type,
-                location=location,
+            # Create traffic signal
+            self.traffic_signals[signal_id] = TrafficSignal(
+                id=signal_id,
+                type=signal_type,
+                location=Point(0, 0),  # Location will be updated later
                 phases=phases,
-                connections=connections
+                connections=[]  # Connections will be added later
             )
 
-    def _validate_network(self) -> None:
-        """Validate the parsed network for consistency."""
-        # Check edge connectivity
-        for edge_id, edge in self.edges.items():
-            if edge.from_node not in self.junctions:
-                logger.warning(f"Edge {edge_id} has invalid from_node: {edge.from_node}")
-            if edge.to_node not in self.junctions:
-                logger.warning(f"Edge {edge_id} has invalid to_node: {edge.to_node}")
-            
-            # Validate lane properties
-            for lane in edge.lanes:
-                if lane.width <= 0:
-                    logger.warning(f"Invalid lane width in edge {edge_id}, lane {lane.id}")
-                if lane.speed <= 0:
-                    logger.warning(f"Invalid lane speed in edge {edge_id}, lane {lane.id}")
-        
-        # Check junction connections
-        for junction_id, junction in self.junctions.items():
-            for from_edge, to_edge, _ in junction.connections:
-                if from_edge not in self.edges:
-                    logger.warning(f"Invalid from_edge in junction {junction_id}: {from_edge}")
-                if to_edge not in self.edges:
-                    logger.warning(f"Invalid to_edge in junction {junction_id}: {to_edge}")
-        
-        # Validate traffic signals
-        for tl_id, signal in self.traffic_signals.items():
-            if not signal.phases:
-                logger.warning(f"Traffic signal {tl_id} has no phases")
-            for phase in signal.phases:
-                if not phase.get("duration") or not phase.get("state"):
-                    logger.warning(f"Invalid phase in traffic signal {tl_id}")
-
-class AdvancedOpenDriveGenerator:
-    """Generator for OpenDRIVE files with enhanced features."""
-    
-    def __init__(self, parser: AdvancedSumoNetworkParser):
-        """Initialize the generator with a parsed network."""
-        self.parser = parser
-        self.road_id_counter = 0
-        self.junction_id_counter = 0
-        self.signal_id_counter = 0
-        
-    def generate(self, output_file: str) -> None:
-        """Generate an OpenDRIVE file with enhanced features."""
+    def _validate_network(self) -> bool:
+        """Validate the entire network."""
         try:
-            # Create OpenDRIVE root element
-            root = ET.Element("OpenDRIVE")
-            root.set("xmlns", "http://www.opendrive.org")
-            root.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
-            root.set("xsi:schemaLocation", "http://www.opendrive.org http://www.opendrive.org/OpenDRIVE_1.4.xsd")
-            
-            # Add header
-            header = ET.SubElement(root, "header")
-            header.set("revMajor", "1")
-            header.set("revMinor", "4")
-            header.set("name", "SUMO to OpenDRIVE Conversion")
-            header.set("version", "1.00")
-            header.set("date", "2024")
-            
-            # Generate roads with enhanced geometry
-            self._generate_roads(root)
-            
-            # Generate junctions with improved connections
-            self._generate_junctions(root)
-            
-            # Generate traffic signals
-            self._generate_traffic_signals(root)
-            
-            # Write the file
-            tree = ET.ElementTree(root)
-            ET.indent(tree, space="  ")
-            tree.write(output_file, encoding="utf-8", xml_declaration=True)
-            
-            logger.info(f"Successfully generated OpenDRIVE file: {output_file}")
+            # Validate network structure
+            if not self._validate_network_structure():
+                return False
+                
+            # Validate geometry
+            if not self._validate_geometry():
+                return False
+                
+            # Validate junctions
+            if not self._validate_junctions():
+                return False
+                
+            # Validate traffic signals
+            if not self._validate_traffic_signals():
+                return False
+                
+            # Validate lane connections
+            if not self._validate_lane_connections():
+                return False
+                
+            # Validate road properties
+            if not self._validate_road_properties():
+                return False
+                
+            # Validate elevation profiles
+            if not self._validate_elevation_profiles():
+                return False
+                
+            logger.info("Network validation completed successfully")
+            return True
             
         except Exception as e:
-            logger.error(f"Error generating OpenDRIVE file: {str(e)}")
-            raise
+            logger.error(f"Error validating network: {str(e)}")
+            return False
 
-    def _generate_roads(self, root: ET.Element) -> None:
-        """Generate roads with enhanced geometry handling."""
-        for edge_id, edge in self.parser.edges.items():
-            # Create road element
-            road = ET.SubElement(root, "road")
-            road.set("name", edge_id)
-            road.set("length", str(self._calculate_road_length(edge)))
-            road.set("id", str(self.road_id_counter))
-            road.set("junction", "-1")
+    def _validate_network_structure(self) -> bool:
+        """Validate basic network structure."""
+        try:
+            # Check if we have any edges
+            if not self.edges:
+                logger.warning("Network has no edges")
+                return False
+                
+            # Check if we have any junctions
+            if not self.junctions:
+                logger.warning("Network has no junctions")
+                return False
+                
+            # Check edge-junction connections
+            for edge_id, edge in self.edges.items():
+                if edge.from_node not in self.junctions:
+                    logger.warning(f"Edge {edge_id} is not properly connected to junctions")
+                    return False
+                if edge.to_node not in self.junctions:
+                    logger.warning(f"Edge {edge_id} is not properly connected to junctions")
+                    return False
+                    
+            # Check junction connections
+            for junction_id, junction in self.junctions.items():
+                if not junction.connections:
+                    logger.warning(f"Junction {junction_id} has no connections")
+                    return False
+                    
+            return True
             
-            # Add planView with enhanced geometry
-            plan_view = ET.SubElement(road, "planView")
-            self._add_geometry(plan_view, edge)
-            
-            # Add lanes
-            lanes = ET.SubElement(road, "lanes")
-            self._add_lane_sections(lanes, edge)
-            
-            # Add elevation profile
-            elevation = ET.SubElement(road, "elevationProfile")
-            self._add_elevation_profile(elevation, edge)
-            
-            self.road_id_counter += 1
+        except Exception as e:
+            logger.error(f"Error validating network structure: {str(e)}")
+            return False
 
-    def _calculate_road_length(self, edge: Edge) -> float:
-        """Calculate the length of a road with enhanced geometry."""
+    def _validate_geometry(self) -> bool:
+        """Validate geometry properties."""
+        try:
+            for edge_id, edge in self.edges.items():
+                if not edge.shape:
+                    logger.warning(f"Edge {edge_id} has no shape")
+                    continue
+                    
+                # Check for self-intersections
+                if self._has_self_intersection(edge.shape):
+                    logger.warning(f"Edge {edge_id} has self-intersections")
+                    return False
+                    
+                # Check for sharp angles
+                if self._has_sharp_angles(edge.shape):
+                    logger.warning(f"Edge {edge_id} has sharp angles")
+                    return False
+                    
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error validating geometry: {str(e)}")
+            return False
+
+    def _has_self_intersection(self, shape: List[Point]) -> bool:
+        """Check if a shape has self-intersections."""
+        for i in range(len(shape) - 1):
+            for j in range(i + 2, len(shape) - 1):
+                if self._segments_intersect(shape[i], shape[i+1], shape[j], shape[j+1]):
+                    return True
+        return False
+
+    def _segments_intersect(self, p1: Point, p2: Point, p3: Point, p4: Point) -> bool:
+        """Check if two line segments intersect."""
+        def ccw(A: Point, B: Point, C: Point) -> bool:
+            """Check if three points are counter-clockwise oriented."""
+            return (C.y - A.y) * (B.x - A.x) > (B.y - A.y) * (C.x - A.x)
+            
+        # Check if line segments intersect
+        return (ccw(p1, p3, p4) != ccw(p2, p3, p4) and 
+                ccw(p1, p2, p3) != ccw(p1, p2, p4))
+
+    def _has_sharp_angles(self, shape: List[Point]) -> bool:
+        """Check for sharp angles in the shape."""
+        if len(shape) < 3:
+            return False
+            
+        for i in range(1, len(shape) - 1):
+            v1 = Point(shape[i].x - shape[i-1].x, shape[i].y - shape[i-1].y)
+            v2 = Point(shape[i+1].x - shape[i].x, shape[i+1].y - shape[i].y)
+            
+            # Calculate angle between vectors
+            dot_product = v1.x * v2.x + v1.y * v2.y
+            mag1 = math.sqrt(v1.x**2 + v1.y**2)
+            mag2 = math.sqrt(v2.x**2 + v2.y**2)
+            
+            if mag1 == 0 or mag2 == 0:
+                continue
+                
+            angle = math.acos(dot_product / (mag1 * mag2))
+            if angle < math.pi / 6:  # 30 degrees
+                return True
+                
+        return False
+
+    def _validate_junctions(self) -> bool:
+        """Validate junction properties and connections."""
+        try:
+            for junction_id, junction in self.junctions.items():
+                # Check junction type
+                if not junction.type:
+                    logger.warning(f"Junction {junction_id} has no type")
+                    return False
+                
+                # Check connections
+                if not junction.connections:
+                    logger.warning(f"Junction {junction_id} has no connections")
+                    return False
+                
+                # Validate each connection
+                for from_edge, to_edge, via_lane in junction.connections:
+                    # Case 1: Connection between two edges
+                    if from_edge in self.edges and to_edge in self.edges:
+                        # Check via lane
+                        if via_lane and not self._is_valid_via_lane(from_edge, to_edge, via_lane):
+                            logger.warning(f"Junction {junction_id} has invalid via_lane: {via_lane}")
+                            return False
+                    # Case 2: Connection from junction to edge
+                    elif from_edge == junction_id and to_edge in self.edges:
+                        continue  # Valid case
+                    # Case 3: Connection from edge to junction
+                    elif from_edge in self.edges and to_edge == junction_id:
+                        continue  # Valid case
+                    # Case 4: Connection between junctions
+                    elif from_edge == junction_id and to_edge in self.junctions:
+                        continue  # Valid case
+                    else:
+                        logger.warning(f"Junction {junction_id} has invalid connection: {from_edge} -> {to_edge}")
+                        return False
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error validating junctions: {str(e)}")
+            return False
+
+    def _is_valid_via_lane(self, from_edge: str, to_edge: str, via_lane: str) -> bool:
+        """Check if a via lane is valid for the given edges."""
+        if from_edge not in self.edges or to_edge not in self.edges:
+            return False
+            
+        # Parse via lane information
+        try:
+            # Check if via lane has the correct format: from_edge_from_lane_to_edge_to_lane
+            expected_prefix = f"{from_edge}_"
+            expected_suffix = f"_{to_edge}_"
+            
+            if not via_lane.startswith(expected_prefix) or expected_suffix not in via_lane:
+                return False
+                
+            # Extract lane indices from the via lane string
+            # Format: edge1_0_edge2_0 -> from_lane=0, to_lane=0
+            parts = via_lane.split('_')
+            if len(parts) != 4:  # Need exactly: edge1_0_edge2_0
+                return False
+                
+            # Verify edge names in via lane
+            if parts[0] != from_edge or parts[2] != to_edge:
+                return False
+                
+            try:
+                from_lane_idx = int(parts[1])  # Second part is from_lane
+                to_lane_idx = int(parts[3])    # Fourth part is to_lane
+            except ValueError:
+                return False
+                
+            # Check if lanes exist in their respective edges
+            from_edge_data = self.edges[from_edge]
+            to_edge_data = self.edges[to_edge]
+            
+            # Check if the lane indices are within the valid range
+            from_lane_exists = 0 <= from_lane_idx < len(from_edge_data.lanes)
+            to_lane_exists = 0 <= to_lane_idx < len(to_edge_data.lanes)
+            
+            # Check if the lane indices match the actual lane indices in the edges
+            if from_lane_exists:
+                from_lane = from_edge_data.lanes[from_lane_idx]
+                if from_lane.index != from_lane_idx:
+                    return False
+                    
+            if to_lane_exists:
+                to_lane = to_edge_data.lanes[to_lane_idx]
+                if to_lane.index != to_lane_idx:
+                    return False
+                    
+            return from_lane_exists and to_lane_exists
+            
+        except (ValueError, IndexError, AttributeError):
+            return False
+
+    def _validate_traffic_signals(self) -> bool:
+        """Validate traffic signal properties and timing."""
+        try:
+            for tl_id, signal in self.traffic_signals.items():
+                # Check signal type
+                if not signal.type:
+                    logger.warning(f"Traffic signal {tl_id} has no type")
+                    return False
+                
+                # Check phases
+                if not signal.phases:
+                    logger.warning(f"Traffic signal {tl_id} has no phases")
+                    return False
+                
+                # Validate each phase
+                total_duration = 0
+                for phase in signal.phases:
+                    try:
+                        duration = float(phase.get("duration", 0))
+                        if duration <= 0:
+                            logger.warning(f"Traffic signal {tl_id} has invalid phase duration")
+                            return False
+                        total_duration += duration
+                        
+                        # Check state
+                        state = phase.get("state", "")
+                        if not state:
+                            logger.warning(f"Traffic signal {tl_id} has empty phase state")
+                            return False
+                        if not all(c in "rRgGyY" for c in state):
+                            logger.warning(f"Traffic signal {tl_id} has invalid phase state")
+                            return False
+                    except ValueError:
+                        logger.warning(f"Traffic signal {tl_id} has invalid phase duration format")
+                        return False
+                
+                # Check cycle time
+                if total_duration > 300:  # 5 minutes
+                    logger.warning(f"Traffic signal {tl_id} has long cycle time: {total_duration} seconds")
+                    return False
+                    
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error validating traffic signals: {str(e)}")
+            return False
+
+    def _validate_lane_connections(self) -> bool:
+        """Validate lane connections and properties."""
+        try:
+            for edge_id, edge in self.edges.items():
+                # Check lane properties
+                for lane in edge.lanes:
+                    if lane.width <= 0:
+                        logger.warning(f"Edge {edge_id}, lane {lane.id} has invalid width")
+                        return False
+                    if lane.speed <= 0:
+                        logger.warning(f"Edge {edge_id}, lane {lane.id} has invalid speed")
+                        return False
+                    
+                    # Check lane type
+                    if not lane.type:
+                        logger.warning(f"Edge {edge_id}, lane {lane.id} has no type")
+                        return False
+                
+                # Check lane continuity
+                if edge.lanes:
+                    indices = [lane.index for lane in edge.lanes]
+                    if sorted(indices) != list(range(min(indices), max(indices) + 1)):
+                        logger.warning(f"Edge {edge_id} has discontinuous lane indices")
+                        return False
+            
+            # Check junction connections
+            for junction_id, junction in self.junctions.items():
+                for from_edge, to_edge, via_lane in junction.connections:
+                    # Check if the connection is between edges
+                    if from_edge in self.edges and to_edge in self.edges:
+                        # Check if the via lane is valid
+                        if not self._is_valid_via_lane(from_edge, to_edge, via_lane):
+                            logger.warning(f"Invalid via lane {via_lane} in junction {junction_id}")
+                            return False
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error validating lane connections: {str(e)}")
+            return False
+
+    def _validate_road_properties(self) -> bool:
+        """Validate road properties and attributes."""
+        try:
+            for edge_id, edge in self.edges.items():
+                # Check speed
+                if edge.speed <= 0:
+                    logger.warning(f"Edge {edge_id} has invalid speed")
+                    return False
+                
+                # Check priority
+                if edge.priority < 0:
+                    logger.warning(f"Edge {edge_id} has negative priority")
+                    return False
+                
+                # Check type
+                if not edge.type:
+                    logger.warning(f"Edge {edge_id} has no type")
+                    return False
+                    
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error validating road properties: {str(e)}")
+            return False
+
+    def _validate_elevation_profiles(self) -> bool:
+        """Validate elevation profiles."""
+        try:
+            for edge_id, edge in self.edges.items():
+                if not edge.shape:
+                    continue
+                    
+                # Check for extreme elevation changes
+                if len(edge.shape) > 1:
+                    z_values = [p.z for p in edge.shape if hasattr(p, 'z')]
+                    if z_values:
+                        max_change = max(abs(z_values[i] - z_values[i-1]) 
+                                       for i in range(1, len(z_values)))
+                        if max_change > 0.1:  # 10% grade
+                            logger.warning(f"Edge {edge_id} has steep elevation changes")
+                            return False
+                            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error validating elevation profiles: {str(e)}")
+            return False
+
+    def _calculate_reference_line(self, edge: Edge) -> Tuple[List[Point], List[float]]:
+        """Calculate the reference line and its properties for a road edge."""
         if not edge.shape:
-            return 0.0
-        
-        length = 0.0
-        for i in range(len(edge.shape) - 1):
-            p1 = edge.shape[i]
-            p2 = edge.shape[i + 1]
-            length += math.sqrt((p2.x - p1.x)**2 + (p2.y - p1.y)**2)
-        
-        return length
-
-    def _add_geometry(self, plan_view: ET.Element, edge: Edge) -> None:
-        """Add geometry with enhanced curve handling."""
-        if not edge.shape:
-            return
-        
-        # Convert shape points to numpy array for spline fitting
+            return [], []
+            
+        # Convert shape points to numpy array
         points = np.array([(p.x, p.y) for p in edge.shape])
         
-        # Fit a smooth spline to the points
-        tck, u = splprep(points.T, s=0)
+        # Calculate cumulative distances
+        distances = np.zeros(len(points))
+        for i in range(1, len(points)):
+            dx = points[i][0] - points[i-1][0]
+            dy = points[i][1] - points[i-1][1]
+            distances[i] = distances[i-1] + np.sqrt(dx*dx + dy*dy)
         
-        # Generate points along the spline
-        u_new = np.linspace(0, 1, 100)
-        x_new, y_new = splev(u_new, tck)
+        # Ensure we have enough points for spline interpolation
+        if len(points) < 4:
+            # For small number of points, use linear interpolation
+            s_new = np.linspace(0, distances[-1], 100)
+            x_new = np.interp(s_new, distances, points[:, 0])
+            y_new = np.interp(s_new, distances, points[:, 1])
+        else:
+            # Use cubic spline interpolation
+            tck, u = splprep(points.T, u=distances, s=0, k=min(3, len(points)-1))
+            s_new = np.linspace(0, distances[-1], 100)
+            x_new, y_new = splev(s_new, tck)
+        
+        # Convert back to Point objects
+        reference_points = [Point(x, y) for x, y in zip(x_new, y_new)]
+        
+        return reference_points, s_new.tolist()
+
+    def _calculate_road_properties(self, reference_points: List[Point], s_values: List[float]) -> Tuple[List[float], List[float], List[float]]:
+        """Calculate road properties along the reference line."""
+        if not reference_points:
+            return [], [], []
+            
+        # Convert to numpy arrays
+        points = np.array([(p.x, p.y) for p in reference_points])
+        
+        # Calculate first derivatives
+        dx = np.gradient(points[:, 0], s_values)
+        dy = np.gradient(points[:, 1], s_values)
+        
+        # Calculate second derivatives
+        d2x = np.gradient(dx, s_values)
+        d2y = np.gradient(dy, s_values)
+        
+        # Calculate curvature
+        curvature = np.abs(dx * d2y - dy * d2x) / (dx**2 + dy**2)**1.5
+        
+        # Calculate heading
+        heading = np.arctan2(dy, dx)
+        
+        # Calculate superelevation (simplified version)
+        superelevation = np.zeros_like(curvature)
+        for i in range(len(curvature)):
+            if abs(curvature[i]) > 0.01:  # Only apply superelevation on curves
+                superelevation[i] = min(0.1, abs(curvature[i]) * 2)  # Max 10% superelevation
+        
+        return curvature.tolist(), heading.tolist(), superelevation.tolist()
+
+    def _convert_signal_state(self, state: str) -> str:
+        """Convert SUMO signal state to OpenDRIVE signal state."""
+        state_mapping = {
+            'r': '0',  # Red
+            'y': '1',  # Yellow
+            'g': '2',  # Green
+            'G': '2',  # Green (capital)
+            'Y': '1',  # Yellow (capital)
+            'R': '0'   # Red (capital)
+        }
+        return ''.join(state_mapping.get(c, '0') for c in state)
+
+    def _get_signal_type(self, signal_type: str) -> str:
+        """Convert SUMO signal type to OpenDRIVE signal type."""
+        type_mapping = {
+            "static": "1000001",  # Standard traffic light
+            "actuated": "1000002",  # Actuated traffic light
+            "delay_based": "1000003",  # Delay-based traffic light
+            "sotl": "1000004",  # Self-organizing traffic light
+            "default": "1000001"  # Default to standard
+        }
+        return type_mapping.get(signal_type.lower(), type_mapping["default"])
+
+    def _points_equal(self, p1: Point, p2: Point, tolerance: float = 1e-6) -> bool:
+        """Check if two points are equal within a tolerance."""
+        return (abs(p1.x - p2.x) < tolerance and 
+                abs(p1.y - p2.y) < tolerance)
+    
+    def _calculate_angle(self, p1: Point, p2: Point, p3: Point) -> float:
+        """Calculate the angle between three points."""
+        # Calculate vectors
+        v1x = p1.x - p2.x
+        v1y = p1.y - p2.y
+        v2x = p3.x - p2.x
+        v2y = p3.y - p2.y
+        
+        # Calculate dot product
+        dot_product = v1x * v2x + v1y * v2y
+        
+        # Calculate magnitudes
+        mag1 = math.sqrt(v1x * v1x + v1y * v1y)
+        mag2 = math.sqrt(v2x * v2x + v2y * v2y)
+        
+        # Calculate angle
+        cos_angle = dot_product / (mag1 * mag2)
+        cos_angle = max(-1.0, min(1.0, cos_angle))  # Clamp to [-1, 1]
+        
+        return math.acos(cos_angle)
+
+    def _add_geometry(self, plan_view: etree.Element, edge: Edge) -> None:
+        """Add geometry elements to the plan view."""
+        if not edge.shape:
+            return
+            
+        # Calculate reference line and its properties
+        reference_points, s_values = self._calculate_reference_line(edge)
+        curvatures, headings, superelevations = self._calculate_road_properties(reference_points, s_values)
         
         # Add geometry elements
-        s = 0.0
-        for i in range(len(x_new) - 1):
-            x1, y1 = x_new[i], y_new[i]
-            x2, y2 = x_new[i + 1], y_new[i + 1]
+        for i in range(len(reference_points) - 1):
+            point = reference_points[i]
+            next_point = reference_points[i + 1]
             
-            # Calculate heading
-            dx = x2 - x1
-            dy = y2 - y1
-            hdg = math.atan2(dy, dx)
-            
-            # Calculate length
-            length = math.sqrt(dx**2 + dy**2)
+            # Calculate segment properties
+            s = s_values[i]
+            hdg = headings[i]
+            length = s_values[i + 1] - s_values[i]
+            curvature = curvatures[i]
+            superelevation = superelevations[i]
             
             # Add geometry element
-            geometry = ET.SubElement(plan_view, "geometry")
+            geometry = etree.SubElement(plan_view, "geometry")
             geometry.set("s", str(s))
-            geometry.set("x", str(x1))
-            geometry.set("y", str(y1))
+            geometry.set("x", str(point.x))
+            geometry.set("y", str(point.y))
             geometry.set("hdg", str(hdg))
             geometry.set("length", str(length))
             
-            # Add line element for straight segments
-            line = ET.SubElement(geometry, "line")
-            
-            s += length
+            # Determine geometry type based on curvature
+            if abs(curvature) > 0.01:  # Threshold for curve detection
+                # Add arc
+                arc = etree.SubElement(geometry, "arc")
+                arc.set("curvature", str(curvature))
+            else:
+                # Add line element for straight segments
+                line = etree.SubElement(geometry, "line")
 
-    def _add_lane_sections(self, lanes: ET.Element, edge: Edge) -> None:
-        """Add lane sections with enhanced properties."""
-        lane_section = ET.SubElement(lanes, "laneSection")
-        lane_section.set("s", "0.0")
+class ValidationError(Exception):
+    """Custom exception for validation errors."""
+    pass
+
+class AdvancedSumoToOpenDriveConverter:
+    """Converter class to transform SUMO network to OpenDRIVE format."""
+    
+    def __init__(self, input_file: str, output_file: str):
+        """Initialize the converter with input and output file paths."""
+        self.input_file = input_file
+        self.output_file = output_file
+        self.parser = AdvancedSumoNetworkParser(input_file)
         
-        # Add center lane
-        center = ET.SubElement(lane_section, "center")
-        center_lane = ET.SubElement(center, "lane")
-        center_lane.set("id", "0")
-        center_lane.set("type", "none")
-        center_lane.set("level", "false")
+    def convert(self) -> None:
+        """Convert SUMO network to OpenDRIVE format."""
+        try:
+            # Parse the SUMO network
+            self.parser.parse()
+            
+            # Create OpenDRIVE XML structure
+            root = self._create_opendrive_root()
+            
+            # Add header
+            self._add_header(root)
+            
+            # Add roads
+            self._add_roads(root)
+            
+            # Add junctions
+            self._add_junctions(root)
+            
+            # Add controllers
+            self._add_controllers(root)
+            
+            # Write to file
+            tree = etree.ElementTree(root)
+            tree.write(self.output_file, pretty_print=True, xml_declaration=True, encoding="UTF-8")
+            
+        except Exception as e:
+            logger.error(f"Error during conversion: {str(e)}")
+            raise
+            
+    def _create_opendrive_root(self) -> etree.Element:
+        """Create the root element of OpenDRIVE XML."""
+        NSMAP = {
+            'xsi': 'http://www.w3.org/2001/XMLSchema-instance'
+        }
+        root = etree.Element("OpenDRIVE", nsmap=NSMAP)
+        root.set('{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation', 
+                'http://www.opendrive.org/xsd/1.4/OpenDRIVE_1.4H.xsd')
+        return root
         
-        # Add right lanes
-        right = ET.SubElement(lane_section, "right")
-        for lane in edge.lanes:
-            if lane.index < 0:  # Right lanes have negative indices
-                lane_elem = ET.SubElement(right, "lane")
+    def _add_header(self, root: etree.Element) -> None:
+        """Add header information to OpenDRIVE XML."""
+        header = etree.SubElement(root, "header")
+        header.set("revMajor", "1")
+        header.set("revMinor", "4")
+        header.set("name", os.path.basename(self.input_file))
+        header.set("version", "1.00")
+        header.set("date", datetime.now().strftime("%Y-%m-%d"))
+        header.set("north", "0.0")
+        header.set("south", "0.0")
+        header.set("east", "0.0")
+        header.set("west", "0.0")
+        
+    def _add_roads(self, root: etree.Element) -> None:
+        """Add road elements to OpenDRIVE XML."""
+        for edge_id, edge in self.parser.edges.items():
+            road = etree.SubElement(root, "road")
+            road.set("name", edge_id)
+            road.set("length", str(edge.length))
+            road.set("id", edge_id)
+            road.set("junction", "-1")
+            
+            # Add road type
+            type_elem = etree.SubElement(road, "type")
+            type_elem.set("s", "0")
+            type_elem.set("type", edge.type if hasattr(edge, "type") else "town")
+            
+            # Add planView
+            plan_view = etree.SubElement(road, "planView")
+            self.parser._add_geometry(plan_view, edge)
+            
+            # Add elevation profile
+            elevation = etree.SubElement(road, "elevationProfile")
+            
+            # Add lanes
+            lanes = etree.SubElement(road, "lanes")
+            lane_section = etree.SubElement(lanes, "laneSection")
+            lane_section.set("s", "0")
+            
+            # Add center lane
+            center = etree.SubElement(lane_section, "center")
+            
+            # Add right lanes
+            right = etree.SubElement(lane_section, "right")
+            for lane in edge.lanes:
+                lane_elem = etree.SubElement(right, "lane")
                 lane_elem.set("id", str(lane.index))
                 lane_elem.set("type", "driving")
                 lane_elem.set("level", "false")
                 
-                # Add width
-                width = ET.SubElement(lane_elem, "width")
-                width.set("sOffset", "0.0")
-                width.set("a", str(lane.width))
-                width.set("b", "0.0")
-                width.set("c", "0.0")
-                width.set("d", "0.0")
+                width = etree.SubElement(lane_elem, "width")
+                width.set("sOffset", "0")
+                width.set("a", str(lane.width if hasattr(lane, "width") else 3.5))
+                width.set("b", "0")
+                width.set("c", "0")
+                width.set("d", "0")
                 
-                # Add speed
-                speed = ET.SubElement(lane_elem, "speed")
-                speed.set("sOffset", "0.0")
+                speed = etree.SubElement(lane_elem, "speed")
+                speed.set("sOffset", "0")
                 speed.set("max", str(lane.speed))
-                speed.set("unit", "m/s")
-
-    def _add_elevation_profile(self, elevation: ET.Element, edge: Edge) -> None:
-        """Add elevation profile with enhanced features."""
-        # Add default elevation
-        elevation_record = ET.SubElement(elevation, "elevation")
-        elevation_record.set("s", "0.0")
-        elevation_record.set("a", "0.0")
-        elevation_record.set("b", "0.0")
-        elevation_record.set("c", "0.0")
-        elevation_record.set("d", "0.0")
-
-    def _generate_junctions(self, root: ET.Element) -> None:
-        """Generate junctions with improved connections."""
+            
+    def _add_junctions(self, root: etree.Element) -> None:
+        """Add junction elements to OpenDRIVE XML."""
         for junction_id, junction in self.parser.junctions.items():
-            # Create junction element
-            junction_elem = ET.SubElement(root, "junction")
-            junction_elem.set("name", junction_id)
-            junction_elem.set("id", str(self.junction_id_counter))
-            
-            # Add connections
-            for from_edge, to_edge, via_lane in junction.connections:
-                connection = ET.SubElement(junction_elem, "connection")
-                connection.set("id", f"{from_edge}_{to_edge}")
-                connection.set("incomingRoad", from_edge)
-                connection.set("connectingRoad", to_edge)
-                connection.set("contactPoint", "start")
+            if junction.type != "internal":
+                junction_elem = etree.SubElement(root, "junction")
+                junction_elem.set("name", junction_id)
+                junction_elem.set("id", junction_id)
                 
-                # Add lane links
-                lane_link = ET.SubElement(connection, "laneLink")
-                lane_link.set("from", via_lane)
-                lane_link.set("to", via_lane)
+                for connection in junction.connections:
+                    connection_elem = etree.SubElement(junction_elem, "connection")
+                    connection_elem.set("id", f"{connection[0]}_{connection[1]}")
+                    connection_elem.set("incomingRoad", connection[0])
+                    connection_elem.set("connectingRoad", connection[1])
+                    connection_elem.set("contactPoint", "start")
+                    
+                    lane_link = etree.SubElement(connection_elem, "laneLink")
+                    lane_link.set("from", "0")
+                    lane_link.set("to", "0")
             
-            self.junction_id_counter += 1
-
-    def _generate_traffic_signals(self, root: ET.Element) -> None:
-        """Generate traffic signals with timing information."""
-        for tl_id, signal in self.parser.traffic_signals.items():
-            # Create controller
-            controller = ET.SubElement(root, "controller")
-            controller.set("id", str(self.signal_id_counter))
-            controller.set("name", f"Controller_{tl_id}")
+    def _add_controllers(self, root: etree.Element) -> None:
+        """Add traffic signal controllers to OpenDRIVE XML."""
+        for signal_id, signal in self.parser.traffic_signals.items():
+            controller = etree.SubElement(root, "controller")
+            controller.set("name", signal_id)
+            controller.set("id", signal_id)
             controller.set("sequence", "0")
             
-            # Add control elements
-            for phase in signal.phases:
-                control = ET.SubElement(controller, "control")
-                control.set("signalId", str(self.signal_id_counter))
-                control.set("type", "0")
-                control.set("duration", phase["duration"])
-                control.set("state", phase["state"])
+            control = etree.SubElement(controller, "control")
+            control.set("signalId", signal_id)
             
-            # Create signal
-            signal_elem = ET.SubElement(root, "signal")
-            signal_elem.set("id", str(self.signal_id_counter))
-            signal_elem.set("name", f"Signal_{tl_id}")
-            signal_elem.set("dynamic", "yes")
-            signal_elem.set("orientation", "+")
-            signal_elem.set("zOffset", "0.0")
-            signal_elem.set("type", "1000001")
-            signal_elem.set("subtype", "-1")
-            
-            # Add position
-            position = ET.SubElement(signal_elem, "position")
-            position.set("x", str(signal.location.x))
-            position.set("y", str(signal.location.y))
-            position.set("z", "0.0")
-            
-            # Add validity
-            validity = ET.SubElement(signal_elem, "validity")
-            validity.set("fromLane", "-1")
-            validity.set("toLane", "1")
-            
-            self.signal_id_counter += 1
+            # Add signal phases
+            for i, phase in enumerate(signal.phases):
+                signal_phase = etree.SubElement(control, "phase")
+                signal_phase.set("duration", phase["duration"])
+                signal_phase.set("state", self.parser._convert_signal_state(phase["state"]))
+                signal_phase.set("type", self.parser._get_signal_type(signal.type))
+                signal_phase.set("id", str(i))
 
 def main():
     """Main function for testing the converter."""
