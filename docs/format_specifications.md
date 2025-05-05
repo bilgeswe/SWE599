@@ -18,7 +18,10 @@ The project works with three main road network formats:
 | **Road** | `<way>` with highway tag | `<edge>` | `<road>` |
 | **Lane** | Implicit in way width | `<lane>` | `<lane>` |
 | **Intersection** | `<node>` with tags | `<junction>` | `<junction>` |
-| **Traffic Light** | `<node>` with traffic_signals tag | `<tl-logic>` | `<signal>` |
+| **Traffic Light** | `<node>` with traffic_signals tag | `<tlLogic>` | `<signal>` |
+| **Speed Limit** | `maxspeed` tag | `speed` attribute | `<speed>` element |
+| **Lane Width** | `width` tag | `width` attribute | `<width>` element |
+| **Elevation** | `ele` tag | `z` coordinate | `<elevationProfile>` |
 
 ### Key Differences
 
@@ -31,31 +34,42 @@ The project works with three main road network formats:
     <tag k="highway" v="primary"/>
     <tag k="lanes" v="2"/>
     <tag k="oneway" v="yes"/>
+    <tag k="name" v="Bağdat Caddesi"/>
+    <tag k="maxspeed" v="50"/>
   </way>
   ```
 - **SUMO**: Roads are edges with explicit lanes
   ```xml
   <edge id="1" from="1" to="2" priority="1" type="highway.primary">
-    <lane id="1_0" index="0" speed="13.89" width="3.5"/>
-    <lane id="1_1" index="1" speed="13.89" width="3.5"/>
+    <lane id="1_0" index="0" speed="13.89" width="3.5" length="100.0" shape="0.0,0.0 100.0,0.0"/>
+    <lane id="1_1" index="1" speed="13.89" width="3.5" length="100.0" shape="0.0,3.5 100.0,3.5"/>
   </edge>
   ```
 - **OpenDRIVE**: Roads have detailed geometry and lane sections
   ```xml
-  <road name="Road1" length="100.0" id="1" junction="-1">
+  <road name="Bağdat Caddesi" length="100.0" id="1" junction="-1">
+    <link>
+      <predecessor elementType="road" elementId="2" contactPoint="end"/>
+      <successor elementType="road" elementId="3" contactPoint="start"/>
+    </link>
+    <type s="0.0" type="town"/>
     <planView>
-      <geometry s="0.0" x="29.0088" y="41.0751" hdg="0.0" length="100.0"/>
+      <geometry s="0.0" x="0.0" y="0.0" hdg="0.0" length="100.0">
+        <line/>
+      </geometry>
     </planView>
     <lanes>
       <laneSection s="0.0">
+        <left>
+          <lane id="1" type="driving" level="false">
+            <width sOffset="0.0" a="3.5" b="0.0" c="0.0" d="0.0"/>
+          </lane>
+        </left>
         <center>
-          <lane id="0" type="none"/>
+          <lane id="0" type="none" level="false"/>
         </center>
         <right>
           <lane id="-1" type="driving" level="false">
-            <width sOffset="0.0" a="3.5" b="0.0" c="0.0" d="0.0"/>
-          </lane>
-          <lane id="-2" type="driving" level="false">
             <width sOffset="0.0" a="3.5" b="0.0" c="0.0" d="0.0"/>
           </lane>
         </right>
@@ -64,191 +78,122 @@ The project works with three main road network formats:
   </road>
   ```
 
-#### 2. Lane Information
-- **OSM**: 
-  - Implicit in way width and tags
-  - Uses `lanes` tag for count
-  - Uses `width` tag for total width
-  - Uses `oneway` tag for direction
+#### 2. Junction Representation
+- **OSM**: Simple nodes with tags
+  ```xml
+  <node id="1" lat="41.0497" lon="29.0024">
+    <tag k="highway" v="traffic_signals"/>
+  </node>
+  ```
+- **SUMO**: Complex junctions with connections
+  ```xml
+  <junction id="1" type="priority" x="0.0" y="0.0" incLanes="1_0 1_1" intLanes="" shape="0.0,0.0 0.0,3.5 3.5,3.5 3.5,0.0"/>
+  ```
+- **OpenDRIVE**: Detailed junction definitions
+  ```xml
+  <junction id="1" name="Intersection 1">
+    <connection id="1" incomingRoad="1" connectingRoad="2" contactPoint="start">
+      <laneLink from="1" to="1"/>
+      <laneLink from="-1" to="-1"/>
+    </connection>
+  </junction>
+  ```
 
-- **SUMO**: 
-  - Explicit lane definitions
-  - Each lane has properties:
-    - Speed limit
-    - Width
-    - Type
-    - Index
-  - Supports lane-specific attributes
+## Conversion Rules
 
-- **OpenDRIVE**: 
-  - Detailed lane properties
-  - Lane sections with offsets
-  - Lane connectivity
-  - Lane types and materials
-  - Elevation profiles
-
-#### 3. Traffic Control
-- **OSM**: 
-  - Basic traffic signal tags
-  - Uses `highway=traffic_signals`
-  - Limited timing information
-
-- **SUMO**: 
-  - Detailed traffic light logic
-  - Phase definitions
-  - Timing information
-  - State transitions
-
-- **OpenDRIVE**: 
-  - Signal definitions
-  - Controller definitions
-  - Timing information
-  - Signal dependencies
-
-## Conversion Process
-
-### OSM → SUMO Conversion
-
+### OSM to SUMO
 1. **Road Conversion**
-   ```python
-   def convert_osm_to_sumo(osm_file, output_file):
-       # Parse OSM
-       G = ox.graph_from_xml(osm_file)
-       
-       # Convert ways to edges
-       for way in G.edges():
-           edge = create_sumo_edge(way)
-           add_lanes(edge, way.tags)
-           
-       # Save SUMO network
-       save_sumo_network(output_file)
-   ```
+   - Convert OSM ways to SUMO edges
+   - Map highway tags to edge types
+   - Convert lane counts to explicit lanes
+   - Preserve oneway information
 
-2. **Lane Information**
-   - Infer lane count from OSM tags
-   - Set lane properties based on road type
-   - Handle one-way/two-way roads
-   - Calculate lane widths
+2. **Junction Conversion**
+   - Convert OSM nodes to SUMO junctions
+   - Handle traffic signals
+   - Create proper connections
+   - Set junction priorities
 
-3. **Traffic Signals**
-   - Convert OSM traffic signal nodes
-   - Create SUMO traffic light logic
-   - Set signal timing
-   - Define phase sequences
+3. **Geometry Conversion**
+   - Convert OSM coordinates to SUMO coordinates
+   - Handle elevation data
+   - Preserve road shapes
+   - Adjust for network boundaries
 
-### SUMO → OpenDRIVE Conversion
-
+### SUMO to OpenDRIVE
 1. **Road Conversion**
-   ```python
-   def convert_sumo_to_opendrive(sumo_file, output_file):
-       # Parse SUMO network
-       net = sumolib.net.readNet(sumo_file)
-       
-       # Create OpenDRIVE structure
-       root = ET.Element("OpenDRIVE")
-       
-       # Convert edges to roads
-       for edge in net.getEdges():
-           road = create_opendrive_road(edge)
-           add_geometry(road, edge)
-           add_lanes(road, edge)
-           
-       # Save OpenDRIVE file
-       save_opendrive_file(root, output_file)
-   ```
+   - Convert SUMO edges to OpenDRIVE roads
+   - Map edge types to road types
+   - Convert lanes with proper attributes
+   - Handle road connections
 
-2. **Lane Mapping**
-   - Map SUMO lanes to OpenDRIVE lane sections
-   - Preserve lane properties
-   - Handle lane connectivity
-   - Calculate geometry
+2. **Junction Conversion**
+   - Convert SUMO junctions to OpenDRIVE junctions
+   - Create proper connections
+   - Handle traffic signals
+   - Set junction priorities
 
-3. **Traffic Control**
-   - Convert SUMO traffic light logic
-   - Create OpenDRIVE signal definitions
-   - Preserve timing information
-   - Define signal dependencies
+3. **Geometry Conversion**
+   - Convert SUMO coordinates to OpenDRIVE coordinates
+   - Handle elevation data
+   - Create proper road geometry
+   - Adjust for network boundaries
 
 ## Validation Rules
 
-### OSM Validation
-- Required tags for ways
-- Valid highway types
-- Consistent lane counts
-- Valid geometry
+### Network Structure
+1. **Road Network**
+   - All roads must be connected
+   - No isolated junctions
+   - Proper lane connections
+   - Valid road types
 
-### SUMO Validation
-- Valid edge connections
-- Consistent lane properties
-- Valid traffic light logic
-- Proper junction definitions
+2. **Junctions**
+   - Valid junction types
+   - Proper connections
+   - Valid traffic signals
+   - Correct priorities
 
-### OpenDRIVE Validation
-- Schema compliance
-- Geometry continuity
-- Lane connectivity
-- Signal definitions
+3. **Geometry**
+   - Valid coordinates
+   - Proper road shapes
+   - Valid lane widths
+   - Correct elevations
 
-## Common Issues and Solutions
+### Data Quality
+1. **Required Attributes**
+   - Road names
+   - Speed limits
+   - Lane counts
+   - Junction types
 
-### 1. Geometry Discontinuities
-- **Issue**: Gaps between road segments
-- **Solution**: Use tolerance in connection checks
-- **Code**:
-  ```python
-  def check_geometry_continuity(road1, road2, tolerance=0.1):
-      end1 = get_road_endpoint(road1)
-      start2 = get_road_startpoint(road2)
-      return distance(end1, start2) < tolerance
-  ```
+2. **Optional Attributes**
+   - Elevation data
+   - Traffic signals
+   - Road markings
+   - Additional properties
 
-### 2. Lane Count Mismatches
-- **Issue**: Inconsistent lane counts
-- **Solution**: Use default values and warnings
-- **Code**:
-  ```python
-  def get_lane_count(tags, default=1):
-      if 'lanes' in tags:
-          return int(tags['lanes'])
-      return default
-  ```
+## Examples
 
-### 3. Traffic Signal Timing
-- **Issue**: Lost timing information
-- **Solution**: Use default timing patterns
-- **Code**:
-  ```python
-  def create_default_timing():
-      return {
-          'phase1': {'duration': 30, 'state': 'GGGrrr'},
-          'phase2': {'duration': 5, 'state': 'yyyrrr'},
-          'phase3': {'duration': 30, 'state': 'rrrGGG'},
-          'phase4': {'duration': 5, 'state': 'rrryyy'}
-      }
-  ```
+### Kadıköy Network
+1. **OSM Format**
+   - Bounds: 41.0297, 28.9724 to 41.0697, 29.0324
+   - Main roads: Bağdat Caddesi, Moda Caddesi
+   - Junctions: Traffic signals at major intersections
 
-## Best Practices
+2. **SUMO Format**
+   - Network size: ~5km²
+   - Edge types: highway.primary, highway.secondary
+   - Junction types: priority, traffic_light
 
-1. **Data Validation**
-   - Validate input data before conversion
-   - Check for missing or invalid elements
-   - Ensure coordinate system consistency
-   - Verify required attributes
+3. **OpenDRIVE Format**
+   - Road types: town, residential
+   - Lane configurations: 2-4 lanes
+   - Junction types: priority, traffic_light
 
-2. **Error Handling**
-   - Handle missing data gracefully
-   - Provide meaningful error messages
-   - Log conversion issues
-   - Create validation reports
+## Notes
 
-3. **Performance**
-   - Process large networks efficiently
-   - Use appropriate data structures
-   - Optimize memory usage
-   - Implement batch processing
-
-## References
-
-1. [OpenStreetMap XML Format](https://wiki.openstreetmap.org/wiki/OSM_XML)
-2. [SUMO Network Format](https://sumo.dlr.de/docs/Networks/PlainXML.html)
-3. [OpenDRIVE Format](https://www.asam.net/standards/detail/opendrive/) 
+- All examples use the Kadıköy network as a reference
+- File paths are relative to the project root
+- Make sure to have the required dependencies installed
+- Check the documentation for more detailed examples 

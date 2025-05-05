@@ -1,30 +1,17 @@
 # Data Fetching Instructions
 
-This document provides detailed instructions for fetching and processing road network data.
+This document provides detailed instructions for fetching road network data for the project.
 
-## Directory Structure
+## 1. OSM Data Fetching
 
-```
-data/
-├── networks/         # Network files
-│   ├── kadikoy/     # Kadıköy network
-│   ├── levent/      # Levent network
-│   └── odunpazari/  # Odunpazarı network
-├── visualizations/   # Visualization outputs
-├── plots/           # Static plots
-└── cache/           # Cached data
-```
-
-## 1. Fetching Methods
-
-### Using osmnx (Recommended)
+### Using osmnx
 ```python
 import osmnx as ox
 
-# By place name
+# Fetch network by place name
 network = ox.graph_from_place("Kadıköy, Istanbul, Turkey", network_type="drive")
 
-# By bounding box
+# Fetch network by bounding box
 north, south, east, west = 41.0697, 41.0297, 29.0324, 28.9724
 network = ox.graph_from_bbox(north, south, east, west, network_type="drive")
 
@@ -91,7 +78,21 @@ with open("data/networks/kadikoy.osm", "w") as f:
   - Narrow streets
   - Complex intersections
 
-## 3. Data Processing
+## 3. 43R Bus Route
+
+### Route Details
+- **Start**: Kadıköy
+- **End**: Levent
+- **Stops**: 25 major stops
+- **Length**: ~15 km
+
+### Bounding Box
+- North: 41.0697
+- South: 41.0297
+- East: 29.0324
+- West: 28.9724
+
+## 4. Data Processing
 
 ### OSM to SUMO Conversion
 ```bash
@@ -116,7 +117,7 @@ python src/converter/sumo_to_xodr.py \
     --geometry.min-length 1.0
 ```
 
-## 4. Data Validation
+## 5. Data Validation
 
 ### Network Structure Validation
 ```python
@@ -146,24 +147,24 @@ result = validator.validate("data/networks/kadikoy.net.xml")
 report = validator.get_report()
 ```
 
-## 5. File Naming Convention
+## 6. Data Storage
 
+### Directory Structure
+```
+data/
+├── networks/         # Network files
+│   ├── kadikoy/     # Kadıköy network
+│   ├── levent/      # Levent network
+│   └── odunpazari/  # Odunpazarı network
+├── visualizations/   # Visualization outputs
+└── plots/           # Static plots
+```
+
+### File Naming Convention
 - OSM files: `{location}.osm`
 - SUMO networks: `{location}.net.xml`
 - OpenDRIVE files: `{location}.xodr`
 - Visualizations: `{location}_{type}.html`
-
-## 6. Requirements
-
-- Python 3.8 or higher
-- Required packages:
-  - osmnx
-  - networkx
-  - lxml
-  - numpy
-  - matplotlib
-  - sumolib
-  - folium
 
 ## 7. Notes
 
@@ -171,6 +172,4 @@ report = validator.get_report()
 - Keep original OSM data for reference
 - Document any data modifications
 - Use consistent coordinate systems
-- Maintain data version control
-- Cache frequently used data
-- Clean up temporary files 
+- Maintain data version control 

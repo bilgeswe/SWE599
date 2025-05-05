@@ -1,192 +1,276 @@
-# Detailed Format Analysis: SUMO to OpenDRIVE
+# Format Analysis
 
-## 1. SUMO Network Format (.net.xml)
+This document describes the analysis methods and tools for road network formats.
 
-### 1.1 Core Elements
+## Analysis Levels
 
-#### Location and Projection
-```xml
-<location>
-    <orig x="-73.9875" y="40.7498" />  <!-- Origin point -->
-    <proj>!</proj>                      <!-- Projection string -->
-    <boundary .../>                     <!-- Network boundaries -->
-</location>
-```
+1. **Structural Analysis**
+   - Network topology
+   - Element relationships
+   - Connectivity patterns
+   - Hierarchy analysis
 
-#### Edges (Roads)
-```xml
-<edge id="edge_0" from="junction1" to="junction2" priority="1" type="highway.primary">
-    <lane id="edge_0_0" index="0" speed="13.89" length="100.00" shape="x1,y1 x2,y2"/>
-    <lane id="edge_0_1" index="1" speed="13.89" length="100.00" shape="x3,y3 x4,y4"/>
-</edge>
-```
-Key attributes:
-- `id`: Unique identifier
-- `from/to`: Connected junction IDs
-- `priority`: Road priority level
-- `type`: Road classification
+2. **Geometric Analysis**
+   - Road geometry
+   - Lane configurations
+   - Junction layouts
+   - Elevation profiles
 
-#### Lanes
-```xml
-<lane id="edge_0_0" index="0" speed="13.89" length="100.00" shape="x1,y1 x2,y2">
-    <param key="width" value="3.2"/>
-    <neigh lane="edge_0_1"/>
-</lane>
-```
-Key attributes:
-- `id`: Unique identifier
-- `index`: Lane position (0 = rightmost)
-- `speed`: Maximum speed (m/s)
-- `length`: Lane length
-- `shape`: Geometry points
+3. **Traffic Analysis**
+   - Flow patterns
+   - Capacity analysis
+   - Signal timing
+   - Emergency routes
 
-#### Junctions
-```xml
-<junction id="junction1" type="priority" x="100.00" y="100.00" incLanes="edge_1_0 edge_2_0" intLanes="...">
-    <request index="0" response="0" foes="0" cont="0"/>
-</junction>
-```
-Key attributes:
-- `id`: Unique identifier
-- `type`: Junction type (priority, traffic_light, etc.)
-- `x,y`: Position
-- `incLanes`: Incoming lanes
+## Analysis Methods
 
-#### Traffic Lights
-```xml
-<tlLogic id="tl_0" type="static" programID="0" offset="0">
-    <phase duration="31" state="GGggrrrrGGggrrrr"/>
-    <phase duration="4"  state="yyggrrrryyggrrrr"/>
-</tlLogic>
-```
+### 1. Network Structure Analysis
 
-### 1.2 Geometric Representation
-- Uses x,y coordinates for all elements
-- Lane shapes defined by polylines
-- Junction shapes defined by internal lanes
-- Elevation (z) supported but optional
+#### Topology Analysis
+- Road connectivity
+- Junction types
+- Network hierarchy
+- Dead ends
+- Loops
 
-## 2. OpenDRIVE Format (.xodr)
+#### Element Analysis
+- Road types
+- Lane configurations
+- Signal locations
+- Priority rules
+- Speed zones
 
-### 2.1 Core Elements
+#### Connectivity Analysis
+- Direct connections
+- Indirect connections
+- Alternative routes
+- Emergency access
+- Pedestrian paths
 
-#### Header
-```xml
-<OpenDRIVE>
-    <header revMajor="1" revMinor="7" name="" version="1.00" date="2024-01-01" north="0.0" south="0.0" east="0.0" west="0.0">
-        <geoReference>...</geoReference>
-    </header>
-</OpenDRIVE>
-```
+### 2. Geometric Analysis
 
-#### Roads
-```xml
-<road name="Road1" length="100.0" id="1" junction="-1">
-    <link>
-        <predecessor elementType="road" elementId="0" contactPoint="end"/>
-        <successor elementType="junction" elementId="2"/>
-    </link>
-    <planView>
-        <geometry s="0.0" x="0.0" y="0.0" hdg="0.0" length="100.0">
-            <line/>
-        </geometry>
-    </planView>
-    <lanes>
-        <laneSection s="0.0">
-            <center>
-                <lane id="0" type="none" level="false"/>
-            </center>
-            <right>
-                <lane id="-1" type="driving" level="false">
-                    <width sOffset="0.0" a="3.5" b="0.0" c="0.0" d="0.0"/>
-                </lane>
-            </right>
-        </laneSection>
-    </lanes>
-</road>
-```
-
-#### Junctions
-```xml
-<junction name="Junction1" id="2">
-    <connection id="0" incomingRoad="1" connectingRoad="3" contactPoint="start">
-        <laneLink from="-1" to="-1"/>
-    </connection>
-</junction>
-```
-
-### 2.2 Geometric Representation
-- Uses absolute coordinates for road reference lines
-- Complex geometry types (line, spiral, arc, polynomial)
-- Explicit lane width profiles
-- Detailed elevation and banking profiles
-
-## 3. Key Mapping Relationships
-
-### 3.1 Road Network Elements
-
-| SUMO Element | OpenDRIVE Element | Mapping Notes |
-|--------------|-------------------|---------------|
-| `<edge>` | `<road>` | Direct mapping, needs geometry conversion |
-| `<lane>` | `<lane>` in `<laneSection>` | Convert index to OpenDRIVE ID system |
-| `<junction>` | `<junction>` | Create connecting roads for each path |
-| `<tlLogic>` | `<signal>` | Convert phases to signal plans |
-
-### 3.2 Geometry Conversion
+#### Road Geometry
+- Line segments
+- Curves
+- Spirals
+- Elevation changes
+- Superelevation
 
 #### Lane Geometry
-1. SUMO: Uses shape attribute with polyline
-```xml
-<lane shape="0,0 10,0 20,5"/>
+- Width variations
+- Lane transitions
+- Merge/split points
+- Crossings
+- Markings
+
+#### Junction Geometry
+- Intersection angles
+- Turning radii
+- Sight distances
+- Signal placement
+- Pedestrian crossings
+
+### 3. Traffic Analysis
+
+#### Flow Analysis
+- Traffic patterns
+- Peak hours
+- Directional flows
+- Lane utilization
+- Bottlenecks
+
+#### Capacity Analysis
+- Road capacity
+- Lane capacity
+- Junction capacity
+- Signal capacity
+- Emergency capacity
+
+#### Signal Analysis
+- Timing patterns
+- Phase sequences
+- Coordination
+- Priority rules
+- Emergency overrides
+
+## Analysis Tools
+
+### 1. Network Analysis Tool
+
+```python
+def analyze_network(network_file):
+    # Load network
+    network = load_network(network_file)
+    
+    # Analyze topology
+    topology = analyze_topology(network)
+    
+    # Analyze elements
+    elements = analyze_elements(network)
+    
+    # Analyze connectivity
+    connectivity = analyze_connectivity(network)
+    
+    return {
+        "topology": topology,
+        "elements": elements,
+        "connectivity": connectivity
+    }
 ```
 
-2. OpenDRIVE: Uses reference line + width
-```xml
-<geometry s="0.0" x="0.0" y="0.0" hdg="0.0" length="20.0">
-    <line/>
-</geometry>
-<width sOffset="0.0" a="3.5" b="0.0" c="0.0" d="0.0"/>
+### 2. Geometric Analysis Tool
+
+```python
+def analyze_geometry(network_file):
+    # Load network
+    network = load_network(network_file)
+    
+    # Analyze roads
+    roads = analyze_roads(network)
+    
+    # Analyze lanes
+    lanes = analyze_lanes(network)
+    
+    # Analyze junctions
+    junctions = analyze_junctions(network)
+    
+    return {
+        "roads": roads,
+        "lanes": lanes,
+        "junctions": junctions
+    }
 ```
 
-### 3.3 Critical Conversion Challenges
+### 3. Traffic Analysis Tool
 
-1. **Reference Line Calculation**
-   - SUMO: Individual lane shapes
-   - OpenDRIVE: Single reference line with offsets
+```python
+def analyze_traffic(network_file):
+    # Load network
+    network = load_network(network_file)
+    
+    # Analyze flow
+    flow = analyze_flow(network)
+    
+    # Analyze capacity
+    capacity = analyze_capacity(network)
+    
+    # Analyze signals
+    signals = analyze_signals(network)
+    
+    return {
+        "flow": flow,
+        "capacity": capacity,
+        "signals": signals
+    }
+```
 
-2. **Junction Handling**
-   - SUMO: Simple node with connections
-   - OpenDRIVE: Complex junction with connecting roads
+## Analysis Reports
 
-3. **Lane Numbering**
-   - SUMO: Index-based (0, 1, 2...)
-   - OpenDRIVE: Signed (-3, -2, -1, 1, 2, 3)
+### 1. Network Report
 
-4. **Traffic Signals**
-   - SUMO: Program-based phases
-   - OpenDRIVE: Physical signal objects
+```python
+def generate_network_report(analysis):
+    report = {
+        "summary": {
+            "total_roads": len(analysis["topology"]["roads"]),
+            "total_junctions": len(analysis["topology"]["junctions"]),
+            "network_density": calculate_density(analysis),
+            "connectivity_index": calculate_connectivity(analysis)
+        },
+        "details": {
+            "road_types": analyze_road_types(analysis),
+            "junction_types": analyze_junction_types(analysis),
+            "connectivity_patterns": analyze_connectivity_patterns(analysis)
+        }
+    }
+    return report
+```
 
-## 4. Implementation Strategy
+### 2. Geometric Report
 
-### 4.1 Processing Pipeline
-1. Parse SUMO network
-2. Extract road topology
-3. Calculate reference lines
-4. Generate OpenDRIVE roads
-5. Process junctions
-6. Add traffic signals
-7. Validate geometry
+```python
+def generate_geometric_report(analysis):
+    report = {
+        "summary": {
+            "total_length": calculate_total_length(analysis),
+            "average_width": calculate_average_width(analysis),
+            "elevation_range": calculate_elevation_range(analysis),
+            "curve_ratio": calculate_curve_ratio(analysis)
+        },
+        "details": {
+            "road_geometry": analyze_road_geometry(analysis),
+            "lane_geometry": analyze_lane_geometry(analysis),
+            "junction_geometry": analyze_junction_geometry(analysis)
+        }
+    }
+    return report
+```
 
-### 4.2 Required Geometric Calculations
-1. Reference line extraction from lane shapes
-2. Lane offset calculations
-3. Junction connection geometry
-4. Heading calculations
-5. Length parameterization
+### 3. Traffic Report
 
-### 4.3 Validation Requirements
-1. Topology preservation
-2. Geometric continuity
-3. Junction connectivity
-4. Lane connections
-5. Signal placement 
+```python
+def generate_traffic_report(analysis):
+    report = {
+        "summary": {
+            "peak_flow": calculate_peak_flow(analysis),
+            "total_capacity": calculate_total_capacity(analysis),
+            "signal_efficiency": calculate_signal_efficiency(analysis),
+            "emergency_access": calculate_emergency_access(analysis)
+        },
+        "details": {
+            "flow_patterns": analyze_flow_patterns(analysis),
+            "capacity_distribution": analyze_capacity_distribution(analysis),
+            "signal_timing": analyze_signal_timing(analysis)
+        }
+    }
+    return report
+```
+
+## Examples
+
+### 1. Network Analysis
+
+```python
+# Analyze OSM network
+osm_analysis = analyze_network("kadikoy.osm")
+osm_report = generate_network_report(osm_analysis)
+
+# Analyze SUMO network
+sumo_analysis = analyze_network("kadikoy.net.xml")
+sumo_report = generate_network_report(sumo_analysis)
+
+# Compare networks
+comparison = compare_networks(osm_report, sumo_report)
+```
+
+### 2. Geometric Analysis
+
+```python
+# Analyze road geometry
+road_analysis = analyze_geometry("kadikoy.net.xml")
+road_report = generate_geometric_report(road_analysis)
+
+# Analyze junction geometry
+junction_analysis = analyze_junctions("kadikoy.net.xml")
+junction_report = generate_geometric_report(junction_analysis)
+```
+
+### 3. Traffic Analysis
+
+```python
+# Analyze traffic flow
+flow_analysis = analyze_traffic("kadikoy.net.xml")
+flow_report = generate_traffic_report(flow_analysis)
+
+# Analyze signal timing
+signal_analysis = analyze_signals("kadikoy.net.xml")
+signal_report = generate_traffic_report(signal_analysis)
+```
+
+## Notes
+
+- Analysis should be performed at multiple levels
+- Reports should be clear and actionable
+- Tools should be regularly updated
+- Documentation should be kept up to date
+- Test cases should cover all analysis methods 

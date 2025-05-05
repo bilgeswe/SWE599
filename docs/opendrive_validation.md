@@ -1,185 +1,260 @@
-# OpenDRIVE Validation and Comparison Tools
+# OpenDRIVE Validation
 
-This document describes the validation and comparison tools for OpenDRIVE files.
+This document describes the validation rules and procedures for OpenDRIVE files.
 
-## Schema Validation
+## Validation Levels
 
-The schema validation component ensures OpenDRIVE files comply with the official 1.7.0 specification.
+1. **Basic Validation**
+   - XML structure
+   - Required elements
+   - Basic geometry
+   - Simple connections
 
-### Features
-- Validates against the official OpenDRIVE 1.7.0 schema
-- Checks for required elements and attributes
-- Validates data types and enumerations
-- Provides detailed error messages for invalid files
+2. **Advanced Validation**
+   - Complex geometry
+   - Lane connectivity
+   - Junction rules
+   - Signal logic
 
-### Implementation
+3. **Simulation Validation**
+   - Traffic flow
+   - Vehicle behavior
+   - Signal timing
+   - Emergency routes
+
+## Validation Rules
+
+### 1. Road Structure
+
+#### Basic Rules
+- Each road must have a unique ID
+- Road length must be positive
+- Junction ID must be valid
+- Road type must be specified
+
+#### Geometry Rules
+- Reference line must be continuous
+- Geometry elements must be properly ordered
+- Elevation profile must be valid
+- Superelevation must be within limits
+
+#### Lane Rules
+- Lane IDs must be unique within a section
+- Lane width must be positive
+- Lane type must be valid
+- Lane links must be valid
+
+### 2. Junction Structure
+
+#### Basic Rules
+- Junction ID must be unique
+- All connections must be valid
+- Priority rules must be defined
+- Controller references must exist
+
+#### Connection Rules
+- Incoming roads must exist
+- Connecting roads must exist
+- Lane links must be valid
+- Contact points must be valid
+
+#### Signal Rules
+- Signal IDs must be unique
+- Controller IDs must be valid
+- Signal dependencies must be valid
+- Timing must be positive
+
+### 3. Traffic Rules
+
+#### Speed Rules
+- Speed limits must be positive
+- Speed changes must be smooth
+- Speed zones must be valid
+- Emergency speed limits must be defined
+
+#### Priority Rules
+- Right of way must be defined
+- Priority rules must be consistent
+- Emergency vehicle priorities must be set
+- Traffic light priorities must be valid
+
+## Validation Procedures
+
+### 1. Basic Validation
+
 ```python
-class OpenDriveValidator:
-    def validate_schema(self, xodr_file: str) -> ValidationResult:
-        """
-        Validates an OpenDRIVE file against the official schema.
-        
-        Args:
-            xodr_file: Path to the OpenDRIVE file
-            
-        Returns:
-            ValidationResult containing success status and any errors
-        """
-        # Implementation details...
-```
-
-## Geometry Validation
-
-The geometry validation component ensures the logical consistency of road network geometry.
-
-### Features
-- Checks road length consistency
-- Validates lane width continuity
-- Verifies geometry element connections
-- Validates junction connections
-- Detects overlapping geometries
-
-### Implementation
-```python
-class OpenDriveValidator:
-    def validate_geometry(self, xodr_file: str) -> ValidationResult:
-        """
-        Validates the geometry of an OpenDRIVE file.
-        
-        Args:
-            xodr_file: Path to the OpenDRIVE file
-            
-        Returns:
-            ValidationResult containing success status and any errors
-        """
-        # Implementation details...
-
-    def _calculate_road_length(self, road: Element) -> float:
-        """Calculates the total length of a road."""
-        # Implementation details...
-
-    def _validate_lane_widths(self, road: Element, warnings: List[str]) -> None:
-        """Validates lane width continuity."""
-        # Implementation details...
-
-    def _validate_geometry_continuity(self, road: Element, errors: List[str]) -> None:
-        """Validates geometry element connections."""
-        # Implementation details...
-
-    def _validate_junctions(self, root: Element, errors: List[str]) -> None:
-        """Validates junction connections."""
-        # Implementation details...
-
-    def _get_geometry_endpoint(self, geometry: Element) -> Tuple[float, float]:
-        """Calculates the endpoint of a geometry element."""
-        # Implementation details...
-
-    def _points_are_close(self, p1: Tuple[float, float], 
-                         p2: Tuple[float, float], 
-                         tolerance: float) -> bool:
-        """Checks if two points are within tolerance distance."""
-        # Implementation details...
-```
-
-## Visual Comparison Tools
-
-The visual comparison tools provide side-by-side visualization of OpenDRIVE files.
-
-### Features
-- Side-by-side visualization of two OpenDRIVE files
-- Plots roads and junctions
-- Supports different geometry types (lines, arcs, spirals)
-- Provides clear visual feedback for differences
-
-### Implementation
-```python
-class OpenDriveValidator:
-    def visualize_comparison(self, xodr_file1: str, xodr_file2: str) -> None:
-        """
-        Creates a side-by-side visualization of two OpenDRIVE files.
-        
-        Args:
-            xodr_file1: Path to the first OpenDRIVE file
-            xodr_file2: Path to the second OpenDRIVE file
-        """
-        # Implementation details...
-
-    def _plot_opendrive(self, xodr_file: str, ax: plt.Axes, title: str) -> None:
-        """Plots a single OpenDRIVE file."""
-        # Implementation details...
-```
-
-## Test Suite
-
-The implementation includes a comprehensive test suite covering:
-
-### Test Cases
-- Valid and invalid files
-- Geometry errors
-- Lane width discontinuities
-- File handling edge cases
-- Visualization functionality
-
-### Example Test Structure
-```python
-def test_schema_validation():
-    """Tests schema validation functionality."""
-    # Test valid file
-    result = validator.validate_schema("valid.xodr")
-    assert result.is_valid
+def validate_basic_structure(xodr_file):
+    # Check XML structure
+    if not is_valid_xml(xodr_file):
+        return False, "Invalid XML structure"
     
-    # Test invalid file
-    result = validator.validate_schema("invalid.xodr")
-    assert not result.is_valid
-    assert len(result.errors) > 0
-
-def test_geometry_validation():
-    """Tests geometry validation functionality."""
-    # Test continuous geometry
-    result = validator.validate_geometry("continuous.xodr")
-    assert result.is_valid
+    # Check required elements
+    if not has_required_elements(xodr_file):
+        return False, "Missing required elements"
     
-    # Test discontinuous geometry
-    result = validator.validate_geometry("discontinuous.xodr")
-    assert not result.is_valid
-    assert "Geometry discontinuity" in result.errors[0]
+    # Check road structure
+    if not validate_roads(xodr_file):
+        return False, "Invalid road structure"
+    
+    return True, "Basic validation passed"
 ```
 
-## Usage Examples
+### 2. Advanced Validation
 
-### Command Line
+```python
+def validate_advanced_structure(xodr_file):
+    # Check geometry
+    if not validate_geometry(xodr_file):
+        return False, "Invalid geometry"
+    
+    # Check lane connectivity
+    if not validate_lane_connectivity(xodr_file):
+        return False, "Invalid lane connectivity"
+    
+    # Check junctions
+    if not validate_junctions(xodr_file):
+        return False, "Invalid junctions"
+    
+    return True, "Advanced validation passed"
+```
+
+### 3. Simulation Validation
+
+```python
+def validate_simulation(xodr_file):
+    # Check traffic flow
+    if not validate_traffic_flow(xodr_file):
+        return False, "Invalid traffic flow"
+    
+    # Check vehicle behavior
+    if not validate_vehicle_behavior(xodr_file):
+        return False, "Invalid vehicle behavior"
+    
+    # Check signal timing
+    if not validate_signal_timing(xodr_file):
+        return False, "Invalid signal timing"
+    
+    return True, "Simulation validation passed"
+```
+
+## Error Handling
+
+### 1. Error Categories
+
+#### Fatal Errors
+- Invalid XML structure
+- Missing required elements
+- Invalid road IDs
+- Invalid junction IDs
+
+#### Warning Errors
+- Missing optional elements
+- Invalid geometry parameters
+- Inconsistent lane widths
+- Missing signal timing
+
+#### Info Messages
+- Suggested improvements
+- Optimization opportunities
+- Best practice violations
+- Documentation issues
+
+### 2. Error Reporting
+
+```python
+def report_errors(errors):
+    for error in errors:
+        if error.level == "FATAL":
+            print(f"FATAL: {error.message}")
+        elif error.level == "WARNING":
+            print(f"WARNING: {error.message}")
+        else:
+            print(f"INFO: {error.message}")
+```
+
+## Validation Tools
+
+### 1. Command Line Tool
+
 ```bash
-# Validate a single file
-python src/validator/validate_opendrive.py input.xodr
+# Basic validation
+python validate_xodr.py --basic input.xodr
 
-# Compare two files
-python src/validator/compare_opendrive.py file1.xodr file2.xodr
+# Advanced validation
+python validate_xodr.py --advanced input.xodr
+
+# Full validation
+python validate_xodr.py --full input.xodr
 ```
 
-### Python API
-```python
-from src.validator import OpenDriveValidator
+### 2. Python API
 
-# Create validator instance
+```python
+from opendrive_validator import OpenDriveValidator
+
+# Create validator
 validator = OpenDriveValidator()
 
-# Validate schema
-result = validator.validate_schema("input.xodr")
-if not result.is_valid:
-    print("Validation errors:", result.errors)
+# Validate file
+result = validator.validate("input.xodr")
 
-# Validate geometry
-result = validator.validate_geometry("input.xodr")
-if not result.is_valid:
-    print("Geometry errors:", result.errors)
+# Get validation report
+report = validator.get_report()
+```
 
-# Compare files
-validator.visualize_comparison("file1.xodr", "file2.xodr")
+## Examples
+
+### 1. Valid Road
+
+```xml
+<road name="Road1" length="100.0" id="1" junction="-1">
+  <link>
+    <predecessor elementType="road" elementId="2"/>
+    <successor elementType="road" elementId="3"/>
+  </link>
+  <planView>
+    <geometry s="0.0" x="0.0" y="0.0" hdg="0.0" length="100.0">
+      <line/>
+    </geometry>
+  </planView>
+  <lanes>
+    <laneSection s="0.0">
+      <left>
+        <lane id="1" type="driving">
+          <width sOffset="0.0" a="3.5"/>
+        </lane>
+      </left>
+      <center>
+        <lane id="0" type="none"/>
+      </center>
+      <right>
+        <lane id="-1" type="driving">
+          <width sOffset="0.0" a="3.5"/>
+        </lane>
+      </right>
+    </laneSection>
+  </lanes>
+</road>
+```
+
+### 2. Valid Junction
+
+```xml
+<junction id="1" name="Intersection 1">
+  <connection id="1" incomingRoad="1" connectingRoad="2">
+    <laneLink from="1" to="1"/>
+  </connection>
+  <priority road="1" high="2"/>
+  <controller id="1" sequence="1">
+    <control signalId="1" type="3"/>
+  </controller>
+</junction>
 ```
 
 ## Notes
 
-- The validator uses the official OpenDRIVE 1.7.0 schema
-- Geometry validation includes checks for common errors
-- Visual comparison tools help identify differences
-- Test suite ensures reliability and correctness 
+- Validation should be performed at multiple levels
+- Error messages should be clear and actionable
+- Validation tools should be regularly updated
+- Documentation should be kept up to date
+- Test cases should cover all validation rules 

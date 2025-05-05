@@ -41,6 +41,14 @@ class SumoNetworkParser:
         Returns:
             List of Junction objects
         """
+        
+    def get_traffic_lights(self) -> List[TrafficLight]:
+        """
+        Get all traffic lights from the network.
+        
+        Returns:
+            List of TrafficLight objects
+        """
 ```
 
 ### `OpenDriveGenerator`
@@ -57,259 +65,283 @@ class OpenDriveGenerator:
             network: Network object to convert
         """
         
-    def generate(self, output_file: str) -> None:
+    def generate(self) -> ElementTree:
         """
-        Generate OpenDRIVE file.
+        Generate OpenDRIVE XML structure.
+        
+        Returns:
+            ElementTree containing OpenDRIVE data
+        """
+        
+    def save(self, output_file: str) -> None:
+        """
+        Save OpenDRIVE file.
         
         Args:
-            output_file: Path to output file
+            output_file: Path to save the file
         """
-        
-    def add_road(self, road: Road) -> None:
+```
+
+### `NetworkConverter`
+
+```python
+class NetworkConverter:
+    """Main class for network format conversion."""
+    
+    def osm_to_sumo(self, osm_file: str, output_file: str, 
+                    additional_options: Optional[List[str]] = None) -> bool:
         """
-        Add a road to the OpenDRIVE file.
+        Convert OSM file to SUMO network format.
         
         Args:
-            road: Road object to add
+            osm_file: Path to input OSM file
+            output_file: Path to output SUMO file
+            additional_options: Optional list of netconvert options
+            
+        Returns:
+            bool: True if conversion successful
         """
         
-    def add_junction(self, junction: Junction) -> None:
+    def sumo_to_opendrive(self, sumo_file: str, output_file: str,
+                         additional_options: Optional[List[str]] = None) -> bool:
         """
-        Add a junction to the OpenDRIVE file.
+        Convert SUMO network to OpenDRIVE format.
         
         Args:
-            junction: Junction object to add
+            sumo_file: Path to input SUMO file
+            output_file: Path to output OpenDRIVE file
+            additional_options: Optional list of netconvert options
+            
+        Returns:
+            bool: True if conversion successful
         """
 ```
 
 ## Validator Module
 
-### `OpenDriveValidator`
+### `NetworkValidator`
 
 ```python
-class OpenDriveValidator:
-    """Validator for OpenDRIVE files."""
+class NetworkValidator:
+    """Validator for road networks."""
     
-    def validate_schema(self, xodr_file: str) -> ValidationResult:
+    def __init__(self, network: Network):
         """
-        Validate OpenDRIVE file against schema.
+        Initialize validator with network data.
         
         Args:
-            xodr_file: Path to OpenDRIVE file
+            network: Network object to validate
+        """
+        
+    def validate_structure(self) -> List[str]:
+        """
+        Validate network structure.
+        
+        Returns:
+            List of validation errors
+        """
+        
+    def validate_geometry(self) -> List[str]:
+        """
+        Validate network geometry.
+        
+        Returns:
+            List of validation errors
+        """
+        
+    def validate_connections(self) -> List[str]:
+        """
+        Validate network connections.
+        
+        Returns:
+            List of validation errors
+        """
+```
+
+### `JunctionValidator`
+
+```python
+class JunctionValidator:
+    """Validator for network junctions."""
+    
+    def __init__(self, junction: Junction):
+        """
+        Initialize validator with junction data.
+        
+        Args:
+            junction: Junction object to validate
+        """
+        
+    def validate_type(self) -> bool:
+        """
+        Validate junction type.
+        
+        Returns:
+            bool: True if type is valid
+        """
+        
+    def validate_connections(self) -> List[str]:
+        """
+        Validate junction connections.
+        
+        Returns:
+            List of validation errors
+        """
+        
+    def validate_traffic_lights(self) -> List[str]:
+        """
+        Validate traffic light configuration.
+        
+        Returns:
+            List of validation errors
+        """
+```
+
+## Visualization Module
+
+### `NetworkVisualizer`
+
+```python
+class NetworkVisualizer:
+    """Visualizer for road networks."""
+    
+    def __init__(self, network: Network):
+        """
+        Initialize visualizer with network data.
+        
+        Args:
+            network: Network object to visualize
+        """
+        
+    def visualize_in_sumo(self) -> None:
+        """
+        Visualize network in SUMO GUI.
+        """
+        
+    def create_interactive_map(self, output_file: str) -> None:
+        """
+        Create interactive map visualization.
+        
+        Args:
+            output_file: Path to save the HTML file
+        """
+```
+
+## Utility Module
+
+### `CoordinateConverter`
+
+```python
+class CoordinateConverter:
+    """Converter for coordinate systems."""
+    
+    @staticmethod
+    def osm_to_sumo(lat: float, lon: float) -> Tuple[float, float]:
+        """
+        Convert OSM coordinates to SUMO coordinates.
+        
+        Args:
+            lat: Latitude
+            lon: Longitude
             
         Returns:
-            ValidationResult object
+            Tuple of (x, y) coordinates
         """
         
-    def validate_geometry(self, xodr_file: str) -> ValidationResult:
+    @staticmethod
+    def sumo_to_opendrive(x: float, y: float) -> Tuple[float, float]:
         """
-        Validate geometry of OpenDRIVE file.
+        Convert SUMO coordinates to OpenDRIVE coordinates.
         
         Args:
-            xodr_file: Path to OpenDRIVE file
+            x: X coordinate
+            y: Y coordinate
             
         Returns:
-            ValidationResult object
-        """
-        
-    def visualize_comparison(self, xodr_file1: str, xodr_file2: str) -> None:
-        """
-        Visualize comparison of two OpenDRIVE files.
-        
-        Args:
-            xodr_file1: Path to first OpenDRIVE file
-            xodr_file2: Path to second OpenDRIVE file
+            Tuple of (x, y) coordinates
         """
 ```
 
-## Data Classes
-
-### `Network`
+### `NetworkUtils`
 
 ```python
-@dataclass
-class Network:
-    """Represents a road network."""
+class NetworkUtils:
+    """Utility functions for network operations."""
     
-    edges: List[Edge]
-    junctions: List[Junction]
-    name: str
-```
-
-### `Edge`
-
-```python
-@dataclass
-class Edge:
-    """Represents a road edge."""
-    
-    id: str
-    from_node: str
-    to_node: str
-    lanes: List[Lane]
-    geometry: List[Point]
-```
-
-### `Junction`
-
-```python
-@dataclass
-class Junction:
-    """Represents a road junction."""
-    
-    id: str
-    connections: List[Connection]
-    position: Point
-```
-
-### `Lane`
-
-```python
-@dataclass
-class Lane:
-    """Represents a road lane."""
-    
-    id: str
-    width: float
-    type: str
-    speed: float
-```
-
-### `Point`
-
-```python
-@dataclass
-class Point:
-    """Represents a 2D point."""
-    
-    x: float
-    y: float
-```
-
-## Utility Functions
-
-### Data Fetching
-
-```python
-def download_by_place(place_name: str) -> str:
-    """
-    Download OSM data by place name.
-    
-    Args:
-        place_name: Name of the place
-        
-    Returns:
-        Path to downloaded file
-    """
-    
-def download_by_coordinates(min_lat: float, max_lat: float,
-                          min_lon: float, max_lon: float) -> str:
-    """
-    Download OSM data by coordinates.
-    
-    Args:
-        min_lat: Minimum latitude
-        max_lat: Maximum latitude
-        min_lon: Minimum longitude
-        max_lon: Maximum longitude
-        
-    Returns:
-        Path to downloaded file
-    """
-```
-
-### Visualization
-
-```python
-def plot_network(network: Network, output_file: str) -> None:
-    """
-    Plot road network.
-    
-    Args:
-        network: Network to plot
-        output_file: Path to output file
-    """
-    
-def create_interactive_map(network: Network, output_file: str) -> None:
-    """
-    Create interactive map of network.
-    
-    Args:
-        network: Network to plot
-        output_file: Path to output file
-    """
-```
-
-## Error Handling
-
-### `ValidationError`
-
-```python
-class ValidationError(Exception):
-    """Base class for validation errors."""
-    
-    def __init__(self, message: str, element: Optional[Element] = None):
+    @staticmethod
+    def calculate_network_bounds(network: Network) -> Tuple[float, float, float, float]:
         """
-        Initialize validation error.
+        Calculate network boundaries.
         
         Args:
-            message: Error message
-            element: XML element causing error
+            network: Network object
+            
+        Returns:
+            Tuple of (min_x, min_y, max_x, max_y)
         """
-```
-
-### `ConversionError`
-
-```python
-class ConversionError(Exception):
-    """Base class for conversion errors."""
-    
-    def __init__(self, message: str, source: str, target: str):
+        
+    @staticmethod
+    def validate_file_path(file_path: str) -> bool:
         """
-        Initialize conversion error.
+        Validate file path.
         
         Args:
-            message: Error message
-            source: Source format
-            target: Target format
+            file_path: Path to validate
+            
+        Returns:
+            bool: True if path is valid
         """
 ```
 
-## Configuration
+## Examples
 
-### `Config`
-
+### Converting OSM to SUMO
 ```python
-@dataclass
-class Config:
-    """Configuration settings."""
-    
-    # Validation settings
-    validation_tolerance: float = 0.1
-    max_road_length: float = 10000.0
-    
-    # Visualization settings
-    plot_width: int = 800
-    plot_height: int = 600
-    colors: Dict[str, str] = field(default_factory=lambda: {
-        'primary': 'red',
-        'secondary': 'blue',
-        'tertiary': 'green'
-    })
+from src.converter import NetworkConverter
+
+# Initialize converter
+converter = NetworkConverter()
+
+# Convert OSM to SUMO
+success = converter.osm_to_sumo(
+    "data/networks/kadıköy.osm",
+    "data/networks/kadıköy.net.xml",
+    additional_options=["--geometry.remove", "--roundabouts.guess"]
+)
 ```
 
-## Constants
-
+### Validating Network
 ```python
-# OpenDRIVE schema version
-OPENDRIVE_SCHEMA_VERSION = "1.7.0"
+from src.validator import NetworkValidator
+from src.converter import SumoNetworkParser
 
-# Default validation settings
-DEFAULT_TOLERANCE = 0.1
-DEFAULT_MAX_ROAD_LENGTH = 10000.0
+# Parse network
+parser = SumoNetworkParser("data/networks/kadıköy.net.xml")
+network = parser.parse()
 
-# File extensions
-OSM_EXTENSION = ".osm"
-SUMO_EXTENSION = ".net.xml"
-OPENDRIVE_EXTENSION = ".xodr"
-``` 
+# Validate network
+validator = NetworkValidator(network)
+structure_errors = validator.validate_structure()
+geometry_errors = validator.validate_geometry()
+```
+
+### Creating Interactive Map
+```python
+from src.visualization import NetworkVisualizer
+from src.converter import SumoNetworkParser
+
+# Parse network
+parser = SumoNetworkParser("data/networks/kadıköy.net.xml")
+network = parser.parse()
+
+# Create visualization
+visualizer = NetworkVisualizer(network)
+visualizer.create_interactive_map("data/visualizations/kadıköy_interactive.html")
+```
+
+## Notes
+
+- All classes are in the `src` directory
+- Import paths are relative to the project root
+- Make sure to have required dependencies installed
+- Check the documentation for more detailed examples

@@ -30,168 +30,156 @@ source .venv/bin/activate
 
 ### 3. Install Dependencies
 ```bash
+# Install required packages
+pip install -r requirements.txt
+
 # Install development dependencies
 pip install -e ".[dev]"
-
-# Install required packages
-pip install osmnx networkx lxml numpy matplotlib
 ```
 
-## Data Operations
-
-### 1. Download Road Network Data
+### 4. Install SUMO
 ```bash
-# Download by place name
-python src/examples/download_network.py "Place Name, Country"
+# On macOS
+brew install sumo
 
-# Example for Odunpazarı, Eskişehir:
-python src/examples/download_network.py "Odunpazarı, Eskişehir, Turkey"
+# On Ubuntu
+sudo apt-get install sumo
 
-# Download by coordinates
-python src/examples/download_by_coordinates.py min_lat max_lat min_lon max_lon
-
-# Example for specific area:
-python src/examples/download_by_coordinates.py 39.7 39.8 30.4 30.6
+# On Windows
+# Download from https://sumo.dlr.de/docs/Downloads.php
 ```
 
-### 2. Validate OpenDRIVE Files
+### 5. Install XQuartz (macOS only)
 ```bash
-# Validate a single file
-python src/validator/validate_opendrive.py data/output/your_file.xodr
+# Install XQuartz
+brew install --cask xquartz
 
-# Compare two files
-python src/validator/compare_opendrive.py file1.xodr file2.xodr
+# Restart your computer after installation
 ```
 
-### 3. View Generated Files
+## Network Operations
+
+### 1. Convert OSM to SUMO
 ```bash
-# List downloaded files
-ls -l data/
+# Convert network
+python src/converter/osm_to_sumo.py data/networks/kadıköy.osm data/networks/kadıköy.net.xml
 
-# View OSM file
-cat data/input/your_file.osm | less
-
-# View SUMO network file
-cat data/output/your_file.net.xml | less
-
-# View OpenDRIVE file
-cat data/output/your_file.xodr | less
+# Convert with additional options
+python src/converter/osm_to_sumo.py data/networks/kadıköy.osm data/networks/kadıköy.net.xml --geometry.remove --roundabouts.guess
 ```
 
-## Testing
+### 2. Convert SUMO to OpenDRIVE
+```bash
+# Convert network
+python src/converter/sumo_to_xodr.py data/networks/kadıköy.net.xml data/networks/kadıköy.xodr
 
-### 1. Run All Tests
+# Convert with validation
+python src/converter/advanced_sumo_to_xodr.py --validate data/networks/kadıköy.net.xml
+```
+
+### 3. Visualize Networks
+```bash
+# Using SUMO GUI
+sumo-gui -n data/networks/kadıköy.net.xml
+
+# Using interactive visualization
+python src/visualization/visualize_with_folium.py data/networks/kadıköy.osm
+```
+
+## Testing and Validation
+
+### 1. Run Tests
 ```bash
 # Run all tests
-pytest tests/
+python -m unittest discover tests
 
-# Run with coverage report
-pytest tests/ --cov=src --cov-report=term-missing
+# Run specific test file
+python -m unittest tests/test_network_validation.py
+
+# Run with coverage
+coverage run -m unittest discover tests
+coverage report
 ```
 
-### 2. Run Specific Test Files
+### 2. Validate Networks
 ```bash
-# Run conversion tests
-pytest tests/test_sumo_to_xodr.py
+# Validate SUMO network
+python src/converter/advanced_sumo_to_xodr.py --validate data/networks/kadıköy.net.xml
 
-# Run validation tests
-pytest tests/test_validator.py
-
-# Run visualization tests
-pytest tests/test_visualization.py
+# Validate OpenDRIVE network
+python src/converter/advanced_sumo_to_xodr.py --validate-opendrive data/networks/kadıköy.xodr
 ```
 
-### 3. Run Specific Test Functions
-```bash
-# Run a specific test function
-pytest tests/test_sumo_to_xodr.py::test_specific_function
-
-# Run tests matching a pattern
-pytest -k "pattern" tests/
-```
-
-## Development
+## Development Tools
 
 ### 1. Code Formatting
 ```bash
-# Format code using black
-black src/
+# Format code
+black src/ tests/
 
-# Check code style
-flake8 src/
+# Sort imports
+isort src/ tests/
+
+# Check types
+mypy src/ tests/
 ```
 
-### 2. Type Checking
+### 2. Documentation
 ```bash
-# Run mypy type checking
-mypy src/
+# Generate API documentation
+pdoc --html src/
+
+# Check documentation coverage
+interrogate src/
 ```
 
-### 3. Documentation
+### 3. Performance Profiling
 ```bash
-# Generate documentation
-cd docs
-make html
+# Profile network conversion
+python -m cProfile -o profile.out src/converter/osm_to_sumo.py data/networks/kadıköy.osm data/networks/kadıköy.net.xml
+
+# Analyze profile
+python -m pstats profile.out
 ```
 
-## Common Issues and Solutions
+## Troubleshooting
 
-### 1. Virtual Environment Issues
+### 1. Common Issues
 ```bash
-# If activation fails
-deactivate  # Deactivate current environment
-rm -rf .venv  # Remove old environment
-python3 -m venv .venv  # Create new environment
-source .venv/bin/activate  # Activate new environment
+# Check SUMO installation
+sumo --version
+
+# Check Python environment
+python -c "import sumolib; print(sumolib.__version__)"
+
+# Check XQuartz (macOS)
+xquartz --version
 ```
 
-### 2. Dependency Issues
+### 2. Network Issues
 ```bash
-# Update pip
-pip install --upgrade pip
+# Check network file
+python src/utils/format_parsing.py data/networks/kadıköy.net.xml
 
-# Reinstall dependencies
-pip uninstall -r requirements.txt
-pip install -r requirements.txt
+# Validate network structure
+python src/converter/advanced_sumo_to_xodr.py --validate-structure data/networks/kadıköy.net.xml
 ```
 
-### 3. Test Issues
+### 3. Visualization Issues
 ```bash
-# Clear pytest cache
-pytest --cache-clear
+# Check XQuartz connection (macOS)
+echo $DISPLAY
 
-# Run tests in verbose mode
-pytest -v tests/
-```
+# Test SUMO GUI
+sumo-gui --version
 
-## File Management
-
-### 1. Clean Up Generated Files
-```bash
-# Remove all generated files
-rm -rf data/output/*
-rm -rf data/plots/*
-
-# Remove specific file types
-find data/ -name "*.xodr" -type f -delete
-find data/ -name "*.net.xml" -type f -delete
-```
-
-### 2. Backup Important Files
-```bash
-# Create backup directory
-mkdir -p backups
-
-# Backup specific files
-cp data/input/important.osm backups/
-cp data/output/important.xodr backups/
+# Check network visualization
+python src/visualization/visualize_in_sumo.py data/networks/kadıköy.net.xml
 ```
 
 ## Notes
 
-1. Always activate the virtual environment before running commands
-2. Use `python3` explicitly if you have multiple Python versions
-3. Add `-v` flag to any command for verbose output
-4. Use `--help` flag to see available options for any command
-5. Press `Ctrl+C` to stop any running command
-6. Use `| less` to view long outputs page by page 
+- All commands assume you're in the project root directory
+- Use `PYTHONPATH=$PYTHONPATH:.` when running Python scripts
+- Make sure your virtual environment is activated
+- Check the documentation for more detailed instructions 
