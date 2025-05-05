@@ -10,6 +10,7 @@ from src.tests.test_data import (
     create_simple_network,
     create_network_with_invalid_connections
 )
+from src.converter.converter import MapConverter
 
 class TestJunctionConnections(unittest.TestCase):
     """Test cases for junction connection handling."""
@@ -82,4 +83,13 @@ class TestJunctionConnections(unittest.TestCase):
         self.assertFalse(parser._is_valid_via_lane("nonexistent1", "nonexistent2", "nonexistent1_0_nonexistent2_0"))
 
 if __name__ == "__main__":
-    unittest.main() 
+    unittest.main()
+
+# Create converter instance
+converter = MapConverter()
+
+# Convert OSM to SUMO
+sumo_file = converter.osm_to_sumo('data/networks/kadıköy.osm')
+
+# Convert SUMO to OpenDRIVE (optional)
+opendrive_file = converter.sumo_to_opendrive(sumo_file) 
