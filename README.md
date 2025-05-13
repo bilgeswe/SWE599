@@ -202,18 +202,6 @@ python -m pytest --cov=src
 - [Development Guide](docs/development_guide.md)
 - [Architecture](docs/architecture.md)
 
-## Contributing
-
-1. Fork the repository
-2. Create feature branch
-3. Make changes
-4. Run tests
-5. Create pull request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - [SUMO](https://sumo.dlr.de/docs/)
