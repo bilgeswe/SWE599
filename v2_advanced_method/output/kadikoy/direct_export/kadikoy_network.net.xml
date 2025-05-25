@@ -1,0 +1,1625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-05-25 12:37:19 by Eclipse SUMO netconvert Version 1.20.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <opendrive-files value="output/kadikoy/direct_export/kadikoy_network.xodr"/>
+    </input>
+
+    <output>
+        <output-file value="output/kadikoy/direct_export/kadikoy_network.net.xml"/>
+        <output.street-names value="true"/>
+    </output>
+
+    <processing>
+        <geometry.remove value="true"/>
+        <roundabouts.guess value="true"/>
+    </processing>
+
+    <ramp_guessing>
+        <ramps.guess value="true"/>
+    </ramp_guessing>
+
+    <junctions>
+        <no-turnarounds.except-deadend value="true"/>
+        <junctions.corner-detail value="5"/>
+    </junctions>
+
+</configuration>
+-->
+
+<net version="1.20" junctionCornerDetail="5" rectangularLaneCut="true" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="-29.02,-40.97" convBoundary="0.00,0.00,0.04,0.03" origBoundary="0.000000,0.000000,0.000000,0.000000" projParameter="+proj=utm +zone=35 +datum=WGS84 +units=m +no_defs +x_0=-668686.91 +y_0=-4539963.74"/>
+
+    <type id="driving" priority="1" speed="13.89" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" width="3.65"/>
+
+    <edge id="-1" from="1.begin" to="1.end" name="K-15 Söğütlüçeşme Kavşağı" priority="1" type="driving">
+        <lane id="-1_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.32,-1.69 -0.32,-1.69" type="driving"/>
+    </edge>
+    <edge id="-10" from="10.begin" to="10.end" name="Street_32485827" priority="1" type="driving">
+        <lane id="-10_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.85,1.54 -0.86,1.54" type="driving"/>
+    </edge>
+    <edge id="-101" from="101.begin" to="101.end" name="Street_51765589" priority="1" type="driving">
+        <lane id="-101_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.48,1.68 -0.48,1.68" type="driving"/>
+    </edge>
+    <edge id="-102" from="102.begin" to="102.end" name="Street_51765590" priority="1" type="driving">
+        <lane id="-102_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.02,1.43 1.02,1.44" type="driving"/>
+    </edge>
+    <edge id="-103" from="103.begin" to="103.end" name="Street_51765593" priority="1" type="driving">
+        <lane id="-103_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.20,-1.74 0.20,-1.74" type="driving"/>
+    </edge>
+    <edge id="-104" from="104.begin" to="104.end" name="Atlıhan Sokağı" priority="1" type="driving">
+        <lane id="-104_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.40,-1.07 1.40,-1.07" type="driving"/>
+    </edge>
+    <edge id="-105" from="105.begin" to="105.end" name="Iğrıp Sokağı" priority="1" type="driving">
+        <lane id="-105_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.41,-1.69 -0.41,-1.69" type="driving"/>
+    </edge>
+    <edge id="-106" from="106.begin" to="106.end" name="Gülizar Sokağı" priority="1" type="driving">
+        <lane id="-106_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.38,-1.04 -1.38,-1.04" type="driving"/>
+    </edge>
+    <edge id="-107" from="107.begin" to="107.end" name="Dr. Faruk Ayanoğlu Caddesi" priority="1" type="driving">
+        <lane id="-107_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.54,-0.86 1.55,-0.86" type="driving"/>
+    </edge>
+    <edge id="-108" from="108.begin" to="108.end" name="Sadberk Sokağı" priority="1" type="driving">
+        <lane id="-108_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.68,-0.54 1.68,-0.54" type="driving"/>
+    </edge>
+    <edge id="-109" from="109.begin" to="109.end" name="Street_51774219" priority="1" type="driving">
+        <lane id="-109_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.22,1.28 1.22,1.28" type="driving"/>
+    </edge>
+    <edge id="-11" from="11.begin" to="11.end" name="Street_32485828" priority="1" type="driving">
+        <lane id="-11_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.57,1.68 -0.57,1.68" type="driving"/>
+    </edge>
+    <edge id="-110" from="110.begin" to="110.end" name="Street_51774221" priority="1" type="driving">
+        <lane id="-110_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.61,1.65 -0.61,1.65" type="driving"/>
+    </edge>
+    <edge id="-111" from="111.begin" to="111.end" name="Street_51774223" priority="1" type="driving">
+        <lane id="-111_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.67,-1.61 0.67,-1.61" type="driving"/>
+    </edge>
+    <edge id="-112" from="112.begin" to="112.end" name="Sabri Kiraz Sokağı" priority="1" type="driving">
+        <lane id="-112_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.43,-1.02 1.43,-1.01" type="driving"/>
+    </edge>
+    <edge id="-113" from="113.begin" to="113.end" name="Sarı Lale Sokağı" priority="1" type="driving">
+        <lane id="-113_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.47,1.00 1.46,1.00" type="driving"/>
+    </edge>
+    <edge id="-114" from="114.begin" to="114.end" name="Sadberk Sokağı" priority="1" type="driving">
+        <lane id="-114_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.99,1.45 -0.99,1.45" type="driving"/>
+    </edge>
+    <edge id="-115" from="115.begin" to="115.end" name="Reşit Paşa Sokağı" priority="1" type="driving">
+        <lane id="-115_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.70,0.39 -1.70,0.39" type="driving"/>
+    </edge>
+    <edge id="-116" from="116.begin" to="116.end" name="Rüştiye Sokağı" priority="1" type="driving">
+        <lane id="-116_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.36,1.10 -1.36,1.09" type="driving"/>
+    </edge>
+    <edge id="-117" from="117.begin" to="117.end" name="Itri Dede Sokağı" priority="1" type="driving">
+        <lane id="-117_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.86,-1.50 -0.86,-1.50" type="driving"/>
+    </edge>
+    <edge id="-118" from="118.begin" to="118.end" name="Sabri Kiraz Sokağı" priority="1" type="driving">
+        <lane id="-118_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.00,-1.40 -1.00,-1.40" type="driving"/>
+    </edge>
+    <edge id="-119" from="119.begin" to="119.end" name="Fener Kalamış Caddesi" priority="1" type="driving">
+        <lane id="-119_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.30,1.15 -1.31,1.15" type="driving"/>
+    </edge>
+    <edge id="-12" from="12.begin" to="12.end" name="Kurbağalıdere Caddesi" priority="1" type="driving">
+        <lane id="-12_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.75,1.60 -0.75,1.60" type="driving"/>
+    </edge>
+    <edge id="-120" from="120.begin" to="120.end" name="Bilgili Sokağı" priority="1" type="driving">
+        <lane id="-120_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.34,-1.70 -0.34,-1.70" type="driving"/>
+    </edge>
+    <edge id="-121" from="121.begin" to="121.end" name="Münir Nürettin Selçuk Caddesi" priority="1" type="driving">
+        <lane id="-121_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.73,-0.35 1.73,-0.34" type="driving"/>
+    </edge>
+    <edge id="-122" from="122.begin" to="122.end" name="Basri Dilimli Sokağı" priority="1" type="driving">
+        <lane id="-122_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.16,1.75 0.16,1.75" type="driving"/>
+    </edge>
+    <edge id="-123" from="123.begin" to="123.end" name="Münir Nürettin Selçuk Caddesi" priority="1" type="driving">
+        <lane id="-123_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.61,0.65 -1.61,0.65" type="driving"/>
+    </edge>
+    <edge id="-124" from="124.begin" to="124.end" name="Fener Kalamış Caddesi" priority="1" type="driving">
+        <lane id="-124_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.48,1.68 -0.48,1.68" type="driving"/>
+    </edge>
+    <edge id="-125" from="125.begin" to="125.end" name="Street_51814116" priority="1" type="driving">
+        <lane id="-125_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.38,-1.05 -1.38,-1.05" type="driving"/>
+    </edge>
+    <edge id="-126" from="126.begin" to="126.end" name="Street_51814122" priority="1" type="driving">
+        <lane id="-126_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.89,1.50 -0.89,1.50" type="driving"/>
+    </edge>
+    <edge id="-127" from="127.begin" to="127.end" name="Street_51814123" priority="1" type="driving">
+        <lane id="-127_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.73,0.35 1.73,0.35" type="driving"/>
+    </edge>
+    <edge id="-128" from="128.begin" to="128.end" name="Street_51814124" priority="1" type="driving">
+        <lane id="-128_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.07,-1.75 -0.07,-1.75" type="driving"/>
+    </edge>
+    <edge id="-129" from="129.begin" to="129.end" name="Street_51814125" priority="1" type="driving">
+        <lane id="-129_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.22,-1.27 1.22,-1.27" type="driving"/>
+    </edge>
+    <edge id="-13" from="13.begin" to="13.end" name="Fahrettin Kerim Gökay Caddesi" priority="1" type="driving">
+        <lane id="-13_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.40,-1.05 1.40,-1.05" type="driving"/>
+    </edge>
+    <edge id="-130" from="130.begin" to="130.end" name="Alptekin Sokağı" priority="1" type="driving">
+        <lane id="-130_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.67,-1.60 -0.67,-1.60" type="driving"/>
+    </edge>
+    <edge id="-131" from="131.begin" to="131.end" name="Street_51814129" priority="1" type="driving">
+        <lane id="-131_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.86,1.54 0.86,1.54" type="driving"/>
+    </edge>
+    <edge id="-132" from="132.begin" to="132.end" name="Street_51814130" priority="1" type="driving">
+        <lane id="-132_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.30,-1.19 1.30,-1.19" type="driving"/>
+    </edge>
+    <edge id="-133" from="133.begin" to="133.end" name="Ali Fuat Başgil Sokağı" priority="1" type="driving">
+        <lane id="-133_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.54,-1.64 -0.54,-1.64" type="driving"/>
+    </edge>
+    <edge id="-134" from="134.begin" to="134.end" name="Eflatun Sokağı" priority="1" type="driving">
+        <lane id="-134_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.31,-1.71 -0.31,-1.71" type="driving"/>
+    </edge>
+    <edge id="-135" from="135.begin" to="135.end" name="Selahattin Pınar Sokağı" priority="1" type="driving">
+        <lane id="-135_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.67,-1.61 0.68,-1.61" type="driving"/>
+    </edge>
+    <edge id="-136" from="136.begin" to="136.end" name="Bedri Rahmi Eyüboğlu Sokağı" priority="1" type="driving">
+        <lane id="-136_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.60,1.65 -0.60,1.65" type="driving"/>
+    </edge>
+    <edge id="-137" from="137.begin" to="137.end" name="Tevfik Paşa Sokağı" priority="1" type="driving">
+        <lane id="-137_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.47,1.69 -0.47,1.69" type="driving"/>
+    </edge>
+    <edge id="-138" from="138.begin" to="138.end" name="Mehmet Şengün Sokağı" priority="1" type="driving">
+        <lane id="-138_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.98,-1.42 -0.97,-1.43" type="driving"/>
+    </edge>
+    <edge id="-139" from="139.begin" to="139.end" name="Dr. Kazım Lakay Sokağı" priority="1" type="driving">
+        <lane id="-139_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.44,1.69 -0.45,1.69" type="driving"/>
+    </edge>
+    <edge id="-14" from="14.begin" to="14.end" name="Yavuztürk Sokağı" priority="1" type="driving">
+        <lane id="-14_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.30,1.21 1.30,1.21" type="driving"/>
+    </edge>
+    <edge id="-140" from="140.begin" to="140.end" name="Alageyik Sokağı" priority="1" type="driving">
+        <lane id="-140_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.84,-1.51 -0.83,-1.51" type="driving"/>
+    </edge>
+    <edge id="-141" from="141.begin" to="141.end" name="Kerim Sokağı" priority="1" type="driving">
+        <lane id="-141_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.45,-1.00 1.46,-1.00" type="driving"/>
+    </edge>
+    <edge id="-142" from="142.begin" to="142.end" name="Kuru Kahveci Sokağı" priority="1" type="driving">
+        <lane id="-142_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.71,0.21 -1.71,0.21" type="driving"/>
+    </edge>
+    <edge id="-143" from="143.begin" to="143.end" name="Fuat Paşa Caddesi" priority="1" type="driving">
+        <lane id="-143_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.74,1.60 0.73,1.61" type="driving"/>
+    </edge>
+    <edge id="-144" from="144.begin" to="144.end" name="Dalyan Aralığı Sokağı" priority="1" type="driving">
+        <lane id="-144_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.66,-1.61 -0.66,-1.61" type="driving"/>
+    </edge>
+    <edge id="-145" from="145.begin" to="145.end" name="Erguvan Sokak" priority="1" type="driving">
+        <lane id="-145_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.58,-0.68 -1.58,-0.69" type="driving"/>
+    </edge>
+    <edge id="-146" from="146.begin" to="146.end" name="Erguvan Sokağı" priority="1" type="driving">
+        <lane id="-146_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.62,0.60 -1.63,0.60" type="driving"/>
+    </edge>
+    <edge id="-147" from="147.begin" to="147.end" name="Recep Peker Caddesi" priority="1" type="driving">
+        <lane id="-147_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.99,-1.41 -0.99,-1.41" type="driving"/>
+    </edge>
+    <edge id="-148" from="148.begin" to="148.end" name="K-15 Söğütlüçeşme Kavşağı" priority="1" type="driving">
+        <lane id="-148_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.02,1.78 0.02,1.78" type="driving"/>
+    </edge>
+    <edge id="-149" from="149.begin" to="149.end" name="Kültür Sokağı" priority="1" type="driving">
+        <lane id="-149_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.18,1.75 -0.19,1.75" type="driving"/>
+    </edge>
+    <edge id="-15" from="15.begin" to="15.end" name="Halitağa Caddesi" priority="1" type="driving">
+        <lane id="-15_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.91,-1.47 0.91,-1.47" type="driving"/>
+    </edge>
+    <edge id="-150" from="150.begin" to="150.end" name="Dr. Fazıl Gökçe Ören Sokağı" priority="1" type="driving">
+        <lane id="-150_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.45,1.72 0.44,1.72" type="driving"/>
+    </edge>
+    <edge id="-151" from="151.begin" to="151.end" name="İzzet Beltan Sokağı" priority="1" type="driving">
+        <lane id="-151_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.41,1.73 0.41,1.73" type="driving"/>
+    </edge>
+    <edge id="-152" from="152.begin" to="152.end" name="Evsen Sokağı" priority="1" type="driving">
+        <lane id="-152_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.46,1.72 0.45,1.72" type="driving"/>
+    </edge>
+    <edge id="-153" from="153.begin" to="153.end" name="Sevük Sokağı" priority="1" type="driving">
+        <lane id="-153_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.37,-1.69 -0.37,-1.69" type="driving"/>
+    </edge>
+    <edge id="-154" from="154.begin" to="154.end" name="Tünek Sokağı" priority="1" type="driving">
+        <lane id="-154_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.57,0.70 -1.57,0.70" type="driving"/>
+    </edge>
+    <edge id="-155" from="155.begin" to="155.end" name="Mustafa Kaya Sokağı" priority="1" type="driving">
+        <lane id="-155_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.76,-1.58 0.76,-1.58" type="driving"/>
+    </edge>
+    <edge id="-156" from="156.begin" to="156.end" name="Perçem Sokağı" priority="1" type="driving">
+        <lane id="-156_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.74,1.62 0.73,1.62" type="driving"/>
+    </edge>
+    <edge id="-157" from="157.begin" to="157.end" name="Pınar Sokağı" priority="1" type="driving">
+        <lane id="-157_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.71,-1.60 0.71,-1.60" type="driving"/>
+    </edge>
+    <edge id="-158" from="158.begin" to="158.end" name="Mutlu Sokağı" priority="1" type="driving">
+        <lane id="-158_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.69,-0.55 1.69,-0.55" type="driving"/>
+    </edge>
+    <edge id="-159" from="159.begin" to="159.end" name="Hüseyin Hüsnüpaşa Sokağı" priority="1" type="driving">
+        <lane id="-159_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.56,0.73 -1.56,0.73" type="driving"/>
+    </edge>
+    <edge id="-16" from="16.begin" to="16.end" name="Halitağa Caddesi" priority="1" type="driving">
+        <lane id="-16_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.11,-1.33 1.11,-1.33" type="driving"/>
+    </edge>
+    <edge id="-160" from="160.begin" to="160.end" name="Hüseyin Hüsnüpaşa Sokağı" priority="1" type="driving">
+        <lane id="-160_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.60,0.65 -1.60,0.65" type="driving"/>
+    </edge>
+    <edge id="-161" from="161.begin" to="161.end" name="Kuyubaşı Sokağı" priority="1" type="driving">
+        <lane id="-161_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.81,-1.52 -0.81,-1.52" type="driving"/>
+    </edge>
+    <edge id="-162" from="162.begin" to="162.end" name="Yazıcıbaşı Sokağı" priority="1" type="driving">
+        <lane id="-162_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.44,-1.02 1.44,-1.02" type="driving"/>
+    </edge>
+    <edge id="-163" from="163.begin" to="163.end" name="Boztepe Sokağı" priority="1" type="driving">
+        <lane id="-163_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.70,-0.51 1.70,-0.51" type="driving"/>
+    </edge>
+    <edge id="-164" from="164.begin" to="164.end" name="Saldıray Sokağı" priority="1" type="driving">
+        <lane id="-164_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.67,-1.58 -0.67,-1.58" type="driving"/>
+    </edge>
+    <edge id="-165" from="165.begin" to="165.end" name="Yazıcıbaşı Sokağı" priority="1" type="driving">
+        <lane id="-165_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.57,-0.80 1.58,-0.80" type="driving"/>
+    </edge>
+    <edge id="-166" from="166.begin" to="166.end" name="Gedikli Sokağı" priority="1" type="driving">
+        <lane id="-166_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.71,1.63 0.71,1.63" type="driving"/>
+    </edge>
+    <edge id="-167" from="167.begin" to="167.end" name="Gazi Muhtarpaşa Sokağı" priority="1" type="driving">
+        <lane id="-167_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.61,0.63 -1.61,0.63" type="driving"/>
+    </edge>
+    <edge id="-168" from="168.begin" to="168.end" name="Street_51815636" priority="1" type="driving">
+        <lane id="-168_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.69,0.33 -1.69,0.33" type="driving"/>
+    </edge>
+    <edge id="-169" from="169.begin" to="169.end" name="Mısra Sokağı" priority="1" type="driving">
+        <lane id="-169_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.78,-1.54 -0.78,-1.54" type="driving"/>
+    </edge>
+    <edge id="-17" from="17.begin" to="17.end" name="Elmalıçeşme Sokağı" priority="1" type="driving">
+        <lane id="-17_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.47,-0.91 -1.47,-0.91" type="driving"/>
+    </edge>
+    <edge id="-170" from="170.begin" to="170.end" name="Melih Cevdet Anday Sokağı" priority="1" type="driving">
+        <lane id="-170_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.73,1.63 0.72,1.63" type="driving"/>
+    </edge>
+    <edge id="-171" from="171.begin" to="171.end" name="Şahika Sokağı" priority="1" type="driving">
+        <lane id="-171_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.87,1.56 0.87,1.56" type="driving"/>
+    </edge>
+    <edge id="-172" from="172.begin" to="172.end" name="Nesrin Sokağı" priority="1" type="driving">
+        <lane id="-172_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.48,-0.98 1.48,-0.98" type="driving"/>
+    </edge>
+    <edge id="-173" from="173.begin" to="173.end" name="Gümrük Sokağı" priority="1" type="driving">
+        <lane id="-173_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.15,1.38 1.15,1.38" type="driving"/>
+    </edge>
+    <edge id="-174" from="174.begin" to="174.end" name="Dr. Erkin Caddesi" priority="1" type="driving">
+        <lane id="-174_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.24,1.29 1.24,1.29" type="driving"/>
+    </edge>
+    <edge id="-175" from="175.begin" to="175.end" name="Street_52040553" priority="1" type="driving">
+        <lane id="-175_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.02,-1.73 0.02,-1.73" type="driving"/>
+    </edge>
+    <edge id="-176" from="176.begin" to="176.end" name="Akçakoca Sokağı" priority="1" type="driving">
+        <lane id="-176_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.80,1.60 0.80,1.60" type="driving"/>
+    </edge>
+    <edge id="-177" from="177.begin" to="177.end" name="Yalvaç Sokağı" priority="1" type="driving">
+        <lane id="-177_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.42,0.99 -1.42,0.99" type="driving"/>
+    </edge>
+    <edge id="-178" from="178.begin" to="178.end" name="Adagül Sokağı" priority="1" type="driving">
+        <lane id="-178_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.68,1.65 0.68,1.65" type="driving"/>
+    </edge>
+    <edge id="-179" from="179.begin" to="179.end" name="Volkan Sokağı" priority="1" type="driving">
+        <lane id="-179_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.18,1.28 -1.18,1.28" type="driving"/>
+    </edge>
+    <edge id="-18" from="18.begin" to="18.end" name="Nal Sokağı" priority="1" type="driving">
+        <lane id="-18_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.21,-1.23 -1.21,-1.23" type="driving"/>
+    </edge>
+    <edge id="-180" from="180.begin" to="180.end" name="Bahtlı Sokağı" priority="1" type="driving">
+        <lane id="-180_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.87,-1.47 -0.87,-1.47" type="driving"/>
+    </edge>
+    <edge id="-181" from="181.begin" to="181.end" name="Kasrı Ali Caddesi" priority="1" type="driving">
+        <lane id="-181_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.88,-1.47 -0.88,-1.47" type="driving"/>
+    </edge>
+    <edge id="-182" from="182.begin" to="182.end" name="Abdibey Sokağı" priority="1" type="driving">
+        <lane id="-182_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.45,0.97 -1.45,0.97" type="driving"/>
+    </edge>
+    <edge id="-183" from="183.begin" to="183.end" name="Mektep Sokağı" priority="1" type="driving">
+        <lane id="-183_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.43,-1.04 1.43,-1.03" type="driving"/>
+    </edge>
+    <edge id="-184" from="184.begin" to="184.end" name="Şevki Bey Sokağı" priority="1" type="driving">
+        <lane id="-184_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.62,0.67 -1.62,0.66" type="driving"/>
+    </edge>
+    <edge id="-185" from="185.begin" to="185.end" name="Soner Sokağı" priority="1" type="driving">
+        <lane id="-185_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.38,-1.69 -0.38,-1.69" type="driving"/>
+    </edge>
+    <edge id="-186" from="186.begin" to="186.end" name="Keresteci Aziz Sokağı" priority="1" type="driving">
+        <lane id="-186_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.70,-0.44 1.70,-0.44" type="driving"/>
+    </edge>
+    <edge id="-187" from="187.begin" to="187.end" name="İleri Sokağı" priority="1" type="driving">
+        <lane id="-187_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.39,1.73 0.39,1.73" type="driving"/>
+    </edge>
+    <edge id="-188" from="188.begin" to="188.end" name="Safa Sokağı" priority="1" type="driving">
+        <lane id="-188_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.69,-0.47 1.69,-0.47" type="driving"/>
+    </edge>
+    <edge id="-189" from="189.begin" to="189.end" name="İhlas Sokağı" priority="1" type="driving">
+        <lane id="-189_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.48,-1.66 -0.48,-1.66" type="driving"/>
+    </edge>
+    <edge id="-19" from="19.begin" to="19.end" name="Kıvanç Sokağı" priority="1" type="driving">
+        <lane id="-19_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.98,1.48 0.98,1.48" type="driving"/>
+    </edge>
+    <edge id="-190" from="190.begin" to="190.end" name="Kuşdili Caddesi" priority="1" type="driving">
+        <lane id="-190_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.74,0.03 -1.74,0.02" type="driving"/>
+    </edge>
+    <edge id="-191" from="191.begin" to="191.end" name="İzzettin Sokağı" priority="1" type="driving">
+        <lane id="-191_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.09,1.78 -0.09,1.78" type="driving"/>
+    </edge>
+    <edge id="-192" from="192.begin" to="192.end" name="Şair Nefi Sokağı" priority="1" type="driving">
+        <lane id="-192_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.74,0.06 -1.74,0.06" type="driving"/>
+    </edge>
+    <edge id="-193" from="193.begin" to="193.end" name="Moda Bostanı Sokağı" priority="1" type="driving">
+        <lane id="-193_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.51,-0.87 1.51,-0.87" type="driving"/>
+    </edge>
+    <edge id="-194" from="194.begin" to="194.end" name="Yusuf Kamil Paşa Sokağı" priority="1" type="driving">
+        <lane id="-194_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.21,-1.72 -0.21,-1.72" type="driving"/>
+    </edge>
+    <edge id="-195" from="195.begin" to="195.end" name="Şinasi Efendi Sokağı" priority="1" type="driving">
+        <lane id="-195_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.01,1.45 1.01,1.45" type="driving"/>
+    </edge>
+    <edge id="-196" from="196.begin" to="196.end" name="Atıfet Sokağı" priority="1" type="driving">
+        <lane id="-196_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.42,-1.01 1.42,-1.00" type="driving"/>
+    </edge>
+    <edge id="-197" from="197.begin" to="197.end" name="Moda Mektebi Sokağı" priority="1" type="driving">
+        <lane id="-197_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.08,-1.73 -0.07,-1.73" type="driving"/>
+    </edge>
+    <edge id="-198" from="198.begin" to="198.end" name="Ağabey Sokağı" priority="1" type="driving">
+        <lane id="-198_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.61,-1.62 -0.61,-1.62" type="driving"/>
+    </edge>
+    <edge id="-199" from="199.begin" to="199.end" name="Ruşen Ağa Sokağı" priority="1" type="driving">
+        <lane id="-199_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.47,-0.93 1.47,-0.93" type="driving"/>
+    </edge>
+    <edge id="-2" from="2.begin" to="2.end" name="Taşköprü Caddesi" priority="1" type="driving">
+        <lane id="-2_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.21,-1.23 -1.20,-1.23" type="driving"/>
+    </edge>
+    <edge id="-20" from="20.begin" to="20.end" name="Recaizade Sokağı" priority="1" type="driving">
+        <lane id="-20_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.10,-1.72 -0.10,-1.72" type="driving"/>
+    </edge>
+    <edge id="-200" from="200.begin" to="200.end" name="Cem Sokağı" priority="1" type="driving">
+        <lane id="-200_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.48,1.70 0.47,1.70" type="driving"/>
+    </edge>
+    <edge id="-201" from="201.begin" to="201.end" name="Şehit Cem Nuri Başgül Sokağı" priority="1" type="driving">
+        <lane id="-201_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.01,-1.73 0.02,-1.73" type="driving"/>
+    </edge>
+    <edge id="-202" from="202.begin" to="202.end" name="Şehit Cem Nuri Başgül Sokağı" priority="1" type="driving">
+        <lane id="-202_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.75,0.15 1.75,0.15" type="driving"/>
+    </edge>
+    <edge id="-203" from="203.begin" to="203.end" name="Şifa Sokağı" priority="1" type="driving">
+        <lane id="-203_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.73,0.20 -1.73,0.20" type="driving"/>
+    </edge>
+    <edge id="-204" from="204.begin" to="204.end" name="Yenikapı Çıkmazı Sokağı" priority="1" type="driving">
+        <lane id="-204_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.17,-1.72 -0.16,-1.72" type="driving"/>
+    </edge>
+    <edge id="-205" from="205.begin" to="205.end" name="Street_66939018" priority="1" type="driving">
+        <lane id="-205_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.19,1.76 0.19,1.76" type="driving"/>
+    </edge>
+    <edge id="-206" from="206.begin" to="206.end" name="Acar Sokağı" priority="1" type="driving">
+        <lane id="-206_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.57,-0.76 1.57,-0.76" type="driving"/>
+    </edge>
+    <edge id="-207" from="207.begin" to="207.end" name="Hülya Sokağı" priority="1" type="driving">
+        <lane id="-207_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.41,-1.68 -0.41,-1.68" type="driving"/>
+    </edge>
+    <edge id="-208" from="208.begin" to="208.end" name="Emin Onat Sokağı" priority="1" type="driving">
+        <lane id="-208_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.03,1.77 -0.03,1.77" type="driving"/>
+    </edge>
+    <edge id="-209" from="209.begin" to="209.end" name="Cem Karaca Sokağı" priority="1" type="driving">
+        <lane id="-209_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.74,0.11 -1.74,0.11" type="driving"/>
+    </edge>
+    <edge id="-21" from="21.begin" to="21.end" name="Kasımağa Sokağı" priority="1" type="driving">
+        <lane id="-21_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.74,-0.05 -1.74,-0.05" type="driving"/>
+    </edge>
+    <edge id="-210" from="210.begin" to="210.end" name="Serasker Caddesi" priority="1" type="driving">
+        <lane id="-210_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.37,-1.68 -0.37,-1.68" type="driving"/>
+    </edge>
+    <edge id="-211" from="211.begin" to="211.end" name="Yasa Caddesi" priority="1" type="driving">
+        <lane id="-211_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.24,1.26 -1.24,1.26" type="driving"/>
+    </edge>
+    <edge id="-212" from="212.begin" to="212.end" name="Street_86158848" priority="1" type="driving">
+        <lane id="-212_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.50,-0.94 1.50,-0.94" type="driving"/>
+    </edge>
+    <edge id="-213" from="213.begin" to="213.end" name="Dr. Vasıf Sokağı" priority="1" type="driving">
+        <lane id="-213_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.79,-0.03 1.79,-0.03" type="driving"/>
+    </edge>
+    <edge id="-214" from="214.begin" to="214.end" name="Street_98880689" priority="1" type="driving">
+        <lane id="-214_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.66,-0.58 1.66,-0.58" type="driving"/>
+    </edge>
+    <edge id="-215" from="215.begin" to="215.end" name="Street_98880691" priority="1" type="driving">
+        <lane id="-215_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.17,-1.71 -0.17,-1.71" type="driving"/>
+    </edge>
+    <edge id="-216" from="216.begin" to="216.end" name="Street_98880693" priority="1" type="driving">
+        <lane id="-216_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.73,-0.05 -1.73,-0.05" type="driving"/>
+    </edge>
+    <edge id="-217" from="217.begin" to="217.end" name="Street_98880695" priority="1" type="driving">
+        <lane id="-217_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.44,-1.66 -0.44,-1.66" type="driving"/>
+    </edge>
+    <edge id="-218" from="218.begin" to="218.end" name="Street_98880699" priority="1" type="driving">
+        <lane id="-218_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.73,-0.07 -1.73,-0.07" type="driving"/>
+    </edge>
+    <edge id="-219" from="219.begin" to="219.end" name="Siftah Sokağı" priority="1" type="driving">
+        <lane id="-219_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.44,-0.95 -1.44,-0.95" type="driving"/>
+    </edge>
+    <edge id="-22" from="22.begin" to="22.end" name="Yoğurtçu Şükrü Sokağı" priority="1" type="driving">
+        <lane id="-22_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.03,-1.72 0.04,-1.72" type="driving"/>
+    </edge>
+    <edge id="-220" from="220.begin" to="220.end" name="Söğütlüçayır Sokağı" priority="1" type="driving">
+        <lane id="-220_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.45,-0.94 -1.45,-0.94" type="driving"/>
+    </edge>
+    <edge id="-221" from="221.begin" to="221.end" name="Street_102204336" priority="1" type="driving">
+        <lane id="-221_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.66,1.65 0.66,1.65" type="driving"/>
+    </edge>
+    <edge id="-222" from="222.begin" to="222.end" name="Bayramyeri Sokağı" priority="1" type="driving">
+        <lane id="-222_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.47,-0.91 -1.47,-0.91" type="driving"/>
+    </edge>
+    <edge id="-223" from="223.begin" to="223.end" name="Street_102204339" priority="1" type="driving">
+        <lane id="-223_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.17,-1.28 -1.17,-1.28" type="driving"/>
+    </edge>
+    <edge id="-224" from="224.begin" to="224.end" name="Onan Sokağı" priority="1" type="driving">
+        <lane id="-224_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.28,1.23 1.28,1.23" type="driving"/>
+    </edge>
+    <edge id="-225" from="225.begin" to="225.end" name="Meltem Sokağı" priority="1" type="driving">
+        <lane id="-225_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.52,1.69 -0.52,1.69" type="driving"/>
+    </edge>
+    <edge id="-226" from="226.begin" to="226.end" name="Vahapbey Sokağı" priority="1" type="driving">
+        <lane id="-226_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.63,1.66 0.63,1.66" type="driving"/>
+    </edge>
+    <edge id="-227" from="227.begin" to="227.end" name="Şemsitap Sokağı" priority="1" type="driving">
+        <lane id="-227_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.66,-1.59 -0.65,-1.59" type="driving"/>
+    </edge>
+    <edge id="-228" from="228.begin" to="228.end" name="Karadut Sokağı" priority="1" type="driving">
+        <lane id="-228_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.73,-0.12 -1.73,-0.12" type="driving"/>
+    </edge>
+    <edge id="-229" from="229.begin" to="229.end" name="Tavus Sokağı" priority="1" type="driving">
+        <lane id="-229_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.40,-1.03 1.40,-1.03" type="driving"/>
+    </edge>
+    <edge id="-23" from="23.begin" to="23.end" name="Nüshetefendi Sokağı" priority="1" type="driving">
+        <lane id="-23_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.71,0.39 -1.71,0.39" type="driving"/>
+    </edge>
+    <edge id="-230" from="230.begin" to="230.end" name="Vişne Sokağı" priority="1" type="driving">
+        <lane id="-230_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.72,-0.25 -1.72,-0.25" type="driving"/>
+    </edge>
+    <edge id="-231" from="231.begin" to="231.end" name="Mürver Çiçeği Sokağı" priority="1" type="driving">
+        <lane id="-231_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.37,1.11 -1.37,1.11" type="driving"/>
+    </edge>
+    <edge id="-232" from="232.begin" to="232.end" name="Başar çıkmazı" priority="1" type="driving">
+        <lane id="-232_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.73,-0.22 1.73,-0.22" type="driving"/>
+    </edge>
+    <edge id="-233" from="233.begin" to="233.end" name="Belkız Dilligil Sokağı" priority="1" type="driving">
+        <lane id="-233_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.47,1.70 0.47,1.70" type="driving"/>
+    </edge>
+    <edge id="-234" from="234.begin" to="234.end" name="Canan Sokağı" priority="1" type="driving">
+        <lane id="-234_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.58,0.75 -1.58,0.75" type="driving"/>
+    </edge>
+    <edge id="-235" from="235.begin" to="235.end" name="Ferit Tek Sokağı" priority="1" type="driving">
+        <lane id="-235_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.02,1.77 0.02,1.77" type="driving"/>
+    </edge>
+    <edge id="-236" from="236.begin" to="236.end" name="Hünkar Sokağı" priority="1" type="driving">
+        <lane id="-236_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.35,1.73 0.35,1.73" type="driving"/>
+    </edge>
+    <edge id="-237" from="237.begin" to="237.end" name="Hacı Ahmet Bey Sokağı" priority="1" type="driving">
+        <lane id="-237_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.73,-0.28 1.73,-0.28" type="driving"/>
+    </edge>
+    <edge id="-238" from="238.begin" to="238.end" name="Halil Ethem Sokağı" priority="1" type="driving">
+        <lane id="-238_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.73,1.62 0.73,1.62" type="driving"/>
+    </edge>
+    <edge id="-239" from="239.begin" to="239.end" name="Hüseyin Bey Sokağı" priority="1" type="driving">
+        <lane id="-239_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.42,-1.01 -1.42,-1.01" type="driving"/>
+    </edge>
+    <edge id="-24" from="24.begin" to="24.end" name="Reşitefendi Sokağı" priority="1" type="driving">
+        <lane id="-24_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.05,1.78 -0.05,1.78" type="driving"/>
+    </edge>
+    <edge id="-240" from="240.begin" to="240.end" name="Murat Bey Sokağı" priority="1" type="driving">
+        <lane id="-240_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.64,1.65 0.64,1.65" type="driving"/>
+    </edge>
+    <edge id="-241" from="241.begin" to="241.end" name="Mühürdar Karakolu Sokağı" priority="1" type="driving">
+        <lane id="-241_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.65,-1.60 -0.65,-1.60" type="driving"/>
+    </edge>
+    <edge id="-242" from="242.begin" to="242.end" name="Osman Zeki Üngör Sokağı" priority="1" type="driving">
+        <lane id="-242_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.66,-1.61 0.66,-1.61" type="driving"/>
+    </edge>
+    <edge id="-243" from="243.begin" to="243.end" name="Dr. Esat Işık Caddesi" priority="1" type="driving">
+        <lane id="-243_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.34,-1.70 -0.34,-1.70" type="driving"/>
+    </edge>
+    <edge id="-244" from="244.begin" to="244.end" name="Nezihe Gürbüz Sokağı" priority="1" type="driving">
+        <lane id="-244_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.13,-1.73 0.13,-1.73" type="driving"/>
+    </edge>
+    <edge id="-245" from="245.begin" to="245.end" name="Yaver Bey Sokağı" priority="1" type="driving">
+        <lane id="-245_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.29,1.75 0.29,1.75" type="driving"/>
+    </edge>
+    <edge id="-246" from="246.begin" to="246.end" name="Halis Efendi Sokağı" priority="1" type="driving">
+        <lane id="-246_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.57,-1.63 -0.57,-1.63" type="driving"/>
+    </edge>
+    <edge id="-247" from="247.begin" to="247.end" name="Nevzemin Sokağı" priority="1" type="driving">
+        <lane id="-247_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.30,1.75 0.30,1.75" type="driving"/>
+    </edge>
+    <edge id="-248" from="248.begin" to="248.end" name="Şifa Sokağı" priority="1" type="driving">
+        <lane id="-248_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.73,0.17 -1.73,0.17" type="driving"/>
+    </edge>
+    <edge id="-249" from="249.begin" to="249.end" name="Street_132474420" priority="1" type="driving">
+        <lane id="-249_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.55,1.67 -0.55,1.67" type="driving"/>
+    </edge>
+    <edge id="-25" from="25.begin" to="25.end" name="Beydağı Sokağı" priority="1" type="driving">
+        <lane id="-25_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.01,1.78 -0.01,1.78" type="driving"/>
+    </edge>
+    <edge id="-250" from="250.begin" to="250.end" name="Nihal Sokağı" priority="1" type="driving">
+        <lane id="-250_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.56,0.79 -1.56,0.79" type="driving"/>
+    </edge>
+    <edge id="-251" from="251.begin" to="251.end" name="Ferit Tek Sokağı" priority="1" type="driving">
+        <lane id="-251_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.47,0.97 1.47,0.97" type="driving"/>
+    </edge>
+    <edge id="-252" from="252.begin" to="252.end" name="Kılaptancı Sokağı" priority="1" type="driving">
+        <lane id="-252_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.42,-1.00 1.42,-1.00" type="driving"/>
+    </edge>
+    <edge id="-253" from="253.begin" to="253.end" name="Moda Sahil Yolu" priority="1" type="driving">
+        <lane id="-253_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.19,1.75 -0.19,1.75" type="driving"/>
+    </edge>
+    <edge id="-254" from="254.begin" to="254.end" name="Fazıl Paşa Sokağı" priority="1" type="driving">
+        <lane id="-254_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.43,-1.00 -1.42,-1.00" type="driving"/>
+    </edge>
+    <edge id="-255" from="255.begin" to="255.end" name="Lütfübey Sokağı" priority="1" type="driving">
+        <lane id="-255_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.42,1.04 1.42,1.05" type="driving"/>
+    </edge>
+    <edge id="-256" from="256.begin" to="256.end" name="Nene Hatun Sokağı" priority="1" type="driving">
+        <lane id="-256_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.69,1.62 -0.69,1.62" type="driving"/>
+    </edge>
+    <edge id="-257" from="257.begin" to="257.end" name="Rıza Paşa Sokağı" priority="1" type="driving">
+        <lane id="-257_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.62,1.66 0.62,1.66" type="driving"/>
+    </edge>
+    <edge id="-258" from="258.begin" to="258.end" name="Fırıldak Sokağı" priority="1" type="driving">
+        <lane id="-258_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.44,-0.98 1.44,-0.98" type="driving"/>
+    </edge>
+    <edge id="-259" from="259.begin" to="259.end" name="Gürbüz Türk Sokağı" priority="1" type="driving">
+        <lane id="-259_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.45,-0.96 1.45,-0.96" type="driving"/>
+    </edge>
+    <edge id="-26" from="26.begin" to="26.end" name="Prof. Dr. Haluk Tezonar Sokağı" priority="1" type="driving">
+        <lane id="-26_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.85,1.52 -0.85,1.52" type="driving"/>
+    </edge>
+    <edge id="-260" from="260.begin" to="260.end" name="Street_132474433" priority="1" type="driving">
+        <lane id="-260_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.98,1.47 0.98,1.47" type="driving"/>
+    </edge>
+    <edge id="-261" from="261.begin" to="261.end" name="Ferit Tek Sokağı" priority="1" type="driving">
+        <lane id="-261_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.84,1.55 -0.84,1.55" type="driving"/>
+    </edge>
+    <edge id="-262" from="262.begin" to="262.end" name="Ferit Tek Sokağı" priority="1" type="driving">
+        <lane id="-262_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.10,1.38 1.10,1.38" type="driving"/>
+    </edge>
+    <edge id="-263" from="263.begin" to="263.end" name="Coşkun Sokağı" priority="1" type="driving">
+        <lane id="-263_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.27,-1.23 1.27,-1.23" type="driving"/>
+    </edge>
+    <edge id="-264" from="264.begin" to="264.end" name="Yıldırım Sokağı" priority="1" type="driving">
+        <lane id="-264_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.19,-1.71 0.19,-1.71" type="driving"/>
+    </edge>
+    <edge id="-265" from="265.begin" to="265.end" name="Yakup Bey Sokağı" priority="1" type="driving">
+        <lane id="-265_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.87,-1.51 0.87,-1.51" type="driving"/>
+    </edge>
+    <edge id="-266" from="266.begin" to="266.end" name="Yıldırım Sokağı" priority="1" type="driving">
+        <lane id="-266_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.47,-1.67 0.47,-1.67" type="driving"/>
+    </edge>
+    <edge id="-267" from="267.begin" to="267.end" name="Pembeköşk Sokağı" priority="1" type="driving">
+        <lane id="-267_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.13,-1.29 -1.13,-1.29" type="driving"/>
+    </edge>
+    <edge id="-268" from="268.begin" to="268.end" name="Dereboyu Sokağı" priority="1" type="driving">
+        <lane id="-268_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.97,1.50 0.97,1.50" type="driving"/>
+    </edge>
+    <edge id="-269" from="269.begin" to="269.end" name="Fahrettin Kerim Gökay Caddesi" priority="1" type="driving">
+        <lane id="-269_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.54,-1.63 -0.52,-1.64" type="driving"/>
+    </edge>
+    <edge id="-27" from="27.begin" to="27.end" name="Ressam Vecihi Bereketoğlu Sokağı" priority="1" type="driving">
+        <lane id="-27_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.29,1.73 0.28,1.74" type="driving"/>
+    </edge>
+    <edge id="-270" from="270.begin" to="270.end" name="Fahrettin Kerim Gökay Caddesi" priority="1" type="driving">
+        <lane id="-270_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.50,0.95 1.50,0.96" type="driving"/>
+    </edge>
+    <edge id="-271" from="271.begin" to="271.end" name="Feza Sokağı" priority="1" type="driving">
+        <lane id="-271_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.29,-1.19 1.29,-1.19" type="driving"/>
+    </edge>
+    <edge id="-272" from="272.begin" to="272.end" name="Akçıra Sokağı" priority="1" type="driving">
+        <lane id="-272_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.16,-1.26 -1.16,-1.26" type="driving"/>
+    </edge>
+    <edge id="-273" from="273.begin" to="273.end" name="Fahrettin Kerim Gökay Caddesi" priority="1" type="driving">
+        <lane id="-273_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.52,0.93 1.52,0.93" type="driving"/>
+    </edge>
+    <edge id="-274" from="274.begin" to="274.end" name="Kurbağalıdere Caddesi" priority="1" type="driving">
+        <lane id="-274_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.89,1.52 -0.89,1.52" type="driving"/>
+    </edge>
+    <edge id="-275" from="275.begin" to="275.end" name="Street_139423270" priority="1" type="driving">
+        <lane id="-275_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.16,-1.27 -1.15,-1.27" type="driving"/>
+    </edge>
+    <edge id="-276" from="276.begin" to="276.end" name="Fahrettin Kerim Gökay Caddesi" priority="1" type="driving">
+        <lane id="-276_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.57,1.69 0.57,1.69" type="driving"/>
+    </edge>
+    <edge id="-277" from="277.begin" to="277.end" name="Yeşilköşk Sokağı" priority="1" type="driving">
+        <lane id="-277_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.68,-1.58 -0.68,-1.58" type="driving"/>
+    </edge>
+    <edge id="-278" from="278.begin" to="278.end" name="Fahrettin Kerim Gökay Caddesi" priority="1" type="driving">
+        <lane id="-278_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.41,1.73 0.41,1.73" type="driving"/>
+    </edge>
+    <edge id="-279" from="279.begin" to="279.end" name="Bayraktar Camii Sokağı" priority="1" type="driving">
+        <lane id="-279_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.61,-0.71 1.61,-0.71" type="driving"/>
+    </edge>
+    <edge id="-28" from="28.begin" to="28.end" name="Mehtap Sokağı" priority="1" type="driving">
+        <lane id="-28_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.68,-1.59 -0.68,-1.59" type="driving"/>
+    </edge>
+    <edge id="-280" from="280.begin" to="280.end" name="Street_139424398" priority="1" type="driving">
+        <lane id="-280_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.02,-1.41 1.02,-1.40" type="driving"/>
+    </edge>
+    <edge id="-281" from="281.begin" to="281.end" name="Kurbağalıdere Caddesi" priority="1" type="driving">
+        <lane id="-281_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.92,1.51 -0.92,1.50" type="driving"/>
+    </edge>
+    <edge id="-282" from="282.begin" to="282.end" name="Street_139424405" priority="1" type="driving">
+        <lane id="-282_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.48,0.99 1.48,0.99" type="driving"/>
+    </edge>
+    <edge id="-283" from="283.begin" to="283.end" name="Street_139424407" priority="1" type="driving">
+        <lane id="-283_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.91,-1.46 -0.91,-1.46" type="driving"/>
+    </edge>
+    <edge id="-284" from="284.begin" to="284.end" name="Pazar Yolu Sokağı" priority="1" type="driving">
+        <lane id="-284_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.93,-1.46 0.94,-1.46" type="driving"/>
+    </edge>
+    <edge id="-285" from="285.begin" to="285.end" name="Street_139424411" priority="1" type="driving">
+        <lane id="-285_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.72,1.62 -0.72,1.62" type="driving"/>
+    </edge>
+    <edge id="-286" from="286.begin" to="286.end" name="Street_139424416" priority="1" type="driving">
+        <lane id="-286_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.10,-1.34 1.10,-1.34" type="driving"/>
+    </edge>
+    <edge id="-287" from="287.begin" to="287.end" name="2. Hatboyu Sokağı" priority="1" type="driving">
+        <lane id="-287_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.23,1.25 -1.23,1.25" type="driving"/>
+    </edge>
+    <edge id="-288" from="288.begin" to="288.end" name="Pembeköşk Sokağı" priority="1" type="driving">
+        <lane id="-288_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.73,-0.38 1.73,-0.38" type="driving"/>
+    </edge>
+    <edge id="-289" from="289.begin" to="289.end" name="Babacan Sokağı" priority="1" type="driving">
+        <lane id="-289_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.07,-1.38 1.07,-1.38" type="driving"/>
+    </edge>
+    <edge id="-29" from="29.begin" to="29.end" name="Gelengül Sokağı" priority="1" type="driving">
+        <lane id="-29_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.63,0.53 -1.63,0.52" type="driving"/>
+    </edge>
+    <edge id="-290" from="290.begin" to="290.end" name="Açıkgöz Sokağı" priority="1" type="driving">
+        <lane id="-290_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.98,-1.40 -0.98,-1.41" type="driving"/>
+    </edge>
+    <edge id="-291" from="291.begin" to="291.end" name="Halilbey Sokağı" priority="1" type="driving">
+        <lane id="-291_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.52,-0.79 -1.52,-0.79" type="driving"/>
+    </edge>
+    <edge id="-292" from="292.begin" to="292.end" name="Çayıriçi Camii Sokağı" priority="1" type="driving">
+        <lane id="-292_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.53,-0.78 -1.53,-0.78" type="driving"/>
+    </edge>
+    <edge id="-293" from="293.begin" to="293.end" name="Şevketbey Sokağı" priority="1" type="driving">
+        <lane id="-293_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.36,-1.11 1.36,-1.11" type="driving"/>
+    </edge>
+    <edge id="-294" from="294.begin" to="294.end" name="Kavuklu Hamdi Sokağı" priority="1" type="driving">
+        <lane id="-294_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.65,-0.51 -1.65,-0.51" type="driving"/>
+    </edge>
+    <edge id="-295" from="295.begin" to="295.end" name="Hamdibey Sokağı" priority="1" type="driving">
+        <lane id="-295_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.49,0.89 -1.49,0.89" type="driving"/>
+    </edge>
+    <edge id="-296" from="296.begin" to="296.end" name="Hüseyin Paşa Çıkmazı" priority="1" type="driving">
+        <lane id="-296_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.01,-1.43 1.01,-1.43" type="driving"/>
+    </edge>
+    <edge id="-297" from="297.begin" to="297.end" name="Sönmez Sokağı" priority="1" type="driving">
+        <lane id="-297_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.96,1.47 -0.96,1.47" type="driving"/>
+    </edge>
+    <edge id="-298" from="298.begin" to="298.end" name="Hilmibey Sokağı" priority="1" type="driving">
+        <lane id="-298_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.78,1.60 0.78,1.60" type="driving"/>
+    </edge>
+    <edge id="-299" from="299.begin" to="299.end" name="Hakkıbey Sokağı" priority="1" type="driving">
+        <lane id="-299_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.08,-1.37 1.08,-1.37" type="driving"/>
+    </edge>
+    <edge id="-3" from="3.begin" to="3.end" name="Taşköprü Caddesi" priority="1" type="driving">
+        <lane id="-3_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.01,1.46 1.01,1.46" type="driving"/>
+    </edge>
+    <edge id="-30" from="30.begin" to="30.end" name="Kadirağa Sokağı" priority="1" type="driving">
+        <lane id="-30_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.51,1.69 0.51,1.69" type="driving"/>
+    </edge>
+    <edge id="-300" from="300.begin" to="300.end" name="Muratpaşa Caddesi" priority="1" type="driving">
+        <lane id="-300_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.10,-1.72 -0.09,-1.72" type="driving"/>
+    </edge>
+    <edge id="-301" from="301.begin" to="301.end" name="Recep Peker Caddesi" priority="1" type="driving">
+        <lane id="-301_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.94,1.51 0.93,1.51" type="driving"/>
+    </edge>
+    <edge id="-302" from="302.begin" to="302.end" name="Gaziosmanpaşa Sokağı" priority="1" type="driving">
+        <lane id="-302_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.16,1.77 -0.16,1.77" type="driving"/>
+    </edge>
+    <edge id="-303" from="303.begin" to="303.end" name="Street_139879931" priority="1" type="driving">
+        <lane id="-303_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.08,1.38 -1.09,1.38" type="driving"/>
+    </edge>
+    <edge id="-304" from="304.begin" to="304.end" name="Recep Peker Caddesi" priority="1" type="driving">
+        <lane id="-304_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.06,1.77 -0.06,1.77" type="driving"/>
+    </edge>
+    <edge id="-305" from="305.begin" to="305.end" name="Kuşdili Caddesi" priority="1" type="driving">
+        <lane id="-305_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.70,0.37 -1.70,0.37" type="driving"/>
+    </edge>
+    <edge id="-306" from="306.begin" to="306.end" name="Yoğurtçu Parkı Caddesi" priority="1" type="driving">
+        <lane id="-306_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.95,-1.45 0.95,-1.45" type="driving"/>
+    </edge>
+    <edge id="-307" from="307.begin" to="307.end" name="Özalp Sokağı" priority="1" type="driving">
+        <lane id="-307_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.35,-1.07 -1.34,-1.08" type="driving"/>
+    </edge>
+    <edge id="-308" from="308.begin" to="308.end" name="Cumhur Sokağı" priority="1" type="driving">
+        <lane id="-308_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.61,-0.62 -1.61,-0.62" type="driving"/>
+    </edge>
+    <edge id="-309" from="309.begin" to="309.end" name="Cemre Sokağı" priority="1" type="driving">
+        <lane id="-309_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.22,-1.21 -1.22,-1.21" type="driving"/>
+    </edge>
+    <edge id="-31" from="31.begin" to="31.end" name="Sarıgül Sokağı" priority="1" type="driving">
+        <lane id="-31_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.47,-1.67 -0.46,-1.67" type="driving"/>
+    </edge>
+    <edge id="-310" from="310.begin" to="310.end" name="Saffet Rona Sokağı" priority="1" type="driving">
+        <lane id="-310_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.48,-0.96 1.48,-0.96" type="driving"/>
+    </edge>
+    <edge id="-311" from="311.begin" to="311.end" name="Nişancı Sokağı" priority="1" type="driving">
+        <lane id="-311_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.51,-1.66 0.52,-1.66" type="driving"/>
+    </edge>
+    <edge id="-312" from="312.begin" to="312.end" name="Hasan Amir Sokağı" priority="1" type="driving">
+        <lane id="-312_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.61,-1.63 0.62,-1.63" type="driving"/>
+    </edge>
+    <edge id="-313" from="313.begin" to="313.end" name="Ömer Efendi Sokağı" priority="1" type="driving">
+        <lane id="-313_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.87,1.55 0.87,1.55" type="driving"/>
+    </edge>
+    <edge id="-314" from="314.begin" to="314.end" name="Bayrak Çıkmazı" priority="1" type="driving">
+        <lane id="-314_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.88,-1.51 0.88,-1.51" type="driving"/>
+    </edge>
+    <edge id="-315" from="315.begin" to="315.end" name="Yargıç Turhan Demirel Sokağı" priority="1" type="driving">
+        <lane id="-315_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.70,-0.48 1.70,-0.48" type="driving"/>
+    </edge>
+    <edge id="-316" from="316.begin" to="316.end" name="Street_143296564" priority="1" type="driving">
+        <lane id="-316_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.31,-1.19 1.31,-1.19" type="driving"/>
+    </edge>
+    <edge id="-317" from="317.begin" to="317.end" name="Street_143656513" priority="1" type="driving">
+        <lane id="-317_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.38,-1.67 -0.38,-1.67" type="driving"/>
+    </edge>
+    <edge id="-318" from="318.begin" to="318.end" name="Rüzgar Sokağı" priority="1" type="driving">
+        <lane id="-318_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.35,1.11 -1.35,1.11" type="driving"/>
+    </edge>
+    <edge id="-32" from="32.begin" to="32.end" name="Topağaç Sokağı" priority="1" type="driving">
+        <lane id="-32_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.85,1.56 0.84,1.56" type="driving"/>
+    </edge>
+    <edge id="-33" from="33.begin" to="33.end" name="Vezir Sokağı" priority="1" type="driving">
+        <lane id="-33_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.25,1.19 -1.25,1.18" type="driving"/>
+    </edge>
+    <edge id="-34" from="34.begin" to="34.end" name="Oramiral Kemal Kayacan Sokağı" priority="1" type="driving">
+        <lane id="-34_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.81,1.58 0.81,1.58" type="driving"/>
+    </edge>
+    <edge id="-35" from="35.begin" to="35.end" name="Ihlamur Sokağı" priority="1" type="driving">
+        <lane id="-35_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.02,1.46 1.01,1.47" type="driving"/>
+    </edge>
+    <edge id="-36" from="36.begin" to="36.end" name="Yeşilçeşme Sokağı" priority="1" type="driving">
+        <lane id="-36_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.68,-1.59 -0.68,-1.59" type="driving"/>
+    </edge>
+    <edge id="-37" from="37.begin" to="37.end" name="Cavitpaşa sokağı" priority="1" type="driving">
+        <lane id="-37_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.67,-0.35 -1.67,-0.35" type="driving"/>
+    </edge>
+    <edge id="-38" from="38.begin" to="38.end" name="Şair Ahmet Kemal Sokağı" priority="1" type="driving">
+        <lane id="-38_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.03,1.39 -1.04,1.39" type="driving"/>
+    </edge>
+    <edge id="-39" from="39.begin" to="39.end" name="Prof. Cevat Memduh Altar Sokağı" priority="1" type="driving">
+        <lane id="-39_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.08,1.42 1.08,1.42" type="driving"/>
+    </edge>
+    <edge id="-4" from="4.begin" to="4.end" name="Taşköprü Caddesi" priority="1" type="driving">
+        <lane id="-4_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.22,1.29 1.22,1.30" type="driving"/>
+    </edge>
+    <edge id="-40" from="40.begin" to="40.end" name="Cengizhan Sokağı" priority="1" type="driving">
+        <lane id="-40_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.16,-1.33 1.16,-1.33" type="driving"/>
+    </edge>
+    <edge id="-41" from="41.begin" to="41.end" name="Kemal Sunal Sokağı" priority="1" type="driving">
+        <lane id="-41_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.74,-1.56 -0.74,-1.57" type="driving"/>
+    </edge>
+    <edge id="-42" from="42.begin" to="42.end" name="Kavaklı Sokağı" priority="1" type="driving">
+        <lane id="-42_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.65,-0.67 1.65,-0.66" type="driving"/>
+    </edge>
+    <edge id="-43" from="43.begin" to="43.end" name="Mahur Sokağı" priority="1" type="driving">
+        <lane id="-43_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.14,-1.35 1.14,-1.35" type="driving"/>
+    </edge>
+    <edge id="-44" from="44.begin" to="44.end" name="18 Mart Sokağı" priority="1" type="driving">
+        <lane id="-44_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.30,-1.19 1.31,-1.19" type="driving"/>
+    </edge>
+    <edge id="-45" from="45.begin" to="45.end" name="Bozkır Sokağı" priority="1" type="driving">
+        <lane id="-45_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.81,1.58 0.81,1.58" type="driving"/>
+    </edge>
+    <edge id="-46" from="46.begin" to="46.end" name="Tepegöz Sokağı" priority="1" type="driving">
+        <lane id="-46_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.24,1.21 -1.24,1.21" type="driving"/>
+    </edge>
+    <edge id="-47" from="47.begin" to="47.end" name="Burçak Sokağı" priority="1" type="driving">
+        <lane id="-47_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.31,-1.19 1.31,-1.19" type="driving"/>
+    </edge>
+    <edge id="-48" from="48.begin" to="48.end" name="Tamiş Sokağı" priority="1" type="driving">
+        <lane id="-48_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.77,-1.54 -0.77,-1.54" type="driving"/>
+    </edge>
+    <edge id="-49" from="49.begin" to="49.end" name="Ayazma Sokağı" priority="1" type="driving">
+        <lane id="-49_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.80,-1.52 -0.80,-1.52" type="driving"/>
+    </edge>
+    <edge id="-5" from="5.begin" to="5.end" name="Taşköprü Caddesi" priority="1" type="driving">
+        <lane id="-5_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.01,-1.39 -1.01,-1.39" type="driving"/>
+    </edge>
+    <edge id="-50" from="50.begin" to="50.end" name="Hasan Ali Yücel Sokağı" priority="1" type="driving">
+        <lane id="-50_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.25,1.20 -1.25,1.20" type="driving"/>
+    </edge>
+    <edge id="-51" from="51.begin" to="51.end" name="Kısmet Sokağı" priority="1" type="driving">
+        <lane id="-51_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.97,-1.43 -0.97,-1.43" type="driving"/>
+    </edge>
+    <edge id="-52" from="52.begin" to="52.end" name="Papatyalı Sokağı" priority="1" type="driving">
+        <lane id="-52_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.24,1.20 -1.25,1.20" type="driving"/>
+    </edge>
+    <edge id="-53" from="53.begin" to="53.end" name="Gülistan Sokağı" priority="1" type="driving">
+        <lane id="-53_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.48,-0.99 1.48,-0.99" type="driving"/>
+    </edge>
+    <edge id="-54" from="54.begin" to="54.end" name="Zümrüt Çıkmazı" priority="1" type="driving">
+        <lane id="-54_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.55,0.74 -1.55,0.74" type="driving"/>
+    </edge>
+    <edge id="-55" from="55.begin" to="55.end" name="Pavlonya Sokağı" priority="1" type="driving">
+        <lane id="-55_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.74,-0.23 1.74,-0.23" type="driving"/>
+    </edge>
+    <edge id="-56" from="56.begin" to="56.end" name="Yasa Caddesi" priority="1" type="driving">
+        <lane id="-56_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.70,1.63 0.70,1.63" type="driving"/>
+    </edge>
+    <edge id="-57" from="57.begin" to="57.end" name="Muvakkıthane Caddesi" priority="1" type="driving">
+        <lane id="-57_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.72,1.62 0.72,1.62" type="driving"/>
+    </edge>
+    <edge id="-58" from="58.begin" to="58.end" name="Mühürdar Caddesi" priority="1" type="driving">
+        <lane id="-58_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.86,-1.50 0.86,-1.50" type="driving"/>
+    </edge>
+    <edge id="-59" from="59.begin" to="59.end" name="Neşet Ömer Sokağı" priority="1" type="driving">
+        <lane id="-59_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.24,1.26 -1.24,1.26" type="driving"/>
+    </edge>
+    <edge id="-6" from="6.begin" to="6.end" name="Bağdat Caddesi" priority="1" type="driving">
+        <lane id="-6_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.46,-0.92 -1.46,-0.92" type="driving"/>
+    </edge>
+    <edge id="-60" from="60.begin" to="60.end" name="Söğütlüçeşme Caddesi" priority="1" type="driving">
+        <lane id="-60_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.68,1.64 0.67,1.64" type="driving"/>
+    </edge>
+    <edge id="-61" from="61.begin" to="61.end" name="Sarraf Ali Sokağı" priority="1" type="driving">
+        <lane id="-61_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.64,1.65 0.63,1.66" type="driving"/>
+    </edge>
+    <edge id="-62" from="62.begin" to="62.end" name="Üzerlik Sokağı" priority="1" type="driving">
+        <lane id="-62_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.73,-0.19 -1.73,-0.19" type="driving"/>
+    </edge>
+    <edge id="-63" from="63.begin" to="63.end" name="Yeni Fikir Sokağı" priority="1" type="driving">
+        <lane id="-63_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.44,-1.68 -0.44,-1.68" type="driving"/>
+    </edge>
+    <edge id="-64" from="64.begin" to="64.end" name="Tuğlacı Eminbey Sokağı" priority="1" type="driving">
+        <lane id="-64_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.65,-1.60 -0.65,-1.60" type="driving"/>
+    </edge>
+    <edge id="-65" from="65.begin" to="65.end" name="Serasker Caddesi" priority="1" type="driving">
+        <lane id="-65_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.68,-1.59 -0.68,-1.59" type="driving"/>
+    </edge>
+    <edge id="-66" from="66.begin" to="66.end" name="Leylak Sokağı" priority="1" type="driving">
+        <lane id="-66_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.54,-1.64 0.54,-1.64" type="driving"/>
+    </edge>
+    <edge id="-67" from="67.begin" to="67.end" name="Bekçi Sokağı" priority="1" type="driving">
+        <lane id="-67_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.71,0.39 -1.71,0.39" type="driving"/>
+    </edge>
+    <edge id="-68" from="68.begin" to="68.end" name="Osmancık Sokağı" priority="1" type="driving">
+        <lane id="-68_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.72,0.29 -1.72,0.29" type="driving"/>
+    </edge>
+    <edge id="-69" from="69.begin" to="69.end" name="Yağlıkçı İsmail Sokağı" priority="1" type="driving">
+        <lane id="-69_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.40,1.07 -1.40,1.07" type="driving"/>
+    </edge>
+    <edge id="-7" from="7.begin" to="7.end" name="Rıhtım Caddesi" priority="1" type="driving">
+        <lane id="-7_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.97,-1.43 0.97,-1.43" type="driving"/>
+    </edge>
+    <edge id="-70" from="70.begin" to="70.end" name="Dumlupınar Sokağı" priority="1" type="driving">
+        <lane id="-70_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.74,-1.56 -0.74,-1.56" type="driving"/>
+    </edge>
+    <edge id="-71" from="71.begin" to="71.end" name="Tellalzade Sokağı" priority="1" type="driving">
+        <lane id="-71_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.25,1.76 0.24,1.76" type="driving"/>
+    </edge>
+    <edge id="-72" from="72.begin" to="72.end" name="Sakız Sokağı" priority="1" type="driving">
+        <lane id="-72_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.52,0.88 -1.52,0.88" type="driving"/>
+    </edge>
+    <edge id="-73" from="73.begin" to="73.end" name="Kazasker Sokağı" priority="1" type="driving">
+        <lane id="-73_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.62,-0.64 1.63,-0.64" type="driving"/>
+    </edge>
+    <edge id="-74" from="74.begin" to="74.end" name="Sakız Gülü Sokağı" priority="1" type="driving">
+        <lane id="-74_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.38,1.73 0.38,1.73" type="driving"/>
+    </edge>
+    <edge id="-75" from="75.begin" to="75.end" name="Arayıcıbaşı Sokağı" priority="1" type="driving">
+        <lane id="-75_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.56,0.80 -1.56,0.80" type="driving"/>
+    </edge>
+    <edge id="-76" from="76.begin" to="76.end" name="Nail Bey Sokağı" priority="1" type="driving">
+        <lane id="-76_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.21,-1.71 -0.21,-1.71" type="driving"/>
+    </edge>
+    <edge id="-77" from="77.begin" to="77.end" name="Bademaltı Sokağı" priority="1" type="driving">
+        <lane id="-77_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.58,-1.63 -0.57,-1.63" type="driving"/>
+    </edge>
+    <edge id="-78" from="78.begin" to="78.end" name="Şair Latifi Sokağı" priority="1" type="driving">
+        <lane id="-78_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.38,1.73 0.38,1.73" type="driving"/>
+    </edge>
+    <edge id="-79" from="79.begin" to="79.end" name="Mühürdarbağı Sokağı" priority="1" type="driving">
+        <lane id="-79_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.29,-1.16 1.29,-1.16" type="driving"/>
+    </edge>
+    <edge id="-8" from="8.begin" to="8.end" name="Hızırbey Caddesi" priority="1" type="driving">
+        <lane id="-8_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.67,1.65 0.67,1.66" type="driving"/>
+    </edge>
+    <edge id="-80" from="80.begin" to="80.end" name="Sivastopol Sokağı" priority="1" type="driving">
+        <lane id="-80_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.46,-0.95 1.46,-0.95" type="driving"/>
+    </edge>
+    <edge id="-81" from="81.begin" to="81.end" name="Dr. Şakir Paşa Sokağı" priority="1" type="driving">
+        <lane id="-81_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.69,0.48 1.69,0.48" type="driving"/>
+    </edge>
+    <edge id="-82" from="82.begin" to="82.end" name="Hacı Hüsam Sokağı" priority="1" type="driving">
+        <lane id="-82_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.97,-1.43 -0.97,-1.43" type="driving"/>
+    </edge>
+    <edge id="-83" from="83.begin" to="83.end" name="Güner Sokağı" priority="1" type="driving">
+        <lane id="-83_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.66,-1.60 -0.66,-1.60" type="driving"/>
+    </edge>
+    <edge id="-84" from="84.begin" to="84.end" name="Zuhal Sokağı" priority="1" type="driving">
+        <lane id="-84_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.11,-1.72 -0.11,-1.72" type="driving"/>
+    </edge>
+    <edge id="-85" from="85.begin" to="85.end" name="Dr. Şakir Paşa Sokak" priority="1" type="driving">
+        <lane id="-85_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.49,-1.66 -0.49,-1.66" type="driving"/>
+    </edge>
+    <edge id="-86" from="86.begin" to="86.end" name="Dalga Sokağı" priority="1" type="driving">
+        <lane id="-86_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.44,1.00 -1.45,1.00" type="driving"/>
+    </edge>
+    <edge id="-87" from="87.begin" to="87.end" name="Ressam Şeref Akdik Sokağı" priority="1" type="driving">
+        <lane id="-87_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.65,1.65 0.65,1.65" type="driving"/>
+    </edge>
+    <edge id="-88" from="88.begin" to="88.end" name="Kadife Sokağı" priority="1" type="driving">
+        <lane id="-88_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.55,0.83 -1.55,0.83" type="driving"/>
+    </edge>
+    <edge id="-89" from="89.begin" to="89.end" name="Dr. İhsan Ünlüer Sokağı" priority="1" type="driving">
+        <lane id="-89_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.65,-1.60 -0.65,-1.60" type="driving"/>
+    </edge>
+    <edge id="-9" from="9.begin" to="9.end" name="Street_32485824" priority="1" type="driving">
+        <lane id="-9_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="0.61,-1.62 0.61,-1.62" type="driving"/>
+    </edge>
+    <edge id="-90" from="90.begin" to="90.end" name="Hacı Şükrü Sokağı" priority="1" type="driving">
+        <lane id="-90_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.57,-0.76 1.57,-0.76" type="driving"/>
+    </edge>
+    <edge id="-91" from="91.begin" to="91.end" name="Miralay Nazım Sokağı" priority="1" type="driving">
+        <lane id="-91_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.65,-0.58 1.65,-0.57" type="driving"/>
+    </edge>
+    <edge id="-92" from="92.begin" to="92.end" name="Hacı Mehmet Sokağı" priority="1" type="driving">
+        <lane id="-92_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.38,-1.11 1.38,-1.11" type="driving"/>
+    </edge>
+    <edge id="-93" from="93.begin" to="93.end" name="Rıhtım Caddesi" priority="1" type="driving">
+        <lane id="-93_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.49,1.70 -0.50,1.70" type="driving"/>
+    </edge>
+    <edge id="-94" from="94.begin" to="94.end" name="Bağdat Caddesi" priority="1" type="driving">
+        <lane id="-94_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.42,-0.98 -1.42,-0.98" type="driving"/>
+    </edge>
+    <edge id="-95" from="95.begin" to="95.end" name="Taşköprü Caddesi" priority="1" type="driving">
+        <lane id="-95_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.32,1.19 1.32,1.19" type="driving"/>
+    </edge>
+    <edge id="-96" from="96.begin" to="96.end" name="Bağdat Caddesi" priority="1" type="driving">
+        <lane id="-96_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.48,-0.88 -1.48,-0.88" type="driving"/>
+    </edge>
+    <edge id="-97" from="97.begin" to="97.end" name="Bağdat Caddesi" priority="1" type="driving">
+        <lane id="-97_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.46,1.02 1.46,1.02" type="driving"/>
+    </edge>
+    <edge id="-98" from="98.begin" to="98.end" name="Bağdat Caddesi" priority="1" type="driving">
+        <lane id="-98_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.56,0.86 1.55,0.86" type="driving"/>
+    </edge>
+    <edge id="-99" from="99.begin" to="99.end" name="Hızırbey Caddesi" priority="1" type="driving">
+        <lane id="-99_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.00,1.48 1.00,1.48" type="driving"/>
+    </edge>
+
+    <junction id="1.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -0.66,-3.41"/>
+    <junction id="1.end" type="dead_end" x="0.02" y="0.02" incLanes="-1_0" intLanes="" shape="-0.66,-3.41 0.02,0.02"/>
+    <junction id="10.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -1.73,3.06"/>
+    <junction id="10.end" type="dead_end" x="0.02" y="0.03" incLanes="-10_0" intLanes="" shape="-1.73,3.06 0.02,0.03"/>
+    <junction id="101.begin" type="dead_end" x="0.01" y="0.00" incLanes="" intLanes="" shape="0.01,0.00 -0.97,3.36"/>
+    <junction id="101.end" type="dead_end" x="0.01" y="0.00" incLanes="-101_0" intLanes="" shape="-0.98,3.36 0.01,0.00"/>
+    <junction id="102.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 2.03,2.87"/>
+    <junction id="102.end" type="dead_end" x="0.01" y="0.01" incLanes="-102_0" intLanes="" shape="2.03,2.87 0.01,0.01"/>
+    <junction id="103.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 0.39,-3.48"/>
+    <junction id="103.end" type="dead_end" x="0.02" y="0.00" incLanes="-103_0" intLanes="" shape="0.39,-3.48 0.02,0.00"/>
+    <junction id="104.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 2.78,-2.15"/>
+    <junction id="104.end" type="dead_end" x="0.02" y="0.01" incLanes="-104_0" intLanes="" shape="2.78,-2.15 0.02,0.01"/>
+    <junction id="105.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -0.83,-3.39"/>
+    <junction id="105.end" type="dead_end" x="0.02" y="0.01" incLanes="-105_0" intLanes="" shape="-0.83,-3.39 0.02,0.01"/>
+    <junction id="106.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -2.78,-2.10"/>
+    <junction id="106.end" type="dead_end" x="0.02" y="0.01" incLanes="-106_0" intLanes="" shape="-2.78,-2.10 0.02,0.01"/>
+    <junction id="107.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 3.06,-1.73"/>
+    <junction id="107.end" type="dead_end" x="0.03" y="0.01" incLanes="-107_0" intLanes="" shape="3.07,-1.72 0.03,0.01"/>
+    <junction id="108.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 3.34,-1.09"/>
+    <junction id="108.end" type="dead_end" x="0.02" y="0.02" incLanes="-108_0" intLanes="" shape="3.34,-1.09 0.02,0.02"/>
+    <junction id="109.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 2.43,2.55"/>
+    <junction id="109.end" type="dead_end" x="0.02" y="0.01" incLanes="-109_0" intLanes="" shape="2.43,2.55 0.02,0.01"/>
+    <junction id="11.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -1.16,3.32"/>
+    <junction id="11.end" type="dead_end" x="0.02" y="0.03" incLanes="-11_0" intLanes="" shape="-1.16,3.32 0.02,0.03"/>
+    <junction id="110.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -1.24,3.28"/>
+    <junction id="110.end" type="dead_end" x="0.02" y="0.01" incLanes="-110_0" intLanes="" shape="-1.24,3.28 0.02,0.01"/>
+    <junction id="111.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 1.33,-3.23"/>
+    <junction id="111.end" type="dead_end" x="0.02" y="0.01" incLanes="-111_0" intLanes="" shape="1.33,-3.23 0.02,0.01"/>
+    <junction id="112.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 2.84,-2.05"/>
+    <junction id="112.end" type="dead_end" x="0.02" y="0.02" incLanes="-112_0" intLanes="" shape="2.84,-2.05 0.02,0.02"/>
+    <junction id="113.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 2.91,1.99"/>
+    <junction id="113.end" type="dead_end" x="0.02" y="0.02" incLanes="-113_0" intLanes="" shape="2.91,1.99 0.02,0.02"/>
+    <junction id="114.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -1.99,2.88"/>
+    <junction id="114.end" type="dead_end" x="0.02" y="0.02" incLanes="-114_0" intLanes="" shape="-1.99,2.88 0.02,0.02"/>
+    <junction id="115.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.41,0.75"/>
+    <junction id="115.end" type="dead_end" x="0.01" y="0.02" incLanes="-115_0" intLanes="" shape="-3.41,0.75 0.01,0.02"/>
+    <junction id="116.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -2.74,2.17"/>
+    <junction id="116.end" type="dead_end" x="0.02" y="0.02" incLanes="-116_0" intLanes="" shape="-2.74,2.17 0.02,0.02"/>
+    <junction id="117.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -1.74,-3.01"/>
+    <junction id="117.end" type="dead_end" x="0.02" y="0.02" incLanes="-117_0" intLanes="" shape="-1.74,-3.01 0.02,0.02"/>
+    <junction id="118.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -2.02,-2.82"/>
+    <junction id="118.end" type="dead_end" x="0.02" y="0.02" incLanes="-118_0" intLanes="" shape="-2.02,-2.83 0.02,0.02"/>
+    <junction id="119.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -2.63,2.30"/>
+    <junction id="119.end" type="dead_end" x="0.02" y="0.01" incLanes="-119_0" intLanes="" shape="-2.63,2.29 0.02,0.01"/>
+    <junction id="12.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -1.52,3.18"/>
+    <junction id="12.end" type="dead_end" x="0.02" y="0.03" incLanes="-12_0" intLanes="" shape="-1.52,3.17 0.02,0.03"/>
+    <junction id="120.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -0.70,-3.42"/>
+    <junction id="120.end" type="dead_end" x="0.02" y="0.01" incLanes="-120_0" intLanes="" shape="-0.70,-3.42 0.02,0.01"/>
+    <junction id="121.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 3.45,-0.70"/>
+    <junction id="121.end" type="dead_end" x="0.02" y="0.01" incLanes="-121_0" intLanes="" shape="3.45,-0.70 0.02,0.01"/>
+    <junction id="122.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 0.30,3.50"/>
+    <junction id="122.end" type="dead_end" x="0.02" y="0.01" incLanes="-122_0" intLanes="" shape="0.29,3.50 0.02,0.01"/>
+    <junction id="123.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -3.24,1.29"/>
+    <junction id="123.end" type="dead_end" x="0.02" y="0.01" incLanes="-123_0" intLanes="" shape="-3.24,1.29 0.02,0.01"/>
+    <junction id="124.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 -0.97,3.36"/>
+    <junction id="124.end" type="dead_end" x="0.02" y="0.00" incLanes="-124_0" intLanes="" shape="-0.98,3.36 0.02,0.00"/>
+    <junction id="125.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 -2.78,-2.10"/>
+    <junction id="125.end" type="dead_end" x="0.02" y="0.00" incLanes="-125_0" intLanes="" shape="-2.78,-2.10 0.02,0.00"/>
+    <junction id="126.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 -1.80,2.99"/>
+    <junction id="126.end" type="dead_end" x="0.02" y="0.00" incLanes="-126_0" intLanes="" shape="-1.80,2.99 0.02,0.00"/>
+    <junction id="127.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 3.45,0.71"/>
+    <junction id="127.end" type="dead_end" x="0.02" y="0.00" incLanes="-127_0" intLanes="" shape="3.45,0.71 0.02,0.00"/>
+    <junction id="128.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 -0.15,-3.49"/>
+    <junction id="128.end" type="dead_end" x="0.02" y="0.00" incLanes="-128_0" intLanes="" shape="-0.15,-3.49 0.02,0.00"/>
+    <junction id="129.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 2.42,-2.54"/>
+    <junction id="129.end" type="dead_end" x="0.02" y="0.00" incLanes="-129_0" intLanes="" shape="2.43,-2.54 0.02,0.00"/>
+    <junction id="13.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 2.77,-2.13"/>
+    <junction id="13.end" type="dead_end" x="0.02" y="0.03" incLanes="-13_0" intLanes="" shape="2.77,-2.13 0.02,0.03"/>
+    <junction id="130.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -1.36,-3.21"/>
+    <junction id="130.end" type="dead_end" x="0.02" y="0.01" incLanes="-130_0" intLanes="" shape="-1.35,-3.21 0.02,0.01"/>
+    <junction id="131.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 1.71,3.07"/>
+    <junction id="131.end" type="dead_end" x="0.02" y="0.00" incLanes="-131_0" intLanes="" shape="1.70,3.07 0.02,0.00"/>
+    <junction id="132.begin" type="dead_end" x="0.02" y="0.00" incLanes="" intLanes="" shape="0.02,0.00 2.58,-2.38"/>
+    <junction id="132.end" type="dead_end" x="0.02" y="0.01" incLanes="-132_0" intLanes="" shape="2.59,-2.38 0.02,0.01"/>
+    <junction id="133.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -1.11,-3.30"/>
+    <junction id="133.end" type="dead_end" x="0.03" y="0.01" incLanes="-133_0" intLanes="" shape="-1.11,-3.30 0.03,0.01"/>
+    <junction id="134.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -0.64,-3.43"/>
+    <junction id="134.end" type="dead_end" x="0.03" y="0.01" incLanes="-134_0" intLanes="" shape="-0.64,-3.43 0.03,0.01"/>
+    <junction id="135.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 1.33,-3.23"/>
+    <junction id="135.end" type="dead_end" x="0.02" y="0.01" incLanes="-135_0" intLanes="" shape="1.33,-3.23 0.02,0.01"/>
+    <junction id="136.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -1.23,3.28"/>
+    <junction id="136.end" type="dead_end" x="0.02" y="0.01" incLanes="-136_0" intLanes="" shape="-1.23,3.28 0.02,0.01"/>
+    <junction id="137.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -0.96,3.37"/>
+    <junction id="137.end" type="dead_end" x="0.02" y="0.01" incLanes="-137_0" intLanes="" shape="-0.96,3.37 0.02,0.01"/>
+    <junction id="138.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -1.98,-2.86"/>
+    <junction id="138.end" type="dead_end" x="0.03" y="0.01" incLanes="-138_0" intLanes="" shape="-1.98,-2.86 0.03,0.01"/>
+    <junction id="139.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -0.92,3.38"/>
+    <junction id="139.end" type="dead_end" x="0.03" y="0.01" incLanes="-139_0" intLanes="" shape="-0.92,3.38 0.03,0.01"/>
+    <junction id="14.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 2.59,2.39"/>
+    <junction id="14.end" type="dead_end" x="0.01" y="0.03" incLanes="-14_0" intLanes="" shape="2.59,2.39 0.01,0.03"/>
+    <junction id="140.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -1.70,-3.04"/>
+    <junction id="140.end" type="dead_end" x="0.03" y="0.01" incLanes="-140_0" intLanes="" shape="-1.69,-3.04 0.03,0.01"/>
+    <junction id="141.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 2.89,-2.00"/>
+    <junction id="141.end" type="dead_end" x="0.02" y="0.01" incLanes="-141_0" intLanes="" shape="2.89,-2.00 0.02,0.01"/>
+    <junction id="142.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -3.45,0.42"/>
+    <junction id="142.end" type="dead_end" x="0.03" y="0.00" incLanes="-142_0" intLanes="" shape="-3.45,0.42 0.03,0.00"/>
+    <junction id="143.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 1.45,3.20"/>
+    <junction id="143.end" type="dead_end" x="0.02" y="0.01" incLanes="-143_0" intLanes="" shape="1.45,3.21 0.02,0.01"/>
+    <junction id="144.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -1.34,-3.22"/>
+    <junction id="144.end" type="dead_end" x="0.02" y="0.01" incLanes="-144_0" intLanes="" shape="-1.34,-3.22 0.02,0.01"/>
+    <junction id="145.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -3.19,-1.38"/>
+    <junction id="145.end" type="dead_end" x="0.02" y="0.01" incLanes="-145_0" intLanes="" shape="-3.19,-1.38 0.02,0.01"/>
+    <junction id="146.begin" type="dead_end" x="0.02" y="0.01" incLanes="" intLanes="" shape="0.02,0.01 -3.27,1.19"/>
+    <junction id="146.end" type="dead_end" x="0.02" y="0.01" incLanes="-146_0" intLanes="" shape="-3.27,1.18 0.02,0.01"/>
+    <junction id="147.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -2.00,-2.84"/>
+    <junction id="147.end" type="dead_end" x="0.02" y="0.02" incLanes="-147_0" intLanes="" shape="-1.99,-2.85 0.02,0.02"/>
+    <junction id="148.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 0.03,3.53"/>
+    <junction id="148.end" type="dead_end" x="0.02" y="0.03" incLanes="-148_0" intLanes="" shape="0.02,3.53 0.02,0.03"/>
+    <junction id="149.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 -0.40,3.49"/>
+    <junction id="149.end" type="dead_end" x="0.03" y="0.01" incLanes="-149_0" intLanes="" shape="-0.41,3.49 0.03,0.01"/>
+    <junction id="15.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 1.82,-2.97"/>
+    <junction id="15.end" type="dead_end" x="0.01" y="0.03" incLanes="-15_0" intLanes="" shape="1.82,-2.97 0.01,0.03"/>
+    <junction id="150.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 0.85,3.42"/>
+    <junction id="150.end" type="dead_end" x="0.04" y="0.02" incLanes="-150_0" intLanes="" shape="0.84,3.42 0.04,0.02"/>
+    <junction id="151.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 0.79,3.44"/>
+    <junction id="151.end" type="dead_end" x="0.04" y="0.02" incLanes="-151_0" intLanes="" shape="0.79,3.44 0.04,0.02"/>
+    <junction id="152.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 0.87,3.42"/>
+    <junction id="152.end" type="dead_end" x="0.04" y="0.02" incLanes="-152_0" intLanes="" shape="0.87,3.42 0.04,0.02"/>
+    <junction id="153.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 -0.78,-3.39"/>
+    <junction id="153.end" type="dead_end" x="0.04" y="0.02" incLanes="-153_0" intLanes="" shape="-0.77,-3.39 0.04,0.02"/>
+    <junction id="154.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 -3.18,1.39"/>
+    <junction id="154.end" type="dead_end" x="0.04" y="0.01" incLanes="-154_0" intLanes="" shape="-3.18,1.38 0.04,0.01"/>
+    <junction id="155.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 1.48,-3.17"/>
+    <junction id="155.end" type="dead_end" x="0.04" y="0.02" incLanes="-155_0" intLanes="" shape="1.48,-3.17 0.04,0.02"/>
+    <junction id="156.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 1.44,3.22"/>
+    <junction id="156.end" type="dead_end" x="0.04" y="0.02" incLanes="-156_0" intLanes="" shape="1.43,3.23 0.04,0.02"/>
+    <junction id="157.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 1.38,-3.22"/>
+    <junction id="157.end" type="dead_end" x="0.04" y="0.02" incLanes="-157_0" intLanes="" shape="1.38,-3.22 0.04,0.02"/>
+    <junction id="158.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 3.35,-1.11"/>
+    <junction id="158.end" type="dead_end" x="0.03" y="0.02" incLanes="-158_0" intLanes="" shape="3.35,-1.11 0.03,0.02"/>
+    <junction id="159.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 -3.16,1.44"/>
+    <junction id="159.end" type="dead_end" x="0.03" y="0.02" incLanes="-159_0" intLanes="" shape="-3.16,1.44 0.03,0.02"/>
+    <junction id="16.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 2.22,-2.69"/>
+    <junction id="16.end" type="dead_end" x="0.01" y="0.03" incLanes="-16_0" intLanes="" shape="2.22,-2.68 0.01,0.03"/>
+    <junction id="160.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 -3.23,1.28"/>
+    <junction id="160.end" type="dead_end" x="0.04" y="0.02" incLanes="-160_0" intLanes="" shape="-3.23,1.28 0.04,0.02"/>
+    <junction id="161.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 -1.65,-3.05"/>
+    <junction id="161.end" type="dead_end" x="0.03" y="0.02" incLanes="-161_0" intLanes="" shape="-1.64,-3.05 0.03,0.02"/>
+    <junction id="162.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 2.84,-2.06"/>
+    <junction id="162.end" type="dead_end" x="0.03" y="0.02" incLanes="-162_0" intLanes="" shape="2.85,-2.06 0.03,0.02"/>
+    <junction id="163.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 3.37,-1.03"/>
+    <junction id="163.end" type="dead_end" x="0.03" y="0.02" incLanes="-163_0" intLanes="" shape="3.37,-1.03 0.03,0.02"/>
+    <junction id="164.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 -1.38,-3.18"/>
+    <junction id="164.end" type="dead_end" x="0.03" y="0.02" incLanes="-164_0" intLanes="" shape="-1.38,-3.18 0.03,0.02"/>
+    <junction id="165.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 3.12,-1.62"/>
+    <junction id="165.end" type="dead_end" x="0.03" y="0.02" incLanes="-165_0" intLanes="" shape="3.12,-1.62 0.03,0.02"/>
+    <junction id="166.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 1.39,3.24"/>
+    <junction id="166.end" type="dead_end" x="0.03" y="0.02" incLanes="-166_0" intLanes="" shape="1.38,3.24 0.03,0.02"/>
+    <junction id="167.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 -3.25,1.25"/>
+    <junction id="167.end" type="dead_end" x="0.03" y="0.02" incLanes="-167_0" intLanes="" shape="-3.25,1.25 0.03,0.02"/>
+    <junction id="168.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -3.41,0.65"/>
+    <junction id="168.end" type="dead_end" x="0.03" y="0.01" incLanes="-168_0" intLanes="" shape="-3.41,0.65 0.03,0.01"/>
+    <junction id="169.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -1.59,-3.09"/>
+    <junction id="169.end" type="dead_end" x="0.03" y="0.01" incLanes="-169_0" intLanes="" shape="-1.59,-3.09 0.03,0.01"/>
+    <junction id="17.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -2.95,-1.84"/>
+    <junction id="17.end" type="dead_end" x="0.01" y="0.03" incLanes="-17_0" intLanes="" shape="-2.95,-1.84 0.01,0.03"/>
+    <junction id="170.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 1.41,3.24"/>
+    <junction id="170.end" type="dead_end" x="0.04" y="0.02" incLanes="-170_0" intLanes="" shape="1.41,3.24 0.04,0.02"/>
+    <junction id="171.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 1.70,3.10"/>
+    <junction id="171.end" type="dead_end" x="0.04" y="0.02" incLanes="-171_0" intLanes="" shape="1.70,3.10 0.04,0.02"/>
+    <junction id="172.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 2.91,-1.98"/>
+    <junction id="172.end" type="dead_end" x="0.04" y="0.02" incLanes="-172_0" intLanes="" shape="2.91,-1.98 0.04,0.02"/>
+    <junction id="173.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 2.25,2.73"/>
+    <junction id="173.end" type="dead_end" x="0.04" y="0.02" incLanes="-173_0" intLanes="" shape="2.25,2.74 0.04,0.02"/>
+    <junction id="174.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 2.44,2.56"/>
+    <junction id="174.end" type="dead_end" x="0.04" y="0.02" incLanes="-174_0" intLanes="" shape="2.44,2.56 0.04,0.02"/>
+    <junction id="175.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 0.00,-3.48"/>
+    <junction id="175.end" type="dead_end" x="0.04" y="0.02" incLanes="-175_0" intLanes="" shape="0.00,-3.48 0.04,0.02"/>
+    <junction id="176.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 1.56,3.18"/>
+    <junction id="176.end" type="dead_end" x="0.04" y="0.02" incLanes="-176_0" intLanes="" shape="1.56,3.18 0.04,0.02"/>
+    <junction id="177.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 -2.87,1.96"/>
+    <junction id="177.end" type="dead_end" x="0.04" y="0.02" incLanes="-177_0" intLanes="" shape="-2.88,1.96 0.04,0.02"/>
+    <junction id="178.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 1.33,3.28"/>
+    <junction id="178.end" type="dead_end" x="0.04" y="0.03" incLanes="-178_0" intLanes="" shape="1.32,3.28 0.04,0.03"/>
+    <junction id="179.begin" type="dead_end" x="0.04" y="0.03" incLanes="" intLanes="" shape="0.04,0.03 -2.40,2.54"/>
+    <junction id="179.end" type="dead_end" x="0.03" y="0.02" incLanes="-179_0" intLanes="" shape="-2.40,2.54 0.03,0.02"/>
+    <junction id="18.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -2.44,-2.48"/>
+    <junction id="18.end" type="dead_end" x="0.01" y="0.03" incLanes="-18_0" intLanes="" shape="-2.43,-2.48 0.01,0.03"/>
+    <junction id="180.begin" type="dead_end" x="0.03" y="0.03" incLanes="" intLanes="" shape="0.03,0.03 -1.78,-2.97"/>
+    <junction id="180.end" type="dead_end" x="0.04" y="0.02" incLanes="-180_0" intLanes="" shape="-1.77,-2.97 0.04,0.02"/>
+    <junction id="181.begin" type="dead_end" x="0.03" y="0.03" incLanes="" intLanes="" shape="0.03,0.03 -1.78,-2.97"/>
+    <junction id="181.end" type="dead_end" x="0.03" y="0.03" incLanes="-181_0" intLanes="" shape="-1.78,-2.97 0.03,0.03"/>
+    <junction id="182.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -2.92,1.92"/>
+    <junction id="182.end" type="dead_end" x="0.02" y="0.02" incLanes="-182_0" intLanes="" shape="-2.92,1.91 0.02,0.02"/>
+    <junction id="183.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 2.82,-2.10"/>
+    <junction id="183.end" type="dead_end" x="0.04" y="0.03" incLanes="-183_0" intLanes="" shape="2.82,-2.09 0.04,0.03"/>
+    <junction id="184.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.24,1.31"/>
+    <junction id="184.end" type="dead_end" x="0.01" y="0.02" incLanes="-184_0" intLanes="" shape="-3.25,1.31 0.01,0.02"/>
+    <junction id="185.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -0.77,-3.39"/>
+    <junction id="185.end" type="dead_end" x="0.01" y="0.02" incLanes="-185_0" intLanes="" shape="-0.77,-3.39 0.01,0.02"/>
+    <junction id="186.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 3.39,-0.90"/>
+    <junction id="186.end" type="dead_end" x="0.01" y="0.02" incLanes="-186_0" intLanes="" shape="3.39,-0.90 0.01,0.02"/>
+    <junction id="187.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 0.78,3.43"/>
+    <junction id="187.end" type="dead_end" x="0.01" y="0.02" incLanes="-187_0" intLanes="" shape="0.78,3.43 0.01,0.02"/>
+    <junction id="188.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 3.37,-0.96"/>
+    <junction id="188.end" type="dead_end" x="0.01" y="0.02" incLanes="-188_0" intLanes="" shape="3.37,-0.96 0.01,0.02"/>
+    <junction id="189.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -0.98,-3.34"/>
+    <junction id="189.end" type="dead_end" x="0.01" y="0.02" incLanes="-189_0" intLanes="" shape="-0.97,-3.34 0.01,0.02"/>
+    <junction id="19.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 1.96,2.93"/>
+    <junction id="19.end" type="dead_end" x="0.01" y="0.03" incLanes="-19_0" intLanes="" shape="1.96,2.93 0.01,0.03"/>
+    <junction id="190.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -3.49,0.03"/>
+    <junction id="190.end" type="dead_end" x="0.01" y="0.02" incLanes="-190_0" intLanes="" shape="-3.49,0.02 0.01,0.02"/>
+    <junction id="191.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -0.18,3.52"/>
+    <junction id="191.end" type="dead_end" x="0.00" y="0.03" incLanes="-191_0" intLanes="" shape="-0.19,3.52 0.00,0.03"/>
+    <junction id="192.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.49,0.10"/>
+    <junction id="192.end" type="dead_end" x="0.01" y="0.02" incLanes="-192_0" intLanes="" shape="-3.49,0.10 0.01,0.02"/>
+    <junction id="193.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 3.02,-1.77"/>
+    <junction id="193.end" type="dead_end" x="0.00" y="0.02" incLanes="-193_0" intLanes="" shape="3.02,-1.76 0.00,0.02"/>
+    <junction id="194.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -0.43,-3.46"/>
+    <junction id="194.end" type="dead_end" x="0.01" y="0.02" incLanes="-194_0" intLanes="" shape="-0.43,-3.46 0.01,0.02"/>
+    <junction id="195.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 2.02,2.88"/>
+    <junction id="195.end" type="dead_end" x="0.00" y="0.02" incLanes="-195_0" intLanes="" shape="2.02,2.88 0.00,0.02"/>
+    <junction id="196.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 2.84,-2.03"/>
+    <junction id="196.end" type="dead_end" x="0.00" y="0.02" incLanes="-196_0" intLanes="" shape="2.85,-2.03 0.00,0.02"/>
+    <junction id="197.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -0.15,-3.48"/>
+    <junction id="197.end" type="dead_end" x="0.01" y="0.02" incLanes="-197_0" intLanes="" shape="-0.15,-3.48 0.01,0.02"/>
+    <junction id="198.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -1.23,-3.26"/>
+    <junction id="198.end" type="dead_end" x="0.01" y="0.02" incLanes="-198_0" intLanes="" shape="-1.23,-3.26 0.01,0.02"/>
+    <junction id="199.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 2.94,-1.88"/>
+    <junction id="199.end" type="dead_end" x="0.01" y="0.02" incLanes="-199_0" intLanes="" shape="2.94,-1.88 0.01,0.02"/>
+    <junction id="2.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -2.43,-2.48"/>
+    <junction id="2.end" type="dead_end" x="0.02" y="0.02" incLanes="-2_0" intLanes="" shape="-2.43,-2.48 0.02,0.02"/>
+    <junction id="20.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -0.21,-3.46"/>
+    <junction id="20.end" type="dead_end" x="0.01" y="0.03" incLanes="-20_0" intLanes="" shape="-0.21,-3.46 0.01,0.03"/>
+    <junction id="200.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 0.94,3.39"/>
+    <junction id="200.end" type="dead_end" x="0.00" y="0.02" incLanes="-200_0" intLanes="" shape="0.94,3.39 0.00,0.02"/>
+    <junction id="201.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 0.02,-3.48"/>
+    <junction id="201.end" type="dead_end" x="0.01" y="0.02" incLanes="-201_0" intLanes="" shape="0.02,-3.48 0.01,0.02"/>
+    <junction id="202.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 3.50,0.28"/>
+    <junction id="202.end" type="dead_end" x="0.01" y="0.02" incLanes="-202_0" intLanes="" shape="3.50,0.29 0.01,0.02"/>
+    <junction id="203.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.47,0.38"/>
+    <junction id="203.end" type="dead_end" x="0.01" y="0.02" incLanes="-203_0" intLanes="" shape="-3.47,0.38 0.01,0.02"/>
+    <junction id="204.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -0.34,-3.47"/>
+    <junction id="204.end" type="dead_end" x="0.01" y="0.02" incLanes="-204_0" intLanes="" shape="-0.34,-3.47 0.01,0.02"/>
+    <junction id="205.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 0.36,3.50"/>
+    <junction id="205.end" type="dead_end" x="0.01" y="0.02" incLanes="-205_0" intLanes="" shape="0.36,3.50 0.01,0.02"/>
+    <junction id="206.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 3.14,-1.54"/>
+    <junction id="206.end" type="dead_end" x="0.01" y="0.02" incLanes="-206_0" intLanes="" shape="3.14,-1.53 0.01,0.02"/>
+    <junction id="207.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -0.83,-3.38"/>
+    <junction id="207.end" type="dead_end" x="0.01" y="0.02" incLanes="-207_0" intLanes="" shape="-0.83,-3.38 0.01,0.02"/>
+    <junction id="208.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -0.07,3.52"/>
+    <junction id="208.end" type="dead_end" x="0.01" y="0.02" incLanes="-208_0" intLanes="" shape="-0.08,3.52 0.01,0.02"/>
+    <junction id="209.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.49,0.20"/>
+    <junction id="209.end" type="dead_end" x="0.01" y="0.02" incLanes="-209_0" intLanes="" shape="-3.49,0.20 0.01,0.02"/>
+    <junction id="21.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 -3.49,-0.13"/>
+    <junction id="21.end" type="dead_end" x="0.00" y="0.03" incLanes="-21_0" intLanes="" shape="-3.49,-0.13 0.00,0.03"/>
+    <junction id="210.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -0.75,-3.39"/>
+    <junction id="210.end" type="dead_end" x="0.01" y="0.02" incLanes="-210_0" intLanes="" shape="-0.75,-3.39 0.01,0.02"/>
+    <junction id="211.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 -2.48,2.50"/>
+    <junction id="211.end" type="dead_end" x="0.00" y="0.03" incLanes="-211_0" intLanes="" shape="-2.48,2.50 0.00,0.03"/>
+    <junction id="212.begin" type="dead_end" x="0.03" y="0.00" incLanes="" intLanes="" shape="0.03,0.00 2.98,-1.89"/>
+    <junction id="212.end" type="dead_end" x="0.03" y="0.00" incLanes="-212_0" intLanes="" shape="2.98,-1.89 0.03,0.00"/>
+    <junction id="213.begin" type="dead_end" x="0.04" y="0.00" incLanes="" intLanes="" shape="0.04,-0.00 3.54,-0.06"/>
+    <junction id="213.end" type="dead_end" x="0.04" y="0.00" incLanes="-213_0" intLanes="" shape="3.54,-0.06 0.04,0.00"/>
+    <junction id="214.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 3.30,-1.20"/>
+    <junction id="214.end" type="dead_end" x="0.02" y="0.03" incLanes="-214_0" intLanes="" shape="3.30,-1.19 0.02,0.03"/>
+    <junction id="215.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -0.36,-3.45"/>
+    <junction id="215.end" type="dead_end" x="0.02" y="0.03" incLanes="-215_0" intLanes="" shape="-0.36,-3.45 0.02,0.03"/>
+    <junction id="216.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -3.48,-0.13"/>
+    <junction id="216.end" type="dead_end" x="0.02" y="0.03" incLanes="-216_0" intLanes="" shape="-3.48,-0.13 0.02,0.03"/>
+    <junction id="217.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -0.90,-3.35"/>
+    <junction id="217.end" type="dead_end" x="0.02" y="0.03" incLanes="-217_0" intLanes="" shape="-0.90,-3.35 0.02,0.03"/>
+    <junction id="218.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -3.48,-0.16"/>
+    <junction id="218.end" type="dead_end" x="0.02" y="0.03" incLanes="-218_0" intLanes="" shape="-3.48,-0.16 0.02,0.03"/>
+    <junction id="219.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -2.89,-1.93"/>
+    <junction id="219.end" type="dead_end" x="0.01" y="0.03" incLanes="-219_0" intLanes="" shape="-2.89,-1.93 0.01,0.03"/>
+    <junction id="22.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 0.06,-3.47"/>
+    <junction id="22.end" type="dead_end" x="0.01" y="0.03" incLanes="-22_0" intLanes="" shape="0.06,-3.47 0.01,0.03"/>
+    <junction id="220.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -2.91,-1.90"/>
+    <junction id="220.end" type="dead_end" x="0.01" y="0.03" incLanes="-220_0" intLanes="" shape="-2.91,-1.90 0.01,0.03"/>
+    <junction id="221.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 1.32,3.27"/>
+    <junction id="221.end" type="dead_end" x="0.00" y="0.03" incLanes="-221_0" intLanes="" shape="1.32,3.27 0.00,0.03"/>
+    <junction id="222.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -2.94,-1.85"/>
+    <junction id="222.end" type="dead_end" x="0.01" y="0.03" incLanes="-222_0" intLanes="" shape="-2.94,-1.85 0.01,0.03"/>
+    <junction id="223.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -2.34,-2.58"/>
+    <junction id="223.end" type="dead_end" x="0.01" y="0.02" incLanes="-223_0" intLanes="" shape="-2.34,-2.58 0.01,0.02"/>
+    <junction id="224.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 2.55,2.43"/>
+    <junction id="224.end" type="dead_end" x="0.01" y="0.03" incLanes="-224_0" intLanes="" shape="2.55,2.43 0.01,0.03"/>
+    <junction id="225.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -1.05,3.36"/>
+    <junction id="225.end" type="dead_end" x="0.01" y="0.03" incLanes="-225_0" intLanes="" shape="-1.05,3.36 0.01,0.03"/>
+    <junction id="226.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 1.26,3.30"/>
+    <junction id="226.end" type="dead_end" x="0.01" y="0.03" incLanes="-226_0" intLanes="" shape="1.25,3.30 0.01,0.03"/>
+    <junction id="227.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -1.32,-3.21"/>
+    <junction id="227.end" type="dead_end" x="0.01" y="0.03" incLanes="-227_0" intLanes="" shape="-1.32,-3.21 0.01,0.03"/>
+    <junction id="228.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -3.48,-0.26"/>
+    <junction id="228.end" type="dead_end" x="0.01" y="0.02" incLanes="-228_0" intLanes="" shape="-3.48,-0.27 0.01,0.02"/>
+    <junction id="229.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 2.79,-2.09"/>
+    <junction id="229.end" type="dead_end" x="0.00" y="0.03" incLanes="-229_0" intLanes="" shape="2.79,-2.09 0.00,0.03"/>
+    <junction id="23.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -3.42,0.75"/>
+    <junction id="23.end" type="dead_end" x="0.01" y="0.03" incLanes="-23_0" intLanes="" shape="-3.42,0.75 0.01,0.03"/>
+    <junction id="230.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -3.45,-0.53"/>
+    <junction id="230.end" type="dead_end" x="0.01" y="0.02" incLanes="-230_0" intLanes="" shape="-3.44,-0.53 0.01,0.02"/>
+    <junction id="231.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -2.74,2.19"/>
+    <junction id="231.end" type="dead_end" x="0.01" y="0.03" incLanes="-231_0" intLanes="" shape="-2.74,2.19 0.01,0.03"/>
+    <junction id="232.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 3.47,-0.46"/>
+    <junction id="232.end" type="dead_end" x="0.00" y="0.02" incLanes="-232_0" intLanes="" shape="3.47,-0.45 0.00,0.02"/>
+    <junction id="233.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 0.94,3.39"/>
+    <junction id="233.end" type="dead_end" x="0.00" y="0.02" incLanes="-233_0" intLanes="" shape="0.94,3.39 0.00,0.02"/>
+    <junction id="234.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.17,1.49"/>
+    <junction id="234.end" type="dead_end" x="0.01" y="0.02" incLanes="-234_0" intLanes="" shape="-3.17,1.48 0.01,0.02"/>
+    <junction id="235.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 0.04,3.52"/>
+    <junction id="235.end" type="dead_end" x="0.00" y="0.02" incLanes="-235_0" intLanes="" shape="0.04,3.52 0.00,0.02"/>
+    <junction id="236.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 0.69,3.45"/>
+    <junction id="236.end" type="dead_end" x="0.00" y="0.02" incLanes="-236_0" intLanes="" shape="0.69,3.45 0.00,0.02"/>
+    <junction id="237.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 3.46,-0.58"/>
+    <junction id="237.end" type="dead_end" x="0.01" y="0.02" incLanes="-237_0" intLanes="" shape="3.46,-0.58 0.01,0.02"/>
+    <junction id="238.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 1.45,3.21"/>
+    <junction id="238.end" type="dead_end" x="0.01" y="0.02" incLanes="-238_0" intLanes="" shape="1.45,3.21 0.01,0.02"/>
+    <junction id="239.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -2.84,-2.03"/>
+    <junction id="239.end" type="dead_end" x="0.00" y="0.01" incLanes="-239_0" intLanes="" shape="-2.84,-2.03 0.00,0.01"/>
+    <junction id="24.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -0.10,3.53"/>
+    <junction id="24.end" type="dead_end" x="0.01" y="0.03" incLanes="-24_0" intLanes="" shape="-0.10,3.53 0.01,0.03"/>
+    <junction id="240.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 1.27,3.28"/>
+    <junction id="240.end" type="dead_end" x="0.00" y="0.02" incLanes="-240_0" intLanes="" shape="1.27,3.28 0.00,0.02"/>
+    <junction id="241.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -1.31,-3.23"/>
+    <junction id="241.end" type="dead_end" x="0.00" y="0.02" incLanes="-241_0" intLanes="" shape="-1.30,-3.23 0.00,0.02"/>
+    <junction id="242.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 1.32,-3.23"/>
+    <junction id="242.end" type="dead_end" x="0.00" y="0.02" incLanes="-242_0" intLanes="" shape="1.32,-3.23 0.00,0.02"/>
+    <junction id="243.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -0.69,-3.41"/>
+    <junction id="243.end" type="dead_end" x="0.01" y="0.02" incLanes="-243_0" intLanes="" shape="-0.69,-3.41 0.01,0.02"/>
+    <junction id="244.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 0.25,-3.48"/>
+    <junction id="244.end" type="dead_end" x="0.01" y="0.02" incLanes="-244_0" intLanes="" shape="0.26,-3.48 0.01,0.02"/>
+    <junction id="245.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 0.58,3.47"/>
+    <junction id="245.end" type="dead_end" x="0.00" y="0.02" incLanes="-245_0" intLanes="" shape="0.58,3.47 -0.00,0.02"/>
+    <junction id="246.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -1.15,-3.28"/>
+    <junction id="246.end" type="dead_end" x="0.01" y="0.02" incLanes="-246_0" intLanes="" shape="-1.15,-3.28 0.01,0.02"/>
+    <junction id="247.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 0.59,3.47"/>
+    <junction id="247.end" type="dead_end" x="0.01" y="0.02" incLanes="-247_0" intLanes="" shape="0.59,3.47 0.01,0.02"/>
+    <junction id="248.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.48,0.33"/>
+    <junction id="248.end" type="dead_end" x="0.01" y="0.02" incLanes="-248_0" intLanes="" shape="-3.48,0.33 0.01,0.02"/>
+    <junction id="249.begin" type="dead_end" x="0.00" y="0.01" incLanes="" intLanes="" shape="0.00,0.01 -1.11,3.33"/>
+    <junction id="249.end" type="dead_end" x="0.00" y="0.01" incLanes="-249_0" intLanes="" shape="-1.11,3.33 0.00,0.01"/>
+    <junction id="25.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -0.02,3.53"/>
+    <junction id="25.end" type="dead_end" x="0.01" y="0.03" incLanes="-25_0" intLanes="" shape="-0.03,3.53 0.01,0.03"/>
+    <junction id="250.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.14,1.56"/>
+    <junction id="250.end" type="dead_end" x="0.01" y="0.02" incLanes="-250_0" intLanes="" shape="-3.14,1.56 0.01,0.02"/>
+    <junction id="251.begin" type="dead_end" x="0.00" y="0.01" incLanes="" intLanes="" shape="0.00,0.01 2.94,1.92"/>
+    <junction id="251.end" type="dead_end" x="0.00" y="0.02" incLanes="-251_0" intLanes="" shape="2.94,1.92 0.00,0.02"/>
+    <junction id="252.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 2.84,-2.02"/>
+    <junction id="252.end" type="dead_end" x="0.00" y="0.02" incLanes="-252_0" intLanes="" shape="2.85,-2.02 0.00,0.02"/>
+    <junction id="253.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -0.39,3.49"/>
+    <junction id="253.end" type="dead_end" x="0.00" y="0.01" incLanes="-253_0" intLanes="" shape="-0.39,3.49 0.00,0.01"/>
+    <junction id="254.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -2.85,-2.01"/>
+    <junction id="254.end" type="dead_end" x="0.00" y="0.01" incLanes="-254_0" intLanes="" shape="-2.85,-2.01 0.00,0.01"/>
+    <junction id="255.begin" type="dead_end" x="0.00" y="0.01" incLanes="" intLanes="" shape="0.00,0.01 2.83,2.07"/>
+    <junction id="255.end" type="dead_end" x="0.00" y="0.02" incLanes="-255_0" intLanes="" shape="2.83,2.07 0.00,0.02"/>
+    <junction id="256.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -1.37,3.23"/>
+    <junction id="256.end" type="dead_end" x="0.00" y="0.01" incLanes="-256_0" intLanes="" shape="-1.38,3.23 0.00,0.01"/>
+    <junction id="257.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 1.23,3.30"/>
+    <junction id="257.end" type="dead_end" x="0.00" y="0.02" incLanes="-257_0" intLanes="" shape="1.23,3.30 0.00,0.02"/>
+    <junction id="258.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 2.88,-1.98"/>
+    <junction id="258.end" type="dead_end" x="0.00" y="0.02" incLanes="-258_0" intLanes="" shape="2.88,-1.98 0.00,0.02"/>
+    <junction id="259.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 2.90,-1.94"/>
+    <junction id="259.end" type="dead_end" x="0.00" y="0.02" incLanes="-259_0" intLanes="" shape="2.90,-1.94 0.00,0.02"/>
+    <junction id="26.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -1.74,3.03"/>
+    <junction id="26.end" type="dead_end" x="0.03" y="0.00" incLanes="-26_0" intLanes="" shape="-1.74,3.03 0.03,0.00"/>
+    <junction id="260.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 1.95,2.93"/>
+    <junction id="260.end" type="dead_end" x="0.00" y="0.02" incLanes="-260_0" intLanes="" shape="1.95,2.93 0.00,0.02"/>
+    <junction id="261.begin" type="dead_end" x="0.00" y="0.01" incLanes="" intLanes="" shape="0.00,0.01 -1.69,3.08"/>
+    <junction id="261.end" type="dead_end" x="0.00" y="0.01" incLanes="-261_0" intLanes="" shape="-1.69,3.08 0.00,0.01"/>
+    <junction id="262.begin" type="dead_end" x="0.00" y="0.01" incLanes="" intLanes="" shape="0.00,0.01 2.20,2.74"/>
+    <junction id="262.end" type="dead_end" x="0.00" y="0.02" incLanes="-262_0" intLanes="" shape="2.20,2.74 0.00,0.02"/>
+    <junction id="263.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 2.50,-2.47"/>
+    <junction id="263.end" type="dead_end" x="0.04" y="0.02" incLanes="-263_0" intLanes="" shape="2.50,-2.47 0.04,0.02"/>
+    <junction id="264.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 0.36,-3.46"/>
+    <junction id="264.end" type="dead_end" x="0.03" y="0.03" incLanes="-264_0" intLanes="" shape="0.36,-3.46 0.03,0.03"/>
+    <junction id="265.begin" type="dead_end" x="0.03" y="0.03" incLanes="" intLanes="" shape="0.03,0.03 1.71,-3.04"/>
+    <junction id="265.end" type="dead_end" x="0.03" y="0.03" incLanes="-265_0" intLanes="" shape="1.71,-3.04 0.03,0.03"/>
+    <junction id="266.begin" type="dead_end" x="0.03" y="0.03" incLanes="" intLanes="" shape="0.03,0.03 0.91,-3.36"/>
+    <junction id="266.end" type="dead_end" x="0.03" y="0.03" incLanes="-266_0" intLanes="" shape="0.91,-3.36 0.03,0.03"/>
+    <junction id="267.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -2.28,-2.61"/>
+    <junction id="267.end" type="dead_end" x="0.03" y="0.03" incLanes="-267_0" intLanes="" shape="-2.28,-2.61 0.03,0.03"/>
+    <junction id="268.begin" type="dead_end" x="0.03" y="0.03" incLanes="" intLanes="" shape="0.03,0.03 1.92,2.97"/>
+    <junction id="268.end" type="dead_end" x="0.03" y="0.03" incLanes="-268_0" intLanes="" shape="1.92,2.98 0.03,0.03"/>
+    <junction id="269.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -1.10,-3.29"/>
+    <junction id="269.end" type="dead_end" x="0.04" y="0.02" incLanes="-269_0" intLanes="" shape="-1.08,-3.30 0.04,0.02"/>
+    <junction id="27.begin" type="dead_end" x="0.04" y="0.00" incLanes="" intLanes="" shape="0.04,0.00 0.53,3.47"/>
+    <junction id="27.end" type="dead_end" x="0.04" y="0.00" incLanes="-27_0" intLanes="" shape="0.53,3.47 0.04,0.00"/>
+    <junction id="270.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 2.99,1.88"/>
+    <junction id="270.end" type="dead_end" x="0.02" y="0.03" incLanes="-270_0" intLanes="" shape="2.99,1.88 0.02,0.03"/>
+    <junction id="271.begin" type="dead_end" x="0.03" y="0.03" incLanes="" intLanes="" shape="0.03,0.03 2.55,-2.40"/>
+    <junction id="271.end" type="dead_end" x="0.03" y="0.03" incLanes="-271_0" intLanes="" shape="2.55,-2.40 0.03,0.03"/>
+    <junction id="272.begin" type="dead_end" x="0.03" y="0.03" incLanes="" intLanes="" shape="0.03,0.03 -2.34,-2.55"/>
+    <junction id="272.end" type="dead_end" x="0.03" y="0.03" incLanes="-272_0" intLanes="" shape="-2.34,-2.55 0.03,0.03"/>
+    <junction id="273.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 3.02,1.83"/>
+    <junction id="273.end" type="dead_end" x="0.02" y="0.03" incLanes="-273_0" intLanes="" shape="3.02,1.83 0.02,0.03"/>
+    <junction id="274.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -1.80,3.02"/>
+    <junction id="274.end" type="dead_end" x="0.02" y="0.03" incLanes="-274_0" intLanes="" shape="-1.80,3.02 0.02,0.03"/>
+    <junction id="275.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -2.33,-2.57"/>
+    <junction id="275.end" type="dead_end" x="0.02" y="0.03" incLanes="-275_0" intLanes="" shape="-2.33,-2.57 0.02,0.03"/>
+    <junction id="276.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 1.12,3.35"/>
+    <junction id="276.end" type="dead_end" x="0.02" y="0.03" incLanes="-276_0" intLanes="" shape="1.12,3.35 0.02,0.03"/>
+    <junction id="277.begin" type="dead_end" x="0.03" y="0.03" incLanes="" intLanes="" shape="0.03,0.03 -1.38,-3.18"/>
+    <junction id="277.end" type="dead_end" x="0.03" y="0.03" incLanes="-277_0" intLanes="" shape="-1.38,-3.18 0.03,0.03"/>
+    <junction id="278.begin" type="dead_end" x="0.04" y="0.02" incLanes="" intLanes="" shape="0.04,0.02 0.78,3.44"/>
+    <junction id="278.end" type="dead_end" x="0.04" y="0.02" incLanes="-278_0" intLanes="" shape="0.78,3.44 0.04,0.02"/>
+    <junction id="279.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 3.20,-1.45"/>
+    <junction id="279.end" type="dead_end" x="0.03" y="0.03" incLanes="-279_0" intLanes="" shape="3.20,-1.45 0.03,0.03"/>
+    <junction id="28.begin" type="dead_end" x="0.04" y="0.00" incLanes="" intLanes="" shape="0.04,0.00 -1.40,-3.19"/>
+    <junction id="28.end" type="dead_end" x="0.04" y="0.00" incLanes="-28_0" intLanes="" shape="-1.40,-3.19 0.04,0.00"/>
+    <junction id="280.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 2.02,-2.84"/>
+    <junction id="280.end" type="dead_end" x="0.02" y="0.03" incLanes="-280_0" intLanes="" shape="2.02,-2.84 0.02,0.03"/>
+    <junction id="281.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -1.86,2.98"/>
+    <junction id="281.end" type="dead_end" x="0.01" y="0.03" incLanes="-281_0" intLanes="" shape="-1.86,2.98 0.01,0.03"/>
+    <junction id="282.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 2.94,1.95"/>
+    <junction id="282.end" type="dead_end" x="0.01" y="0.03" incLanes="-282_0" intLanes="" shape="2.94,1.95 0.01,0.03"/>
+    <junction id="283.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -1.84,-2.94"/>
+    <junction id="283.end" type="dead_end" x="0.02" y="0.03" incLanes="-283_0" intLanes="" shape="-1.84,-2.94 0.02,0.03"/>
+    <junction id="284.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 1.86,-2.95"/>
+    <junction id="284.end" type="dead_end" x="0.01" y="0.03" incLanes="-284_0" intLanes="" shape="1.86,-2.95 0.01,0.03"/>
+    <junction id="285.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -1.45,3.21"/>
+    <junction id="285.end" type="dead_end" x="0.01" y="0.03" incLanes="-285_0" intLanes="" shape="-1.45,3.21 0.01,0.03"/>
+    <junction id="286.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 2.19,-2.71"/>
+    <junction id="286.end" type="dead_end" x="0.02" y="0.03" incLanes="-286_0" intLanes="" shape="2.19,-2.71 0.02,0.03"/>
+    <junction id="287.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -2.48,2.48"/>
+    <junction id="287.end" type="dead_end" x="0.02" y="0.02" incLanes="-287_0" intLanes="" shape="-2.48,2.48 0.02,0.02"/>
+    <junction id="288.begin" type="dead_end" x="0.03" y="0.03" incLanes="" intLanes="" shape="0.03,0.03 3.43,-0.79"/>
+    <junction id="288.end" type="dead_end" x="0.03" y="0.03" incLanes="-288_0" intLanes="" shape="3.43,-0.79 0.03,0.03"/>
+    <junction id="289.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 2.11,-2.78"/>
+    <junction id="289.end" type="dead_end" x="0.02" y="0.03" incLanes="-289_0" intLanes="" shape="2.12,-2.78 0.02,0.03"/>
+    <junction id="29.begin" type="dead_end" x="0.04" y="0.00" incLanes="" intLanes="" shape="0.04,0.00 -3.30,1.05"/>
+    <junction id="29.end" type="dead_end" x="0.04" y="0.00" incLanes="-29_0" intLanes="" shape="-3.30,1.05 0.04,0.00"/>
+    <junction id="290.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -1.99,-2.84"/>
+    <junction id="290.end" type="dead_end" x="0.02" y="0.03" incLanes="-290_0" intLanes="" shape="-1.99,-2.84 0.02,0.03"/>
+    <junction id="291.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -3.07,-1.61"/>
+    <junction id="291.end" type="dead_end" x="0.02" y="0.03" incLanes="-291_0" intLanes="" shape="-3.07,-1.62 0.02,0.03"/>
+    <junction id="292.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -3.08,-1.59"/>
+    <junction id="292.end" type="dead_end" x="0.02" y="0.03" incLanes="-292_0" intLanes="" shape="-3.08,-1.59 0.02,0.03"/>
+    <junction id="293.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 2.69,-2.25"/>
+    <junction id="293.end" type="dead_end" x="0.03" y="0.02" incLanes="-293_0" intLanes="" shape="2.69,-2.24 0.03,0.02"/>
+    <junction id="294.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -3.31,-1.05"/>
+    <junction id="294.end" type="dead_end" x="0.02" y="0.02" incLanes="-294_0" intLanes="" shape="-3.31,-1.05 0.02,0.02"/>
+    <junction id="295.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 -3.01,1.77"/>
+    <junction id="295.end" type="dead_end" x="0.02" y="0.02" incLanes="-295_0" intLanes="" shape="-3.01,1.76 0.02,0.02"/>
+    <junction id="296.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 1.99,-2.88"/>
+    <junction id="296.end" type="dead_end" x="0.02" y="0.02" incLanes="-296_0" intLanes="" shape="1.99,-2.88 0.02,0.02"/>
+    <junction id="297.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -1.95,2.92"/>
+    <junction id="297.end" type="dead_end" x="0.02" y="0.03" incLanes="-297_0" intLanes="" shape="-1.95,2.92 0.02,0.03"/>
+    <junction id="298.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 1.54,3.18"/>
+    <junction id="298.end" type="dead_end" x="0.02" y="0.02" incLanes="-298_0" intLanes="" shape="1.54,3.18 0.02,0.02"/>
+    <junction id="299.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 2.13,-2.77"/>
+    <junction id="299.end" type="dead_end" x="0.02" y="0.03" incLanes="-299_0" intLanes="" shape="2.13,-2.77 0.02,0.03"/>
+    <junction id="3.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 2.01,2.90"/>
+    <junction id="3.end" type="dead_end" x="0.01" y="0.03" incLanes="-3_0" intLanes="" shape="2.01,2.90 0.01,0.03"/>
+    <junction id="30.begin" type="dead_end" x="0.04" y="0.00" incLanes="" intLanes="" shape="0.04,0.00 0.98,3.37"/>
+    <junction id="30.end" type="dead_end" x="0.04" y="0.00" incLanes="-30_0" intLanes="" shape="0.98,3.37 0.04,0.00"/>
+    <junction id="300.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 -0.22,-3.47"/>
+    <junction id="300.end" type="dead_end" x="0.03" y="0.02" incLanes="-300_0" intLanes="" shape="-0.21,-3.47 0.03,0.02"/>
+    <junction id="301.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 1.85,3.00"/>
+    <junction id="301.end" type="dead_end" x="0.01" y="0.02" incLanes="-301_0" intLanes="" shape="1.85,3.00 0.01,0.02"/>
+    <junction id="302.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -0.33,3.51"/>
+    <junction id="302.end" type="dead_end" x="0.01" y="0.03" incLanes="-302_0" intLanes="" shape="-0.33,3.51 0.01,0.03"/>
+    <junction id="303.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -2.19,2.74"/>
+    <junction id="303.end" type="dead_end" x="0.02" y="0.02" incLanes="-303_0" intLanes="" shape="-2.19,2.74 0.02,0.02"/>
+    <junction id="304.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -0.13,3.52"/>
+    <junction id="304.end" type="dead_end" x="0.01" y="0.02" incLanes="-304_0" intLanes="" shape="-0.13,3.52 0.01,0.02"/>
+    <junction id="305.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.42,0.71"/>
+    <junction id="305.end" type="dead_end" x="0.01" y="0.02" incLanes="-305_0" intLanes="" shape="-3.42,0.71 0.01,0.02"/>
+    <junction id="306.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 1.89,-2.93"/>
+    <junction id="306.end" type="dead_end" x="0.01" y="0.02" incLanes="-306_0" intLanes="" shape="1.90,-2.93 0.01,0.02"/>
+    <junction id="307.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -2.71,-2.17"/>
+    <junction id="307.end" type="dead_end" x="0.02" y="0.02" incLanes="-307_0" intLanes="" shape="-2.71,-2.17 0.02,0.02"/>
+    <junction id="308.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -3.24,-1.27"/>
+    <junction id="308.end" type="dead_end" x="0.02" y="0.02" incLanes="-308_0" intLanes="" shape="-3.23,-1.27 0.02,0.02"/>
+    <junction id="309.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -2.47,-2.45"/>
+    <junction id="309.end" type="dead_end" x="0.02" y="0.02" incLanes="-309_0" intLanes="" shape="-2.47,-2.45 0.02,0.02"/>
+    <junction id="31.begin" type="dead_end" x="0.04" y="0.00" incLanes="" intLanes="" shape="0.04,0.00 -0.98,-3.35"/>
+    <junction id="31.end" type="dead_end" x="0.04" y="0.00" incLanes="-31_0" intLanes="" shape="-0.97,-3.35 0.04,0.00"/>
+    <junction id="310.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 2.93,-1.94"/>
+    <junction id="310.end" type="dead_end" x="0.03" y="0.02" incLanes="-310_0" intLanes="" shape="2.93,-1.93 0.03,0.02"/>
+    <junction id="311.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 1.01,-3.34"/>
+    <junction id="311.end" type="dead_end" x="0.02" y="0.02" incLanes="-311_0" intLanes="" shape="1.01,-3.34 0.02,0.02"/>
+    <junction id="312.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 1.21,-3.27"/>
+    <junction id="312.end" type="dead_end" x="0.02" y="0.02" incLanes="-312_0" intLanes="" shape="1.21,-3.27 0.02,0.02"/>
+    <junction id="313.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 1.73,3.08"/>
+    <junction id="313.end" type="dead_end" x="0.02" y="0.02" incLanes="-313_0" intLanes="" shape="1.72,3.08 0.02,0.02"/>
+    <junction id="314.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 1.73,-3.04"/>
+    <junction id="314.end" type="dead_end" x="0.02" y="0.02" incLanes="-314_0" intLanes="" shape="1.73,-3.04 0.02,0.02"/>
+    <junction id="315.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 3.38,-0.98"/>
+    <junction id="315.end" type="dead_end" x="0.02" y="0.02" incLanes="-315_0" intLanes="" shape="3.38,-0.98 0.02,0.02"/>
+    <junction id="316.begin" type="dead_end" x="0.03" y="0.00" incLanes="" intLanes="" shape="0.03,0.00 2.58,-2.39"/>
+    <junction id="316.end" type="dead_end" x="0.03" y="0.00" incLanes="-316_0" intLanes="" shape="2.58,-2.39 0.03,0.00"/>
+    <junction id="317.begin" type="dead_end" x="0.04" y="0.03" incLanes="" intLanes="" shape="0.04,0.03 -0.80,-3.37"/>
+    <junction id="317.end" type="dead_end" x="0.04" y="0.03" incLanes="-317_0" intLanes="" shape="-0.79,-3.37 0.04,0.03"/>
+    <junction id="318.begin" type="dead_end" x="0.03" y="0.03" incLanes="" intLanes="" shape="0.03,0.03 -2.73,2.19"/>
+    <junction id="318.end" type="dead_end" x="0.03" y="0.03" incLanes="-318_0" intLanes="" shape="-2.73,2.18 0.03,0.03"/>
+    <junction id="32.begin" type="dead_end" x="0.04" y="0.00" incLanes="" intLanes="" shape="0.04,0.00 1.65,3.11"/>
+    <junction id="32.end" type="dead_end" x="0.04" y="0.01" incLanes="-32_0" intLanes="" shape="1.65,3.11 0.04,0.01"/>
+    <junction id="33.begin" type="dead_end" x="0.04" y="0.00" incLanes="" intLanes="" shape="0.04,0.00 -2.54,2.37"/>
+    <junction id="33.end" type="dead_end" x="0.04" y="0.00" incLanes="-33_0" intLanes="" shape="-2.54,2.36 0.04,0.00"/>
+    <junction id="34.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 1.58,3.16"/>
+    <junction id="34.end" type="dead_end" x="0.04" y="0.01" incLanes="-34_0" intLanes="" shape="1.58,3.16 0.04,0.01"/>
+    <junction id="35.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 1.99,2.92"/>
+    <junction id="35.end" type="dead_end" x="0.04" y="0.01" incLanes="-35_0" intLanes="" shape="1.99,2.92 0.04,0.01"/>
+    <junction id="36.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 -1.40,-3.18"/>
+    <junction id="36.end" type="dead_end" x="0.04" y="0.01" incLanes="-36_0" intLanes="" shape="-1.40,-3.18 0.04,0.01"/>
+    <junction id="37.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 -3.38,-0.71"/>
+    <junction id="37.end" type="dead_end" x="0.04" y="0.01" incLanes="-37_0" intLanes="" shape="-3.38,-0.71 0.04,0.01"/>
+    <junction id="38.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 -2.11,2.77"/>
+    <junction id="38.end" type="dead_end" x="0.04" y="0.01" incLanes="-38_0" intLanes="" shape="-2.11,2.77 0.04,0.01"/>
+    <junction id="39.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 2.11,2.83"/>
+    <junction id="39.end" type="dead_end" x="0.04" y="0.01" incLanes="-39_0" intLanes="" shape="2.11,2.83 0.04,0.01"/>
+    <junction id="4.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 2.43,2.56"/>
+    <junction id="4.end" type="dead_end" x="0.01" y="0.03" incLanes="-4_0" intLanes="" shape="2.43,2.56 0.01,0.03"/>
+    <junction id="40.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 2.28,-2.68"/>
+    <junction id="40.end" type="dead_end" x="0.04" y="0.01" incLanes="-40_0" intLanes="" shape="2.29,-2.67 0.04,0.01"/>
+    <junction id="41.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -1.51,-3.14"/>
+    <junction id="41.end" type="dead_end" x="0.04" y="0.01" incLanes="-41_0" intLanes="" shape="-1.51,-3.14 0.04,0.01"/>
+    <junction id="42.begin" type="dead_end" x="0.03" y="0.00" incLanes="" intLanes="" shape="0.03,0.00 3.27,-1.34"/>
+    <junction id="42.end" type="dead_end" x="0.04" y="0.01" incLanes="-42_0" intLanes="" shape="3.27,-1.34 0.04,0.01"/>
+    <junction id="43.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 2.25,-2.70"/>
+    <junction id="43.end" type="dead_end" x="0.03" y="0.01" incLanes="-43_0" intLanes="" shape="2.25,-2.70 0.03,0.01"/>
+    <junction id="44.begin" type="dead_end" x="0.03" y="0.00" incLanes="" intLanes="" shape="0.03,0.00 2.58,-2.39"/>
+    <junction id="44.end" type="dead_end" x="0.03" y="0.01" incLanes="-44_0" intLanes="" shape="2.58,-2.39 0.03,0.01"/>
+    <junction id="45.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 1.58,3.15"/>
+    <junction id="45.end" type="dead_end" x="0.03" y="0.01" incLanes="-45_0" intLanes="" shape="1.58,3.15 0.03,0.01"/>
+    <junction id="46.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 -2.51,2.41"/>
+    <junction id="46.end" type="dead_end" x="0.04" y="0.01" incLanes="-46_0" intLanes="" shape="-2.51,2.41 0.04,0.01"/>
+    <junction id="47.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 2.58,-2.39"/>
+    <junction id="47.end" type="dead_end" x="0.03" y="0.01" incLanes="-47_0" intLanes="" shape="2.58,-2.39 0.03,0.01"/>
+    <junction id="48.begin" type="dead_end" x="0.04" y="0.01" incLanes="" intLanes="" shape="0.04,0.01 -1.58,-3.09"/>
+    <junction id="48.end" type="dead_end" x="0.04" y="0.01" incLanes="-48_0" intLanes="" shape="-1.58,-3.09 0.04,0.01"/>
+    <junction id="49.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -1.64,-3.06"/>
+    <junction id="49.end" type="dead_end" x="0.03" y="0.01" incLanes="-49_0" intLanes="" shape="-1.64,-3.06 0.03,0.01"/>
+    <junction id="5.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -2.03,-2.81"/>
+    <junction id="5.end" type="dead_end" x="0.01" y="0.03" incLanes="-5_0" intLanes="" shape="-2.03,-2.81 0.01,0.03"/>
+    <junction id="50.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -2.53,2.39"/>
+    <junction id="50.end" type="dead_end" x="0.03" y="0.01" incLanes="-50_0" intLanes="" shape="-2.53,2.39 0.03,0.01"/>
+    <junction id="51.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -1.97,-2.86"/>
+    <junction id="51.end" type="dead_end" x="0.03" y="0.01" incLanes="-51_0" intLanes="" shape="-1.97,-2.87 0.03,0.01"/>
+    <junction id="52.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 -2.52,2.39"/>
+    <junction id="52.end" type="dead_end" x="0.03" y="0.00" incLanes="-52_0" intLanes="" shape="-2.53,2.39 0.03,0.00"/>
+    <junction id="53.begin" type="dead_end" x="0.04" y="0.00" incLanes="" intLanes="" shape="0.04,0.00 2.92,-1.98"/>
+    <junction id="53.end" type="dead_end" x="0.04" y="0.00" incLanes="-53_0" intLanes="" shape="2.92,-1.98 0.04,0.00"/>
+    <junction id="54.begin" type="dead_end" x="0.04" y="0.00" incLanes="" intLanes="" shape="0.04,0.00 -3.13,1.48"/>
+    <junction id="54.end" type="dead_end" x="0.04" y="0.00" incLanes="-54_0" intLanes="" shape="-3.13,1.48 0.04,0.00"/>
+    <junction id="55.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 3.47,-0.49"/>
+    <junction id="55.end" type="dead_end" x="0.01" y="0.03" incLanes="-55_0" intLanes="" shape="3.47,-0.49 0.01,0.03"/>
+    <junction id="56.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 1.40,3.23"/>
+    <junction id="56.end" type="dead_end" x="0.00" y="0.03" incLanes="-56_0" intLanes="" shape="1.40,3.23 0.00,0.03"/>
+    <junction id="57.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 1.43,3.22"/>
+    <junction id="57.end" type="dead_end" x="0.00" y="0.02" incLanes="-57_0" intLanes="" shape="1.43,3.22 0.00,0.02"/>
+    <junction id="58.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 1.72,-3.02"/>
+    <junction id="58.end" type="dead_end" x="0.00" y="0.02" incLanes="-58_0" intLanes="" shape="1.73,-3.02 0.00,0.02"/>
+    <junction id="59.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 -2.47,2.50"/>
+    <junction id="59.end" type="dead_end" x="0.00" y="0.02" incLanes="-59_0" intLanes="" shape="-2.47,2.50 0.00,0.02"/>
+    <junction id="6.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -2.93,-1.86"/>
+    <junction id="6.end" type="dead_end" x="0.02" y="0.02" incLanes="-6_0" intLanes="" shape="-2.93,-1.86 0.02,0.02"/>
+    <junction id="60.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 1.35,3.26"/>
+    <junction id="60.end" type="dead_end" x="0.00" y="0.03" incLanes="-60_0" intLanes="" shape="1.34,3.26 0.00,0.03"/>
+    <junction id="61.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 1.27,3.29"/>
+    <junction id="61.end" type="dead_end" x="0.00" y="0.02" incLanes="-61_0" intLanes="" shape="1.27,3.29 0.00,0.02"/>
+    <junction id="62.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 -3.47,-0.40"/>
+    <junction id="62.end" type="dead_end" x="0.00" y="0.03" incLanes="-62_0" intLanes="" shape="-3.47,-0.40 0.00,0.03"/>
+    <junction id="63.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -0.88,-3.37"/>
+    <junction id="63.end" type="dead_end" x="0.00" y="0.02" incLanes="-63_0" intLanes="" shape="-0.88,-3.37 0.00,0.02"/>
+    <junction id="64.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -1.30,-3.23"/>
+    <junction id="64.end" type="dead_end" x="0.00" y="0.02" incLanes="-64_0" intLanes="" shape="-1.30,-3.23 0.00,0.02"/>
+    <junction id="65.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 -1.37,-3.20"/>
+    <junction id="65.end" type="dead_end" x="0.00" y="0.02" incLanes="-65_0" intLanes="" shape="-1.36,-3.20 0.00,0.02"/>
+    <junction id="66.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 1.07,-3.31"/>
+    <junction id="66.end" type="dead_end" x="0.01" y="0.03" incLanes="-66_0" intLanes="" shape="1.07,-3.31 0.01,0.03"/>
+    <junction id="67.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -3.42,0.75"/>
+    <junction id="67.end" type="dead_end" x="0.01" y="0.03" incLanes="-67_0" intLanes="" shape="-3.42,0.75 0.01,0.03"/>
+    <junction id="68.begin" type="dead_end" x="0.01" y="0.03" incLanes="" intLanes="" shape="0.01,0.03 -3.45,0.55"/>
+    <junction id="68.end" type="dead_end" x="0.01" y="0.02" incLanes="-68_0" intLanes="" shape="-3.45,0.55 0.01,0.02"/>
+    <junction id="69.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 -2.80,2.12"/>
+    <junction id="69.end" type="dead_end" x="0.00" y="0.03" incLanes="-69_0" intLanes="" shape="-2.80,2.12 0.00,0.03"/>
+    <junction id="7.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 1.95,-2.89"/>
+    <junction id="7.end" type="dead_end" x="0.00" y="0.03" incLanes="-7_0" intLanes="" shape="1.95,-2.88 0.00,0.03"/>
+    <junction id="70.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -1.48,-3.15"/>
+    <junction id="70.end" type="dead_end" x="0.00" y="0.02" incLanes="-70_0" intLanes="" shape="-1.48,-3.15 0.00,0.02"/>
+    <junction id="71.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 0.49,3.49"/>
+    <junction id="71.end" type="dead_end" x="0.00" y="0.02" incLanes="-71_0" intLanes="" shape="0.48,3.49 0.00,0.02"/>
+    <junction id="72.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.04,1.74"/>
+    <junction id="72.end" type="dead_end" x="0.01" y="0.02" incLanes="-72_0" intLanes="" shape="-3.04,1.74 0.01,0.02"/>
+    <junction id="73.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 3.24,-1.31"/>
+    <junction id="73.end" type="dead_end" x="0.01" y="0.03" incLanes="-73_0" intLanes="" shape="3.24,-1.31 0.01,0.03"/>
+    <junction id="74.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 0.76,3.44"/>
+    <junction id="74.end" type="dead_end" x="0.01" y="0.02" incLanes="-74_0" intLanes="" shape="0.76,3.44 0.01,0.02"/>
+    <junction id="75.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.13,1.58"/>
+    <junction id="75.end" type="dead_end" x="0.01" y="0.02" incLanes="-75_0" intLanes="" shape="-3.13,1.58 0.01,0.02"/>
+    <junction id="76.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -0.43,-3.45"/>
+    <junction id="76.end" type="dead_end" x="0.01" y="0.02" incLanes="-76_0" intLanes="" shape="-0.43,-3.45 0.01,0.02"/>
+    <junction id="77.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -1.16,-3.28"/>
+    <junction id="77.end" type="dead_end" x="0.01" y="0.02" incLanes="-77_0" intLanes="" shape="-1.15,-3.28 0.01,0.02"/>
+    <junction id="78.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 0.76,3.44"/>
+    <junction id="78.end" type="dead_end" x="0.01" y="0.02" incLanes="-78_0" intLanes="" shape="0.75,3.44 0.01,0.02"/>
+    <junction id="79.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 2.58,-2.34"/>
+    <junction id="79.end" type="dead_end" x="0.00" y="0.02" incLanes="-79_0" intLanes="" shape="2.58,-2.34 0.00,0.02"/>
+    <junction id="8.begin" type="dead_end" x="0.03" y="0.02" incLanes="" intLanes="" shape="0.03,0.02 1.31,3.28"/>
+    <junction id="8.end" type="dead_end" x="0.02" y="0.03" incLanes="-8_0" intLanes="" shape="1.31,3.29 0.02,0.03"/>
+    <junction id="80.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 2.91,-1.92"/>
+    <junction id="80.end" type="dead_end" x="0.00" y="0.02" incLanes="-80_0" intLanes="" shape="2.92,-1.92 0.00,0.02"/>
+    <junction id="81.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 3.38,0.93"/>
+    <junction id="81.end" type="dead_end" x="0.00" y="0.02" incLanes="-81_0" intLanes="" shape="3.38,0.94 0.00,0.02"/>
+    <junction id="82.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -1.95,-2.88"/>
+    <junction id="82.end" type="dead_end" x="0.00" y="0.02" incLanes="-82_0" intLanes="" shape="-1.95,-2.88 0.00,0.02"/>
+    <junction id="83.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -1.33,-3.21"/>
+    <junction id="83.end" type="dead_end" x="0.00" y="0.02" incLanes="-83_0" intLanes="" shape="-1.33,-3.22 0.00,0.02"/>
+    <junction id="84.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -0.23,-3.47"/>
+    <junction id="84.end" type="dead_end" x="0.00" y="0.02" incLanes="-84_0" intLanes="" shape="-0.23,-3.47 0.00,0.02"/>
+    <junction id="85.begin" type="dead_end" x="0.00" y="0.02" incLanes="" intLanes="" shape="0.00,0.02 -0.98,-3.34"/>
+    <junction id="85.end" type="dead_end" x="0.00" y="0.02" incLanes="-85_0" intLanes="" shape="-0.98,-3.34 0.00,0.02"/>
+    <junction id="86.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -2.89,1.98"/>
+    <junction id="86.end" type="dead_end" x="0.00" y="0.02" incLanes="-86_0" intLanes="" shape="-2.89,1.98 0.00,0.02"/>
+    <junction id="87.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 1.30,3.27"/>
+    <junction id="87.end" type="dead_end" x="0.00" y="0.02" incLanes="-87_0" intLanes="" shape="1.30,3.27 0.00,0.02"/>
+    <junction id="88.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -3.10,1.64"/>
+    <junction id="88.end" type="dead_end" x="0.01" y="0.02" incLanes="-88_0" intLanes="" shape="-3.10,1.64 0.01,0.02"/>
+    <junction id="89.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 -1.30,-3.23"/>
+    <junction id="89.end" type="dead_end" x="0.01" y="0.02" incLanes="-89_0" intLanes="" shape="-1.30,-3.23 0.01,0.02"/>
+    <junction id="9.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 1.19,-3.27"/>
+    <junction id="9.end" type="dead_end" x="0.02" y="0.03" incLanes="-9_0" intLanes="" shape="1.19,-3.27 0.02,0.03"/>
+    <junction id="90.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 3.13,-1.55"/>
+    <junction id="90.end" type="dead_end" x="0.01" y="0.02" incLanes="-90_0" intLanes="" shape="3.14,-1.55 0.01,0.02"/>
+    <junction id="91.begin" type="dead_end" x="0.01" y="0.02" incLanes="" intLanes="" shape="0.01,0.02 3.30,-1.17"/>
+    <junction id="91.end" type="dead_end" x="0.01" y="0.02" incLanes="-91_0" intLanes="" shape="3.30,-1.17 0.01,0.02"/>
+    <junction id="92.begin" type="dead_end" x="0.03" y="0.01" incLanes="" intLanes="" shape="0.03,0.01 2.72,-2.22"/>
+    <junction id="92.end" type="dead_end" x="0.03" y="0.01" incLanes="-92_0" intLanes="" shape="2.73,-2.22 0.03,0.01"/>
+    <junction id="93.begin" type="dead_end" x="0.00" y="0.03" incLanes="" intLanes="" shape="0.00,0.03 -0.99,3.38"/>
+    <junction id="93.end" type="dead_end" x="0.00" y="0.03" incLanes="-93_0" intLanes="" shape="-0.99,3.38 0.00,0.03"/>
+    <junction id="94.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -2.86,-1.98"/>
+    <junction id="94.end" type="dead_end" x="0.02" y="0.02" incLanes="-94_0" intLanes="" shape="-2.86,-1.98 0.02,0.02"/>
+    <junction id="95.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 2.63,2.36"/>
+    <junction id="95.end" type="dead_end" x="0.01" y="0.03" incLanes="-95_0" intLanes="" shape="2.62,2.36 0.01,0.03"/>
+    <junction id="96.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 -2.98,-1.78"/>
+    <junction id="96.end" type="dead_end" x="0.02" y="0.02" incLanes="-96_0" intLanes="" shape="-2.98,-1.78 0.02,0.02"/>
+    <junction id="97.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 2.90,2.01"/>
+    <junction id="97.end" type="dead_end" x="0.02" y="0.02" incLanes="-97_0" intLanes="" shape="2.90,2.01 0.02,0.02"/>
+    <junction id="98.begin" type="dead_end" x="0.02" y="0.02" incLanes="" intLanes="" shape="0.02,0.02 3.09,1.70"/>
+    <junction id="98.end" type="dead_end" x="0.02" y="0.02" incLanes="-98_0" intLanes="" shape="3.09,1.70 0.02,0.02"/>
+    <junction id="99.begin" type="dead_end" x="0.02" y="0.03" incLanes="" intLanes="" shape="0.02,0.03 1.97,2.94"/>
+    <junction id="99.end" type="dead_end" x="0.02" y="0.03" incLanes="-99_0" intLanes="" shape="1.97,2.94 0.02,0.03"/>
+
+</net>

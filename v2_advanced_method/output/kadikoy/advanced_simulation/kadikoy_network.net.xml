@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-05-25 12:27:32 by Eclipse SUMO netconvert Version 1.20.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <opendrive-files value="output/kadikoy/advanced_simulation/kadikoy_network.xodr"/>
+    </input>
+
+    <output>
+        <output-file value="output/kadikoy/advanced_simulation/kadikoy_network.net.xml"/>
+        <output.street-names value="true"/>
+    </output>
+
+    <processing>
+        <geometry.remove value="true"/>
+        <roundabouts.guess value="true"/>
+    </processing>
+
+    <ramp_guessing>
+        <ramps.guess value="true"/>
+    </ramp_guessing>
+
+    <junctions>
+        <no-turnarounds.except-deadend value="true"/>
+        <junctions.corner-detail value="5"/>
+    </junctions>
+
+</configuration>
+-->
+
+<net version="1.20" junctionCornerDetail="5" rectangularLaneCut="true" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="-29.03,-40.99" convBoundary="0.00,0.00,0.00,0.00" origBoundary="0.000000,0.000000,0.000000,0.000000" projParameter="+proj=utm +zone=35 +datum=WGS84 +units=m +no_defs +x_0=-668686.91 +y_0=-4539963.74"/>
+
+    <type id="driving" priority="1" speed="13.89" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" width="3.65"/>
+
+    <edge id="-1" from="1.begin" to="1.end" name="Road_22876211" priority="1" type="driving">
+        <lane id="-1_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-0.34,-1.72 -0.33,-1.72" type="driving"/>
+    </edge>
+    <edge id="-2" from="2.begin" to="2.end" name="Road_23039519" priority="1" type="driving">
+        <lane id="-2_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="1.00,1.44 1.00,1.44" type="driving"/>
+    </edge>
+    <edge id="-3" from="3.begin" to="3.end" name="Road_23039521" priority="1" type="driving">
+        <lane id="-3_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone" speed="13.89" length="0.10" width="3.50" shape="-1.02,-1.42 -1.02,-1.42" type="driving"/>
+    </edge>
+
+    <junction id="1.begin" type="dead_end" x="0.00" y="0.00" incLanes="" intLanes="" shape="0.00,0.00 -0.68,-3.43"/>
+    <junction id="1.end" type="dead_end" x="0.00" y="0.00" incLanes="-1_0" intLanes="" shape="-0.67,-3.43 0.00,-0.00"/>
+    <junction id="2.begin" type="dead_end" x="0.00" y="0.00" incLanes="" intLanes="" shape="0.00,0.00 2.00,2.87"/>
+    <junction id="2.end" type="dead_end" x="0.00" y="0.00" incLanes="-2_0" intLanes="" shape="2.00,2.87 0.00,0.00"/>
+    <junction id="3.begin" type="dead_end" x="0.00" y="0.00" incLanes="" intLanes="" shape="-0.00,0.00 -2.05,-2.84"/>
+    <junction id="3.end" type="dead_end" x="0.00" y="0.00" incLanes="-3_0" intLanes="" shape="-2.05,-2.84 0.00,0.00"/>
+
+</net>

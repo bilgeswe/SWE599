@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    
+    <!-- Vehicle Types for Kadıköy District -->
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="4.5" maxSpeed="50" color="1,1,0"/>
+    <vType id="bus" accel="1.2" decel="4.0" sigma="0.3" length="12.0" maxSpeed="40" color="0,1,0"/>
+    <vType id="taxi" accel="2.8" decel="5.0" sigma="0.3" length="4.2" maxSpeed="55" color="1,1,1"/>
+    <vType id="delivery" accel="2.0" decel="4.0" sigma="0.4" length="6.0" maxSpeed="45" color="0.5,0.3,0"/>
+    
+    <!-- Traffic Flows for Kadıköy -->
+    <vehicle id="kadikoy_0" type="bus" depart="782">
+        <route edges="-132 -301"/>
+    </vehicle>
+    <vehicle id="kadikoy_1" type="car" depart="1754">
+        <route edges="-281 -257"/>
+    </vehicle>
+    <vehicle id="kadikoy_2" type="car" depart="2408">
+        <route edges="-162 -315"/>
+    </vehicle>
+    <vehicle id="kadikoy_3" type="car" depart="3122">
+        <route edges="-61 -140"/>
+    </vehicle>
+    <vehicle id="kadikoy_4" type="car" depart="2713">
+        <route edges="-224 -53"/>
+    </vehicle>
+    <vehicle id="kadikoy_5" type="car" depart="1215">
+        <route edges="-146 -60"/>
+    </vehicle>
+    <vehicle id="kadikoy_6" type="car" depart="1022">
+        <route edges="-23 -184"/>
+    </vehicle>
+    <vehicle id="kadikoy_7" type="car" depart="3364">
+        <route edges="-9 -8"/>
+    </vehicle>
+    <vehicle id="kadikoy_8" type="taxi" depart="3555">
+        <route edges="-154 -108"/>
+    </vehicle>
+    <vehicle id="kadikoy_9" type="car" depart="2840">
+        <route edges="-48 -212"/>
+    </vehicle>
+    <vehicle id="kadikoy_10" type="car" depart="3695">
+        <route edges="-243 -262"/>
+    </vehicle>
+    <vehicle id="kadikoy_11" type="car" depart="1752">
+        <route edges="-296 -223"/>
+    </vehicle>
+    <vehicle id="kadikoy_12" type="delivery" depart="1573">
+        <route edges="-121 -19"/>
+    </vehicle>
+    <vehicle id="kadikoy_13" type="car" depart="2359">
+        <route edges="-208 -46"/>
+    </vehicle>
+    <vehicle id="kadikoy_14" type="car" depart="2121">
+        <route edges="-196 -108"/>
+    </vehicle>
+    <vehicle id="kadikoy_15" type="bus" depart="2122">
+        <route edges="-88 -169"/>
+    </vehicle>
+    <vehicle id="kadikoy_16" type="taxi" depart="2835">
+        <route edges="-12 -126"/>
+    </vehicle>
+    <vehicle id="kadikoy_17" type="car" depart="2868">
+        <route edges="-240 -102"/>
+    </vehicle>
+    <vehicle id="kadikoy_18" type="car" depart="757">
+        <route edges="-7 -265"/>
+    </vehicle>
+    <vehicle id="kadikoy_19" type="car" depart="535">
+        <route edges="-220 -155"/>
+    </vehicle>
+    <vehicle id="kadikoy_20" type="car" depart="2710">
+        <route edges="-117 -256"/>
+    </vehicle>
+    <vehicle id="kadikoy_21" type="car" depart="3773">
+        <route edges="-158 -229"/>
+    </vehicle>
+    <vehicle id="kadikoy_22" type="car" depart="2732">
+        <route edges="-14 -251"/>
+    </vehicle>
+    <vehicle id="kadikoy_23" type="car" depart="1283">
+        <route edges="-277 -88"/>
+    </vehicle>
+    <vehicle id="kadikoy_24" type="taxi" depart="3663">
+        <route edges="-231 -27"/>
+    </vehicle>
+    <vehicle id="kadikoy_25" type="car" depart="3624">
+        <route edges="-86 -224"/>
+    </vehicle>
+    <vehicle id="kadikoy_26" type="car" depart="1316">
+        <route edges="-94 -247"/>
+    </vehicle>
+    <vehicle id="kadikoy_27" type="car" depart="2863">
+        <route edges="-92 -317"/>
+    </vehicle>
+    <vehicle id="kadikoy_28" type="car" depart="1293">
+        <route edges="-113 -95"/>
+    </vehicle>
+    <vehicle id="kadikoy_29" type="car" depart="426">
+        <route edges="-165 -43"/>
+    </vehicle>
+    <vehicle id="kadikoy_30" type="bus" depart="3518">
+        <route edges="-55 -138"/>
+    </vehicle>
+    <vehicle id="kadikoy_31" type="car" depart="3477">
+        <route edges="-195 -32"/>
+    </vehicle>
+    <vehicle id="kadikoy_32" type="taxi" depart="2378">
+        <route edges="-53 -295"/>
+    </vehicle>
+    <vehicle id="kadikoy_33" type="car" depart="2292">
+        <route edges="-200 -307"/>
+    </vehicle>
+    <vehicle id="kadikoy_34" type="car" depart="3253">
+        <route edges="-169 -315"/>
+    </vehicle>
+    <vehicle id="kadikoy_35" type="car" depart="3773">
+        <route edges="-50 -134"/>
+    </vehicle>
+    <vehicle id="kadikoy_36" type="delivery" depart="1783">
+        <route edges="-236 -250"/>
+    </vehicle>
+    <vehicle id="kadikoy_37" type="car" depart="2299">
+        <route edges="-34 -13"/>
+    </vehicle>
+    <vehicle id="kadikoy_38" type="car" depart="1935">
+        <route edges="-45 -56"/>
+    </vehicle>
+    <vehicle id="kadikoy_39" type="car" depart="3684">
+        <route edges="-214 -281"/>
+    </vehicle>
+    <vehicle id="kadikoy_40" type="taxi" depart="727">
+        <route edges="-144 -210"/>
+    </vehicle>
+    <vehicle id="kadikoy_41" type="car" depart="1852">
+        <route edges="-157 -177"/>
+    </vehicle>
+    <vehicle id="kadikoy_42" type="car" depart="2338">
+        <route edges="-253 -6"/>
+    </vehicle>
+    <vehicle id="kadikoy_43" type="car" depart="3584">
+        <route edges="-153 -183"/>
+    </vehicle>
+    <vehicle id="kadikoy_44" type="car" depart="2844">
+        <route edges="-23 -141"/>
+    </vehicle>
+    <vehicle id="kadikoy_45" type="bus" depart="3598">
+        <route edges="-296 -2"/>
+    </vehicle>
+    <vehicle id="kadikoy_46" type="car" depart="3349">
+        <route edges="-201 -45"/>
+    </vehicle>
+    <vehicle id="kadikoy_47" type="car" depart="3164">
+        <route edges="-157 -219"/>
+    </vehicle>
+    <vehicle id="kadikoy_48" type="taxi" depart="2440">
+        <route edges="-162 -216"/>
+    </vehicle>
+    <vehicle id="kadikoy_49" type="car" depart="606">
+        <route edges="-151 -99"/>
+    </vehicle>
+    <vehicle id="kadikoy_50" type="car" depart="4033">
+        <route edges="-160 -234"/>
+    </vehicle>
+    <vehicle id="kadikoy_51" type="car" depart="4048">
+        <route edges="-210 -143"/>
+    </vehicle>
+    <vehicle id="kadikoy_52" type="car" depart="3021">
+        <route edges="-18 -258"/>
+    </vehicle>
+    <vehicle id="kadikoy_53" type="car" depart="2855">
+        <route edges="-147 -39"/>
+    </vehicle>
+    <vehicle id="kadikoy_54" type="car" depart="3544">
+        <route edges="-247 -314"/>
+    </vehicle>
+    <vehicle id="kadikoy_55" type="car" depart="3315">
+        <route edges="-68 -2"/>
+    </vehicle>
+    <vehicle id="kadikoy_56" type="taxi" depart="3089">
+        <route edges="-189 -179"/>
+    </vehicle>
+    <vehicle id="kadikoy_57" type="car" depart="3732">
+        <route edges="-241 -296"/>
+    </vehicle>
+    <vehicle id="kadikoy_58" type="car" depart="2139">
+        <route edges="-191 -234"/>
+    </vehicle>
+    <vehicle id="kadikoy_59" type="car" depart="2776">
+        <route edges="-18 -54"/>
+    </vehicle>
+    <vehicle id="kadikoy_60" type="bus" depart="2877">
+        <route edges="-240 -210"/>
+    </vehicle>
+    <vehicle id="kadikoy_61" type="car" depart="1409">
+        <route edges="-163 -249"/>
+    </vehicle>
+    <vehicle id="kadikoy_62" type="car" depart="3343">
+        <route edges="-310 -16"/>
+    </vehicle>
+    <vehicle id="kadikoy_63" type="car" depart="1553">
+        <route edges="-145 -305"/>
+    </vehicle>
+    <vehicle id="kadikoy_64" type="taxi" depart="1982">
+        <route edges="-90 -294"/>
+    </vehicle>
+    <vehicle id="kadikoy_65" type="car" depart="1771">
+        <route edges="-267 -119"/>
+    </vehicle>
+    <vehicle id="kadikoy_66" type="car" depart="1569">
+        <route edges="-32 -189"/>
+    </vehicle>
+    <vehicle id="kadikoy_67" type="car" depart="1650">
+        <route edges="-157 -256"/>
+    </vehicle>
+    <vehicle id="kadikoy_68" type="car" depart="2797">
+        <route edges="-12 -296"/>
+    </vehicle>
+    <vehicle id="kadikoy_69" type="car" depart="3513">
+        <route edges="-183 -94"/>
+    </vehicle>
+    <vehicle id="kadikoy_70" type="car" depart="1100">
+        <route edges="-20 -86"/>
+    </vehicle>
+    <vehicle id="kadikoy_71" type="car" depart="3384">
+        <route edges="-101 -315"/>
+    </vehicle>
+    <vehicle id="kadikoy_72" type="taxi" depart="709">
+        <route edges="-90 -269"/>
+    </vehicle>
+    <vehicle id="kadikoy_73" type="car" depart="3052">
+        <route edges="-263 -293"/>
+    </vehicle>
+    <vehicle id="kadikoy_74" type="car" depart="1727">
+        <route edges="-297 -203"/>
+    </vehicle>
+    <vehicle id="kadikoy_75" type="bus" depart="2426">
+        <route edges="-83 -97"/>
+    </vehicle>
+    <vehicle id="kadikoy_76" type="car" depart="2902">
+        <route edges="-105 -78"/>
+    </vehicle>
+    <vehicle id="kadikoy_77" type="car" depart="179">
+        <route edges="-111 -249"/>
+    </vehicle>
+    <vehicle id="kadikoy_78" type="car" depart="2811">
+        <route edges="-299 -57"/>
+    </vehicle>
+    <vehicle id="kadikoy_79" type="car" depart="3044">
+        <route edges="-240 -45"/>
+    </vehicle>
+    <vehicle id="kadikoy_80" type="taxi" depart="3029">
+        <route edges="-224 -162"/>
+    </vehicle>
+    <vehicle id="kadikoy_81" type="car" depart="1709">
+        <route edges="-270 -96"/>
+    </vehicle>
+    <vehicle id="kadikoy_82" type="car" depart="427">
+        <route edges="-99 -176"/>
+    </vehicle>
+    <vehicle id="kadikoy_83" type="car" depart="1994">
+        <route edges="-29 -168"/>
+    </vehicle>
+    <vehicle id="kadikoy_84" type="delivery" depart="968">
+        <route edges="-205 -270"/>
+    </vehicle>
+    <vehicle id="kadikoy_85" type="car" depart="525">
+        <route edges="-273 -149"/>
+    </vehicle>
+    <vehicle id="kadikoy_86" type="car" depart="1573">
+        <route edges="-172 -50"/>
+    </vehicle>
+    <vehicle id="kadikoy_87" type="car" depart="2309">
+        <route edges="-211 -159"/>
+    </vehicle>
+    <vehicle id="kadikoy_88" type="taxi" depart="318">
+        <route edges="-156 -157"/>
+    </vehicle>
+    <vehicle id="kadikoy_89" type="car" depart="691">
+        <route edges="-190 -76"/>
+    </vehicle>
+    <vehicle id="kadikoy_90" type="bus" depart="3337">
+        <route edges="-27 -227"/>
+    </vehicle>
+    <vehicle id="kadikoy_91" type="car" depart="3252">
+        <route edges="-71 -50"/>
+    </vehicle>
+    <vehicle id="kadikoy_92" type="car" depart="1369">
+        <route edges="-134 -315"/>
+    </vehicle>
+    <vehicle id="kadikoy_93" type="car" depart="2542">
+        <route edges="-60 -87"/>
+    </vehicle>
+    <vehicle id="kadikoy_94" type="car" depart="1976">
+        <route edges="-283 -266"/>
+    </vehicle>
+    <vehicle id="kadikoy_95" type="car" depart="478">
+        <route edges="-54 -118"/>
+    </vehicle>
+    <vehicle id="kadikoy_96" type="taxi" depart="1765">
+        <route edges="-255 -182"/>
+    </vehicle>
+    <vehicle id="kadikoy_97" type="car" depart="3849">
+        <route edges="-59 -66"/>
+    </vehicle>
+    <vehicle id="kadikoy_98" type="car" depart="3523">
+        <route edges="-30 -81"/>
+    </vehicle>
+    <vehicle id="kadikoy_99" type="car" depart="991">
+        <route edges="-214 -200"/>
+    </vehicle>
+    <vehicle id="kadikoy_100" type="car" depart="3114">
+        <route edges="-45 -83"/>
+    </vehicle>
+    <vehicle id="kadikoy_101" type="car" depart="2069">
+        <route edges="-202 -276"/>
+    </vehicle>
+    <vehicle id="kadikoy_102" type="car" depart="3439">
+        <route edges="-111 -71"/>
+    </vehicle>
+    <vehicle id="kadikoy_103" type="car" depart="3845">
+        <route edges="-56 -83"/>
+    </vehicle>
+    <vehicle id="kadikoy_104" type="taxi" depart="2389">
+        <route edges="-56 -255"/>
+    </vehicle>
+    <vehicle id="kadikoy_105" type="bus" depart="1607">
+        <route edges="-11 -134"/>
+    </vehicle>
+    <vehicle id="kadikoy_106" type="car" depart="2895">
+        <route edges="-65 -226"/>
+    </vehicle>
+    <vehicle id="kadikoy_107" type="car" depart="2496">
+        <route edges="-227 -142"/>
+    </vehicle>
+    <vehicle id="kadikoy_108" type="delivery" depart="2086">
+        <route edges="-112 -178"/>
+    </vehicle>
+    <vehicle id="kadikoy_109" type="car" depart="3254">
+        <route edges="-216 -93"/>
+    </vehicle>
+    <vehicle id="kadikoy_110" type="car" depart="2656">
+        <route edges="-173 -232"/>
+    </vehicle>
+    <vehicle id="kadikoy_111" type="car" depart="3855">
+        <route edges="-181 -234"/>
+    </vehicle>
+    <vehicle id="kadikoy_112" type="taxi" depart="624">
+        <route edges="-222 -83"/>
+    </vehicle>
+    <vehicle id="kadikoy_113" type="car" depart="4029">
+        <route edges="-176 -241"/>
+    </vehicle>
+    <vehicle id="kadikoy_114" type="car" depart="1602">
+        <route edges="-7 -84"/>
+    </vehicle>
+    <vehicle id="kadikoy_115" type="car" depart="1546">
+        <route edges="-5 -33"/>
+    </vehicle>
+    <vehicle id="kadikoy_116" type="car" depart="3351">
+        <route edges="-16 -42"/>
+    </vehicle>
+    <vehicle id="kadikoy_117" type="car" depart="1925">
+        <route edges="-276 -10"/>
+    </vehicle>
+    <vehicle id="kadikoy_118" type="car" depart="905">
+        <route edges="-109 -163"/>
+    </vehicle>
+    <vehicle id="kadikoy_119" type="car" depart="3639">
+        <route edges="-186 -270"/>
+    </vehicle>
+    <vehicle id="kadikoy_120" type="bus" depart="543">
+        <route edges="-232 -6"/>
+    </vehicle>
+    <vehicle id="kadikoy_121" type="car" depart="2420">
+        <route edges="-308 -241"/>
+    </vehicle>
+    <vehicle id="kadikoy_122" type="car" depart="169">
+        <route edges="-159 -17"/>
+    </vehicle>
+    <vehicle id="kadikoy_123" type="car" depart="434">
+        <route edges="-206 -151"/>
+    </vehicle>
+    <vehicle id="kadikoy_124" type="car" depart="559">
+        <route edges="-104 -225"/>
+    </vehicle>
+    <vehicle id="kadikoy_125" type="car" depart="2582">
+        <route edges="-67 -244"/>
+    </vehicle>
+    <vehicle id="kadikoy_126" type="car" depart="1290">
+        <route edges="-87 -130"/>
+    </vehicle>
+    <vehicle id="kadikoy_127" type="car" depart="815">
+        <route edges="-306 -122"/>
+    </vehicle>
+    <vehicle id="kadikoy_128" type="taxi" depart="479">
+        <route edges="-58 -13"/>
+    </vehicle>
+    <vehicle id="kadikoy_129" type="car" depart="157">
+        <route edges="-27 -134"/>
+    </vehicle>
+    <vehicle id="kadikoy_130" type="car" depart="1088">
+        <route edges="-226 -133"/>
+    </vehicle>
+    <vehicle id="kadikoy_131" type="car" depart="3625">
+        <route edges="-98 -33"/>
+    </vehicle>
+    <vehicle id="kadikoy_132" type="delivery" depart="890">
+        <route edges="-36 -78"/>
+    </vehicle>
+    <vehicle id="kadikoy_133" type="car" depart="3253">
+        <route edges="-92 -285"/>
+    </vehicle>
+    <vehicle id="kadikoy_134" type="car" depart="479">
+        <route edges="-53 -91"/>
+    </vehicle>
+    <vehicle id="kadikoy_135" type="bus" depart="738">
+        <route edges="-254 -272"/>
+    </vehicle>
+    <vehicle id="kadikoy_136" type="taxi" depart="1667">
+        <route edges="-268 -75"/>
+    </vehicle>
+    <vehicle id="kadikoy_137" type="car" depart="3169">
+        <route edges="-45 -225"/>
+    </vehicle>
+    <vehicle id="kadikoy_138" type="car" depart="2227">
+        <route edges="-203 -271"/>
+    </vehicle>
+    <vehicle id="kadikoy_139" type="car" depart="824">
+        <route edges="-164 -60"/>
+    </vehicle>
+    <vehicle id="kadikoy_140" type="car" depart="3169">
+        <route edges="-150 -179"/>
+    </vehicle>
+    <vehicle id="kadikoy_141" type="car" depart="3420">
+        <route edges="-198 -138"/>
+    </vehicle>
+    <vehicle id="kadikoy_142" type="car" depart="3004">
+        <route edges="-290 -69"/>
+    </vehicle>
+    <vehicle id="kadikoy_143" type="car" depart="840">
+        <route edges="-306 -264"/>
+    </vehicle>
+    <vehicle id="kadikoy_144" type="taxi" depart="1997">
+        <route edges="-250 -13"/>
+    </vehicle>
+    <vehicle id="kadikoy_145" type="car" depart="628">
+        <route edges="-104 -307"/>
+    </vehicle>
+    <vehicle id="kadikoy_146" type="car" depart="934">
+        <route edges="-184 -147"/>
+    </vehicle>
+    <vehicle id="kadikoy_147" type="car" depart="2354">
+        <route edges="-223 -280"/>
+    </vehicle>
+    <vehicle id="kadikoy_148" type="car" depart="865">
+        <route edges="-120 -14"/>
+    </vehicle>
+    <vehicle id="kadikoy_149" type="car" depart="816">
+        <route edges="-206 -185"/>
+    </vehicle>
+    <vehicle id="kadikoy_150" type="bus" depart="2669">
+        <route edges="-259 -17"/>
+    </vehicle>
+    <vehicle id="kadikoy_151" type="car" depart="2615">
+        <route edges="-35 -99"/>
+    </vehicle>
+    <vehicle id="kadikoy_152" type="taxi" depart="828">
+        <route edges="-66 -218"/>
+    </vehicle>
+    <vehicle id="kadikoy_153" type="car" depart="355">
+        <route edges="-52 -242"/>
+    </vehicle>
+    <vehicle id="kadikoy_154" type="car" depart="3345">
+        <route edges="-97 -274"/>
+    </vehicle>
+    <vehicle id="kadikoy_155" type="car" depart="971">
+        <route edges="-251 -73"/>
+    </vehicle>
+    <vehicle id="kadikoy_156" type="delivery" depart="2073">
+        <route edges="-305 -80"/>
+    </vehicle>
+    <vehicle id="kadikoy_157" type="car" depart="1262">
+        <route edges="-301 -226"/>
+    </vehicle>
+    <vehicle id="kadikoy_158" type="car" depart="2620">
+        <route edges="-29 -120"/>
+    </vehicle>
+    <vehicle id="kadikoy_159" type="car" depart="3144">
+        <route edges="-142 -262"/>
+    </vehicle>
+    <vehicle id="kadikoy_160" type="taxi" depart="1143">
+        <route edges="-158 -226"/>
+    </vehicle>
+    <vehicle id="kadikoy_161" type="car" depart="3192">
+        <route edges="-308 -159"/>
+    </vehicle>
+    <vehicle id="kadikoy_162" type="car" depart="2702">
+        <route edges="-25 -127"/>
+    </vehicle>
+    <vehicle id="kadikoy_163" type="car" depart="626">
+        <route edges="-271 -142"/>
+    </vehicle>
+    <vehicle id="kadikoy_164" type="car" depart="2506">
+        <route edges="-175 -216"/>
+    </vehicle>
+    <vehicle id="kadikoy_165" type="bus" depart="2034">
+        <route edges="-169 -102"/>
+    </vehicle>
+    <vehicle id="kadikoy_166" type="car" depart="621">
+        <route edges="-93 -85"/>
+    </vehicle>
+    <vehicle id="kadikoy_167" type="car" depart="4056">
+        <route edges="-174 -49"/>
+    </vehicle>
+    <vehicle id="kadikoy_168" type="taxi" depart="3101">
+        <route edges="-16 -206"/>
+    </vehicle>
+    <vehicle id="kadikoy_169" type="car" depart="1615">
+        <route edges="-108 -85"/>
+    </vehicle>
+    <vehicle id="kadikoy_170" type="car" depart="741">
+        <route edges="-291 -38"/>
+    </vehicle>
+    <vehicle id="kadikoy_171" type="car" depart="705">
+        <route edges="-160 -242"/>
+    </vehicle>
+    <vehicle id="kadikoy_172" type="car" depart="4107">
+        <route edges="-105 -150"/>
+    </vehicle>
+    <vehicle id="kadikoy_173" type="car" depart="3165">
+        <route edges="-230 -176"/>
+    </vehicle>
+    <vehicle id="kadikoy_174" type="car" depart="3676">
+        <route edges="-243 -316"/>
+    </vehicle>
+    <vehicle id="kadikoy_175" type="car" depart="598">
+        <route edges="-124 -167"/>
+    </vehicle>
+    <vehicle id="kadikoy_176" type="taxi" depart="3544">
+        <route edges="-15 -18"/>
+    </vehicle>
+    <vehicle id="kadikoy_177" type="car" depart="1021">
+        <route edges="-27 -42"/>
+    </vehicle>
+    <vehicle id="kadikoy_178" type="car" depart="1163">
+        <route edges="-115 -108"/>
+    </vehicle>
+    <vehicle id="kadikoy_179" type="car" depart="1219">
+        <route edges="-98 -118"/>
+    </vehicle>
+    <vehicle id="kadikoy_180" type="bus" depart="2457">
+        <route edges="-247 -26"/>
+    </vehicle>
+    <vehicle id="kadikoy_181" type="car" depart="2901">
+        <route edges="-103 -166"/>
+    </vehicle>
+    <vehicle id="kadikoy_182" type="car" depart="1153">
+        <route edges="-90 -291"/>
+    </vehicle>
+    <vehicle id="kadikoy_183" type="car" depart="2398">
+        <route edges="-236 -113"/>
+    </vehicle>
+    <vehicle id="kadikoy_184" type="taxi" depart="1069">
+        <route edges="-155 -131"/>
+    </vehicle>
+    <vehicle id="kadikoy_185" type="car" depart="255">
+        <route edges="-27 -144"/>
+    </vehicle>
+    <vehicle id="kadikoy_186" type="car" depart="514">
+        <route edges="-69 -99"/>
+    </vehicle>
+    <vehicle id="kadikoy_187" type="car" depart="2564">
+        <route edges="-108 -183"/>
+    </vehicle>
+    <vehicle id="kadikoy_188" type="car" depart="3650">
+        <route edges="-308 -140"/>
+    </vehicle>
+    <vehicle id="kadikoy_189" type="car" depart="2203">
+        <route edges="-224 -281"/>
+    </vehicle>
+    <vehicle id="kadikoy_190" type="car" depart="796">
+        <route edges="-180 -9"/>
+    </vehicle>
+    <vehicle id="kadikoy_191" type="car" depart="429">
+        <route edges="-71 -157"/>
+    </vehicle>
+    <vehicle id="kadikoy_192" type="taxi" depart="2406">
+        <route edges="-154 -269"/>
+    </vehicle>
+    <vehicle id="kadikoy_193" type="car" depart="2945">
+        <route edges="-31 -288"/>
+    </vehicle>
+    <vehicle id="kadikoy_194" type="car" depart="1417">
+        <route edges="-27 -28"/>
+    </vehicle>
+    <vehicle id="kadikoy_195" type="bus" depart="2912">
+        <route edges="-96 -205"/>
+    </vehicle>
+    <vehicle id="kadikoy_196" type="car" depart="1237">
+        <route edges="-85 -141"/>
+    </vehicle>
+    <vehicle id="kadikoy_197" type="car" depart="195">
+        <route edges="-209 -224"/>
+    </vehicle>
+    <vehicle id="kadikoy_198" type="car" depart="1823">
+        <route edges="-257 -140"/>
+    </vehicle>
+    <vehicle id="kadikoy_199" type="car" depart="2675">
+        <route edges="-273 -10"/>
+    </vehicle>
+
+</routes>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+    <!-- Vehicle Types for Kadıköy District -->
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="4.5" maxSpeed="50" color="1,1,0"/>
+    <vType id="bus" accel="1.2" decel="4.0" sigma="0.3" length="12.0" maxSpeed="40" color="0,1,0"/>
+    <vType id="taxi" accel="2.8" decel="5.0" sigma="0.3" length="4.2" maxSpeed="55" color="1,1,1"/>
+    <vType id="delivery" accel="2.0" decel="4.0" sigma="0.4" length="6.0" maxSpeed="45" color="0.5,0.3,0"/>
+    
+    <!-- Traffic Routes for Kadıköy -->
+
+</routes>

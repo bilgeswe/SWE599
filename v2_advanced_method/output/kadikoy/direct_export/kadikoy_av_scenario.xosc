@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<OpenSCENARIO>
+  <FileHeader revMajor="1" revMinor="1" date="2025-05-25T12:37:19.099470" description="Kadikoy AV Simulation Scenario" name="Kadikoy_AV_Scenario" author="SWE599_AV_Simulation"/>
+  <ParameterDeclarations>
+    <ParameterDeclaration name="EgoVehicleSpeed" parameterType="m/s" value="25.0"/>
+    <ParameterDeclaration name="WeatherCondition" parameterType="enum" value="clear"/>
+    <ParameterDeclaration name="TimeOfDay" parameterType="string" value="12:00:00"/>
+    <ParameterDeclaration name="TrafficDensity" parameterType="enum" value="normal"/>
+  </ParameterDeclarations>
+  <CatalogLocations>
+    <VehicleCatalog>
+      <Directory path="./Catalogs/Vehicles"/>
+    </VehicleCatalog>
+  </CatalogLocations>
+  <RoadNetwork>
+    <LogicFile filepath="kadikoy_network.xodr"/>
+  </RoadNetwork>
+  <Entities>
+    <ScenarioObject name="KadikoyEgoVehicle">
+      <CatalogReference catalogName="VehicleCatalog" entryName="car_white"/>
+    </ScenarioObject>
+  </Entities>
+</OpenSCENARIO>
