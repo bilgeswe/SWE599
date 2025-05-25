@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<configuration><input><net-file value="uskudar_network.net.xml" /><route-files value="uskudar_routes.rou.xml" /></input><time><begin value="0" /><end value="1000" /></time></configuration>

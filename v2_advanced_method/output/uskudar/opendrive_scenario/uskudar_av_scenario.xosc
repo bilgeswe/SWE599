@@ -1,0 +1,156 @@
+<?xml version="1.0" ?>
+<OpenSCENARIO>
+  <FileHeader revMajor="1" revMinor="1" date="2025-05-24T20:37:13.128661" description="Uskudar AV Simulation Scenario" name="Uskudar_AV_Scenario" author="SWE599_AV_Simulation"/>
+  <ParameterDeclarations>
+    <ParameterDeclaration name="EgoVehicleSpeed" parameterType="m/s" value="13.89"/>
+    <ParameterDeclaration name="WeatherCondition" parameterType="enum" value="clear"/>
+    <ParameterDeclaration name="TimeOfDay" parameterType="string" value="12:00:00"/>
+    <ParameterDeclaration name="TrafficDensity" parameterType="enum" value="normal"/>
+  </ParameterDeclarations>
+  <CatalogLocations>
+    <VehicleCatalog>
+      <Directory path="./Catalogs/Vehicles"/>
+    </VehicleCatalog>
+    <PedestrianCatalog>
+      <Directory path="./Catalogs/Pedestrians"/>
+    </PedestrianCatalog>
+    <MiscObjectCatalog>
+      <Directory path="./Catalogs/MiscObjects"/>
+    </MiscObjectCatalog>
+  </CatalogLocations>
+  <RoadNetwork>
+    <LogicFile filepath="uskudar_network.xodr"/>
+  </RoadNetwork>
+  <Entities>
+    <ScenarioObject name="EgoVehicle">
+      <CatalogReference catalogName="VehicleCatalog" entryName="car_white"/>
+    </ScenarioObject>
+  </Entities>
+  <Storyboard>
+    <Init>
+      <Actions>
+        <Private entityRef="EgoVehicle">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="992.740000" y="2682.920000" z="0.0" h="0.050753" p="0.0" r="0.0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+          <PrivateAction>
+            <LongitudinalAction>
+              <SpeedAction>
+                <SpeedActionDynamics dynamicsShape="step" value="0.0" dynamicsDimension="time"/>
+                <SpeedTarget>
+                  <AbsoluteSpeed value="13.89"/>
+                </SpeedTarget>
+              </SpeedAction>
+            </LongitudinalAction>
+          </PrivateAction>
+        </Private>
+      </Actions>
+    </Init>
+    <Story name="AVPathFollowingStory">
+      <Act name="PathFollowingAct">
+        <ManeuverGroup maximumExecutionCount="1" name="EgoVehicleManeuverGroup">
+          <Actors selectTriggeringEntities="false">
+            <EntityRef entityRef="EgoVehicle"/>
+          </Actors>
+          <Maneuver name="PathFollowingManeuver">
+            <Event name="FollowTrajectoryEvent" priority="overwrite">
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="StartCondition" delay="0.0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <SimulationTimeCondition value="0.0" rule="greaterThan"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+              <Action name="FollowTrajectoryAction">
+                <PrivateAction>
+                  <RoutingAction>
+                    <FollowTrajectoryAction>
+                      <Trajectory name="EgoVehicleTrajectory" closed="false">
+                        <Shape>
+                          <Vertex time="0.0">
+                            <Position>
+                              <WorldPosition x="992.740000" y="2682.920000" z="0.0" h="0.050753" p="0.0" r="0.0"/>
+                            </Position>
+                          </Vertex>
+                          <Vertex time="0.1">
+                            <Position>
+                              <WorldPosition x="1055.540000" y="2686.110000" z="0.0" h="0.473149" p="0.0" r="0.0"/>
+                            </Position>
+                          </Vertex>
+                          <Vertex time="0.2">
+                            <Position>
+                              <WorldPosition x="5299.680000" y="4858.830000" z="0.0" h="-0.088656" p="0.0" r="0.0"/>
+                            </Position>
+                          </Vertex>
+                          <Vertex time="0.3">
+                            <Position>
+                              <WorldPosition x="5321.730000" y="4856.870000" z="0.0" h="-3.054273" p="0.0" r="0.0"/>
+                            </Position>
+                          </Vertex>
+                          <Vertex time="0.4">
+                            <Position>
+                              <WorldPosition x="5262.330000" y="4851.670000" z="0.0" h="2.922054" p="0.0" r="0.0"/>
+                            </Position>
+                          </Vertex>
+                          <Vertex time="0.5">
+                            <Position>
+                              <WorldPosition x="4715.710000" y="4973.640000" z="0.0" h="2.549814" p="0.0" r="0.0"/>
+                            </Position>
+                          </Vertex>
+                          <Vertex time="0.6">
+                            <Position>
+                              <WorldPosition x="4628.540000" y="5032.230000" z="0.0" h="0.022125" p="0.0" r="0.0"/>
+                            </Position>
+                          </Vertex>
+                          <Vertex time="0.7">
+                            <Position>
+                              <WorldPosition x="4754.170000" y="5035.010000" z="0.0" h="-0.437646" p="0.0" r="0.0"/>
+                            </Position>
+                          </Vertex>
+                          <Vertex time="0.8">
+                            <Position>
+                              <WorldPosition x="4798.730000" y="5014.160000" z="0.0" h="-0.939787" p="0.0" r="0.0"/>
+                            </Position>
+                          </Vertex>
+                          <Vertex time="0.9">
+                            <Position>
+                              <WorldPosition x="5287.850000" y="4344.740000" z="0.0" h="0.000000" p="0.0" r="0.0"/>
+                            </Position>
+                          </Vertex>
+                        </Shape>
+                      </Trajectory>
+                    </FollowTrajectoryAction>
+                  </RoutingAction>
+                </PrivateAction>
+              </Action>
+            </Event>
+          </Maneuver>
+        </ManeuverGroup>
+        <StartTrigger>
+          <ConditionGroup>
+            <Condition name="ActStartCondition" delay="0.0" conditionEdge="rising">
+              <ByValueCondition>
+                <SimulationTimeCondition value="0.0" rule="greaterThan"/>
+              </ByValueCondition>
+            </Condition>
+          </ConditionGroup>
+        </StartTrigger>
+      </Act>
+    </Story>
+    <StopTrigger>
+      <ConditionGroup>
+        <Condition name="EndCondition" delay="0.0" conditionEdge="rising">
+          <ByValueCondition>
+            <SimulationTimeCondition value="300.0" rule="greaterThan"/>
+          </ByValueCondition>
+        </Condition>
+      </ConditionGroup>
+    </StopTrigger>
+  </Storyboard>
+</OpenSCENARIO>

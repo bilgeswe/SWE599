@@ -1,0 +1,257 @@
+# Data Fetching Instructions
+
+This document provides detailed instructions for fetching and processing road network data.
+
+## Directory Structure
+
+```
+data/
+├── networks/         # Network files
+│   ├── kadikoy/     # Kadıköy network
+│   ├── levent/      # Levent network
+│   └── odunpazari/  # Odunpazarı network
+├── visualizations/   # Visualization outputs
+├── plots/           # Static plots
+└── cache/           # Cached data
+```
+
+## 1. Fetching Methods
+
+### Using osmnx (Recommended)
+```python
+import osmnx as ox
+
+# By place name
+network = ox.graph_from_place("Kadıköy, Istanbul, Turkey", network_type="drive")
+
+# By bounding box
+north, south, east, west = 41.0697, 41.0297, 29.0324, 28.9724
+network = ox.graph_from_bbox(north, south, east, west, network_type="drive")
+
+# Save as OSM file
+ox.save_graphml(network, "data/networks/kadikoy.osm")
+```
+
+### Using Overpass API
+```python
+import requests
+import json
+
+# Define query
+query = """
+[out:json][timeout:25];
+(
+  way["highway"](41.0297,28.9724,41.0697,29.0324);
+  >;
+);
+out body;
+"""
+
+# Fetch data
+response = requests.post("https://overpass-api.de/api/interpreter", data=query)
+data = response.json()
+
+# Save as OSM file
+with open("data/networks/kadikoy.osm", "w") as f:
+    json.dump(data, f)
+```
+
+## 2. Test Networks
+
+### Kadıköy Network
+- **Bounding Box**: 
+  - North: 41.0697
+  - South: 41.0297
+  - East: 29.0324
+  - West: 28.9724
+- **Characteristics**:
+  - Complex urban network
+  - Multiple junction types
+  - Various road geometries
+
+### Levent Network
+- **Bounding Box**: 
+  - North: 41.0897
+  - South: 41.0497
+  - East: 29.0524
+  - West: 28.9924
+- **Characteristics**:
+  - Business district network
+  - Regular grid layout
+  - Traffic signal systems
+
+### Odunpazarı Network
+- **Bounding Box**: 
+  - North: 39.7897
+  - South: 39.7497
+  - East: 30.5324
+  - West: 30.4724
+- **Characteristics**:
+  - Historical district
+  - Narrow streets
+  - Complex intersections
+
+## 3. Data Processing
+
+### OSM to SUMO Conversion
+```bash
+# Convert OSM to SUMO
+python src/converter/osm_to_sumo.py \
+    --osm-file data/networks/kadikoy.osm \
+    --output-file data/networks/kadikoy.net.xml \
+    --default.speed 13.89 \
+    --default.lanewidth 3.5 \
+    --junctions.join true \
+    --tls.guess true
+```
+
+### SUMO to OpenDRIVE Conversion
+```bash
+# Convert SUMO to OpenDRIVE
+python src/converter/sumo_to_xodr.py \
+    --sumo-file data/networks/kadikoy.net.xml \
+    --output-file data/networks/kadikoy.xodr \
+    --geometry.min-radius 5.0 \
+    --geometry.max-grade 0.1 \
+    --geometry.min-length 1.0
+```
+
+## 4. Data Validation
+
+### Network Structure Validation
+```python
+from src.validator.network_validator import NetworkValidator
+
+# Create validator
+validator = NetworkValidator()
+
+# Validate network
+result = validator.validate("data/networks/kadikoy.net.xml")
+
+# Get validation report
+report = validator.get_report()
+```
+
+### Geometry Validation
+```python
+from src.validator.geometry_validator import GeometryValidator
+
+# Create validator
+validator = GeometryValidator()
+
+# Validate geometry
+result = validator.validate("data/networks/kadikoy.net.xml")
+
+# Get validation report
+report = validator.get_report()
+```
+
+## 5. File Naming Convention
+
+- OSM files: `{location}.osm`
+- SUMO networks: `{location}.net.xml`
+- OpenDRIVE files: `{location}.xodr`
+- Visualizations: `{location}_{type}.html`
+
+## 6. Requirements
+
+- Python 3.8 or higher
+- Required packages:
+  - osmnx
+  - networkx
+  - lxml
+  - numpy
+  - matplotlib
+  - sumolib
+  - folium
+
+## 7. Notes
+
+- Always validate data after fetching
+- Keep original OSM data for reference
+- Document any data modifications
+- Use consistent coordinate systems
+- Maintain data version control
+- Cache frequently used data
+- Clean up temporary files 
+
+# Complete Workflow: From OSM to SUMO to OpenDRIVE to Visualizations
+
+This guide walks you through the entire process of converting and visualizing road networks using the provided codebase.
+
+---
+
+## Step 1: Download OSM Data
+
+Use the fetcher script to download OpenStreetMap (OSM) data for a specific region:
+
+```bash
+python src/osm_fetcher/fetcher.py "Levent, Istanbul, Turkey"
+```
+- This will create a file like `data/osm/levent.osm`.
+
+---
+
+## Step 2: Convert OSM to SUMO Network (.net.xml)
+
+Use the converter script to generate the SUMO network:
+
+```bash
+python src/converter/osm_to_sumo.py data/osm/levent.osm data/sumo/levent.net.xml
+```
+- This uses SUMO's `netconvert` with recommended options and logs the process.
+- Review any warnings (e.g., disconnected edges) in the output.
+
+---
+
+## Step 3: Convert SUMO to OpenDRIVE (.xodr)
+
+Use the advanced converter to transform the SUMO network into OpenDRIVE format:
+
+```bash
+python src/converter/advanced_sumo_to_xodr.py data/sumo/levent.net.xml data/sumo/levent.xodr
+```
+- This will create `data/sumo/levent.xodr`.
+- Warnings (e.g., about junctions with no connections) are logged for your review.
+
+---
+
+## Step 4: Generate Interactive HTML Visualization
+
+Create an interactive visualization of the OSM network using Folium:
+
+```bash
+python src/visualization/visualize_with_folium.py data/osm/levent.osm
+```
+- This will create `data/visualizations/levent_interactive.html`.
+- Open this file in your web browser to explore the network interactively.
+
+---
+
+## Step 5: Generate Static PNG Visualization
+
+Create a static visualization of the OSM network using Matplotlib:
+
+```bash
+python src/visualization/visualize_network.py data/osm/levent.osm
+```
+- This will create `data/plots/levent_network.png`.
+- Use this PNG for a static overview of the network.
+
+---
+
+## Summary Table
+
+| Step                | Command Example                                                                 |
+|---------------------|--------------------------------------------------------------------------------|
+| Download OSM        | `python src/osm_fetcher/fetcher.py "Levent, Istanbul, Turkey"`                  |
+| Convert to .net.xml | `python src/converter/osm_to_sumo.py data/osm/levent.osm data/sumo/levent.net.xml` |
+| Convert to .xodr    | `python src/converter/advanced_sumo_to_xodr.py data/sumo/levent.net.xml data/sumo/levent.xodr` |
+| Generate HTML       | `python src/visualization/visualize_with_folium.py data/osm/levent.osm`         |
+| Generate PNG        | `python src/visualization/visualize_network.py data/osm/levent.osm`             |
+
+---
+
+**Tip:**
+- For fixing detected issues, you can edit the OSM file, use SUMO's `netedit`, or extend the detector script for auto-fixes.
+- If you need further automation or help interpreting results, see the code comments or ask for support. 

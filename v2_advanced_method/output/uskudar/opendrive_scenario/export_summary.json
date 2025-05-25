@@ -1,0 +1,40 @@
+{
+  "export_timestamp": "2025-05-24T20:30:00Z",
+  "location": "\u00dcsk\u00fcdar, Istanbul, Turkey",
+  "coordinate_system": "UTM Zone 35N (EPSG:32635)",
+  "network_stats": {
+    "nodes": 9421,
+    "edges": 24157,
+    "traffic_lights": 42
+  },
+  "files_generated": {
+    "opendrive": "uskudar_network.xodr",
+    "openscenario": "uskudar_av_scenario.xosc",
+    "summary": "export_summary.json"
+  },
+  "compatible_tools": [
+    "Unreal Engine OpenDRIVE plugin",
+    "esmini",
+    "CARLA",
+    "IPG CarMaker",
+    "VTD",
+    "OpenSCENARIO viewers"
+  ],
+  "network_bounds": {
+    "net_offset": [
+      -668686.91,
+      -4539963.74
+    ],
+    "geographic_bounds": {
+      "description": "\u00dcsk\u00fcdar district, Istanbul",
+      "longitude_range": [
+        29.00596,
+        29.092133
+      ],
+      "latitude_range": [
+        40.992201,
+        41.077708
+      ]
+    }
+  }
+}

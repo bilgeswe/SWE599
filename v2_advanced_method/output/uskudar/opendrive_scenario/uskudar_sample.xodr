@@ -1,0 +1,100 @@
+<?xml version="1.0" ?>
+<OpenDRIVE>
+  <header revMajor="1" revMinor="4" name="Uskudar_Network" version="1.0" date="2025-05-24T20:36:49.894422" north="0.0" south="0.0" east="0.0" west="0.0" vendor="SWE599_AV_Simulation">
+    <geoReference>+proj=utm +zone=35 +datum=WGS84 +units=m +no_defs +x_0=-668686.91 +y_0=-4539963.74</geoReference>
+  </header>
+  <road name="Road_-1001359145" length="62.880968" id="1" junction="-1" rule="RHT">
+    <planView>
+      <geometry s="0.0" x="992.740000" y="2682.920000" hdg="0.050753" length="62.880968">
+        <line/>
+      </geometry>
+    </planView>
+    <lanes>
+      <laneSection s="0.000000">
+        <center>
+          <lane id="0" type="none" level="false"/>
+        </center>
+        <right>
+          <lane id="-1" type="driving" level="false">
+            <width sOffset="0.0" a="3.500000" b="0.0" c="0.0" d="0.0"/>
+            <speed sOffset="0.0" max="13.890000"/>
+          </lane>
+        </right>
+      </laneSection>
+    </lanes>
+  </road>
+  <road name="Road_-1003546909#0" length="22.136940" id="2" junction="-1" rule="RHT">
+    <planView>
+      <geometry s="0.0" x="5299.680000" y="4858.830000" hdg="-0.088656" length="22.136940">
+        <line/>
+      </geometry>
+    </planView>
+    <lanes>
+      <laneSection s="0.000000">
+        <center>
+          <lane id="0" type="none" level="false"/>
+        </center>
+        <right>
+          <lane id="-1" type="driving" level="false">
+            <width sOffset="0.0" a="3.500000" b="0.0" c="0.0" d="0.0"/>
+            <speed sOffset="0.0" max="13.890000"/>
+          </lane>
+        </right>
+      </laneSection>
+    </lanes>
+  </road>
+  <road name="Road_-1003546909#1" length="38.030095" id="3" junction="-1" rule="RHT">
+    <planView>
+      <geometry s="0.0" x="5262.330000" y="4851.670000" hdg="0.189402" length="38.030095">
+        <line/>
+      </geometry>
+    </planView>
+    <lanes>
+      <laneSection s="0.000000">
+        <center>
+          <lane id="0" type="none" level="false"/>
+        </center>
+        <right>
+          <lane id="-1" type="driving" level="false">
+            <width sOffset="0.0" a="3.500000" b="0.0" c="0.0" d="0.0"/>
+            <speed sOffset="0.0" max="13.890000"/>
+          </lane>
+        </right>
+      </laneSection>
+    </lanes>
+  </road>
+  <road name="Road_-1003546910" length="105.030457" id="4" junction="-1" rule="RHT">
+    <planView>
+      <geometry s="0.0" x="4715.710000" y="4973.640000" hdg="2.549814" length="105.030457">
+        <line/>
+      </geometry>
+    </planView>
+    <lanes>
+      <laneSection s="0.000000">
+        <center>
+          <lane id="0" type="none" level="false"/>
+        </center>
+        <right>
+          <lane id="-1" type="driving" level="false">
+            <width sOffset="0.0" a="3.500000" b="0.0" c="0.0" d="0.0"/>
+            <speed sOffset="0.0" max="13.890000"/>
+          </lane>
+        </right>
+      </laneSection>
+    </lanes>
+  </road>
+  <road name="Road_-1003546911#1" length="49.196708" id="5" junction="-1" rule="RHT">
+    <planView>
+      <geometry s="0.0" x="4754.170000" y="5035.010000" hdg="-0.437646" length="49.196708">
+        <line/>
+      </geometry>
+    </planView>
+    <lanes>
+      <laneSection s="0.000000">
+        <center>
+          <lane id="0" type="none" level="false"/>
+        </center>
+        <right>
+          <lane id="-1" type="driving" level="false">
+            <width sOffset="0.0" a="3.500000" b="0.0" c="0.0" d="0.0"/>
+            <speed sOffset="0.0" max="13.890000"/>

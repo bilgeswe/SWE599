@@ -1,373 +1,186 @@
-### Stage 1:
-<img width="730" alt="Ekran Resmi 2025-05-05 03 44 07" src="https://github.com/user-attachments/assets/187a7779-5403-406a-922d-caef0fea37a0" />
-<br/>
+# 🏙️ Üsküdar AV Simulation Project
 
-### Stage 2:
-<img width="1235" alt="Ekran Resmi 2025-05-05 03 43 19" src="https://github.com/user-attachments/assets/84c0671a-e2fc-47c5-a60e-4ce8169e000e" />
-<br/>
+> **Professional OpenDRIVE/OpenSCENARIO export system for Istanbul's Üsküdar district, evolved from basic OSM data to advanced AV simulation pipeline.**
 
-# Road Network Conversion and Validation System
-A comprehensive system for converting and validating road network formats between OSM, SUMO, and OpenDRIVE.
+## 🎯 Project Overview
 
-## Features
+This project demonstrates the evolution from **basic OSM data processing** to **professional autonomous vehicle simulation** using real-world data from Üsküdar, Istanbul.
 
-- **Network Conversion**
-  - OSM to SUMO conversion
-  - SUMO to OpenDRIVE conversion
-  - Advanced conversion options
-  - Error handling and logging
+### 📊 **Final Achievement:**
+- **🗺️ 9,421 nodes** and **24,157 road edges** covering Üsküdar district
+- **🚦 42 traffic lights** with realistic behavior
+- **📍 Geographic coverage:** 29.006°-29.092°E, 40.992°-41.078°N
+- **🔧 Professional formats:** OpenDRIVE (16.3 MB) + OpenSCENARIO (6.8 KB)
+- **🎮 Interactive simulation:** Ready for SUMO-GUI with moving traffic
 
-- **Network Validation**
-  - Structure validation
-  - Geometry validation
-  - Connection validation
-  - Traffic signal validation
+## 🏗️ Two-Version Architecture
 
-- **Visualization**
-  - SUMO GUI visualization
-  - Interactive web maps
-  - Network comparison
-  - Error visualization
+### **Version 1: Basic Method** (`v1_basic_method/`)
+The foundation - basic OSM data fetching and simple SUMO conversion.
 
-## Installation
-
-1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd <project-directory>
-   ```
-
-2. **Set up Python environment**
-   ```bash
-   # Create virtual environment
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-   # Install dependencies
-   pip install -r requirements.txt
-   ```
-
-3. **Install SUMO**
-   ```bash
-   # macOS
-   brew install sumo
-
-   # Ubuntu
-   sudo add-apt-repository ppa:sumo/stable
-   sudo apt-get update
-   sudo apt-get install sumo sumo-tools
-
-   # Windows
-   # Download installer from https://sumo.dlr.de/docs/Downloads.php
-   ```
-
-4. **Install XQuartz (macOS)**
-   ```bash
-   brew install --cask xquartz
-   # Restart computer after installation
-   ```
-
-## Usage
-
-### 1. Network Conversion
-
-#### OSM to SUMO
-```python
-from src.converter.osm_to_sumo import convert_osm_to_sumo
-
-# Convert OSM to SUMO
-convert_osm_to_sumo(
-    osm_file="data/networks/kadikoy.osm",
-    output_file="data/networks/kadikoy.net.xml",
-    additional_options=[
-        "--default.speed=13.89",
-        "--default.lanewidth=3.5",
-        "--junctions.join=true",
-        "--tls.guess=true"
-    ]
-)
+🏗️ PRIMITIVE METHOD
+├── Fetch OSM data for Üsküdar → 7.4 MB .osm file
+├── Convert to basic SUMO → 12.3 MB .net.xml
+└── Foundation for advanced processing
 ```
 
-#### SUMO to OpenDRIVE
-```python
-from src.converter.sumo_to_xodr import convert_sumo_to_opendrive
+**Run:** `cd v1_basic_method && python fetch_and_convert.py`
 
-# Convert SUMO to OpenDRIVE
-convert_sumo_to_opendrive(
-    sumo_file="data/networks/kadikoy.net.xml",
-    output_file="data/networks/kadikoy.xodr",
-    additional_options=[
-        "--geometry.min-radius=5.0",
-        "--geometry.max-grade=0.1",
-        "--geometry.min-length=1.0"
-    ]
-)
-```
+### **Version 2: Advanced Method** (`v2_advanced_method/`)
+Professional AV simulation with advanced algorithms and export systems.
 
-### 2. Network Validation
-
-```python
-from src.validator.network_validator import NetworkValidator
-
-# Create validator
-validator = NetworkValidator()
-
-# Validate network
-result = validator.validate("data/networks/kadikoy.net.xml")
-
-# Get validation report
-report = validator.get_report()
-```
-
-### 3. Network Visualization
-
-#### SUMO GUI
-```python
-from src.visualization.visualize_in_sumo import visualize_in_sumo
-
-# Visualize in SUMO GUI
-visualize_in_sumo("data/networks/kadikoy.net.xml")
-```
-
-#### Web Map
-```python
-from src.visualization.visualize_with_folium import visualize_with_folium
-
-# Create interactive web map
-visualize_with_folium(
-    network_file="data/networks/kadikoy.net.xml",
-    output_file="data/visualizations/kadikoy.html"
-)
-```
-
-## Project Structure
-
-```
-project/
-├── src/
-│   ├── converter/         # Conversion tools
-│   │   ├── osm_to_sumo.py
-│   │   ├── sumo_to_xodr.py
-│   │   └── advanced_sumo_to_xodr.py
-│   ├── validator/         # Validation tools
-│   │   ├── network_validator.py
-│   │   ├── junction_validator.py
-│   │   └── geometry_validator.py
-│   ├── visualization/     # Visualization tools
-│   │   ├── visualize_in_sumo.py
-│   │   └── visualize_with_folium.py
-│   └── utils/            # Utility functions
-│       ├── coordinate_converter.py
-│       └── network_utils.py
-├── tests/
-│   ├── converter/        # Conversion tests
-│   ├── validator/        # Validation tests
-│   └── visualization/    # Visualization tests
-├── data/
-│   ├── networks/         # Network files
-│   └── visualizations/   # Visualization outputs
-└── docs/                 # Documentation
-```
-
-## Development
-
-### Running Tests
 ```bash
-# Run all tests
-python -m pytest
-
-# Run specific tests
-python -m pytest tests/converter/test_osm_to_sumo.py
-
-# Run with coverage
-python -m pytest --cov=src
+🚀 ADVANCED METHOD
+├── OpenDRIVE Export Algorithm → 16.3 MB .xodr
+├── OpenSCENARIO Export → 6.8 KB .xosc  
+├── Intelligent Traffic Generation → Real edge IDs
+├── Professional SUMO Integration → Interactive simulation
+└── Ready for AV development tools
 ```
 
-### Code Style
-- Follow PEP 8 guidelines
-- Use type hints
-- Document all functions and classes
-- Keep functions focused and small
+**Run:** `cd v2_advanced_method && python advanced_uskudar_pipeline.py`
 
-### Git Workflow
-1. Create feature branch
-2. Make changes
-3. Run tests
-4. Create pull request
+## 🚀 Quick Start
 
-## Documentation
-
-- [Format Specifications](docs/format_specifications.md)
-- [API Reference](docs/api_reference.md)
-- [Development Guide](docs/development_guide.md)
-- [Architecture](docs/architecture.md)
-
-## Acknowledgments
-
-- [SUMO](https://sumo.dlr.de/docs/)
-- [OpenDRIVE](https://www.asam.net/standards/detail/opendrive/)
-- [OpenStreetMap](https://www.openstreetmap.org/)
-
-## 📌 Project Status
-
-### ✅ Completed Features
-- OSM data collection and parsing
-- SUMO network conversion and validation
-- Basic OpenDRIVE conversion
-- Network visualization tools
-- Test coverage for core functionality
-
-### 🚧 In Progress
-- Advanced OpenDRIVE conversion features
-- Complex road network handling
-- Traffic signal timing conversion
-- Elevation profile support
-
-### 📋 Planned Features
-- Road markings and signs conversion
-- Lane-specific properties
-- Complex junction handling
-- Performance optimization
-
-## 📌 Project Goals
-
-- Use OpenStreetMap (OSM) API to gather real-world road data
-- Convert OSM data to SUMO Net using netconvert
-- Write a Python script to convert SUMO Net to OpenDRIVE format
-- Develop basic AV algorithms to test on the OpenDRIVE map
-- Focus on map-based simulation structure and testing
-
-## 📅 Timeline & Phases
-
-### ✅ Phase 1: Environment Setup & Exploration
-**Objectives:**
-- Set up development environment
-- Explore OSM, SUMO, and OpenDRIVE formats
-
-**Tasks:**
-- [ ] Install Python & required libraries: osmnx, requests, xml, etc.
-- [ ] Install SUMO and verify netconvert tool
-- [ ] Review .osm (XML), SUMO .net.xml, and OpenDRIVE .xodr formats
-
-### 🌐 Phase 2: OSM Data Collection via API
-**Objectives:**
-- Use Overpass API or osmnx to scrape road network data
-
-**Tasks:**
-- [ ] Select region of interest (city or custom bounding box)
-- [ ] Retrieve and save .osm road data
-
-### 🔁 Phase 3: Convert OSM → SUMO Net → OpenDRIVE
-**Objectives:**
-- Build conversion pipeline from real-world data to OpenDRIVE format
-
-**Tasks:**
-- [ ] Use SUMO's netconvert to convert .osm → .net.xml
-- [ ] Explore existing tools to convert SUMO Net → OpenDRIVE
-- [ ] Write custom Python script to parse SUMO XML and build .xodr
-- [ ] Validate resulting OpenDRIVE file
-
-### 🤖 Phase 4: AV Algorithm Development
-**Objectives:**
-- Simulate AV logic on OpenDRIVE map structure
-
-**Tasks:**
-- [ ] Design algorithms (lane following, routing, stoplight behavior)
-- [ ] Apply logic on OpenDRIVE map data
-- [ ] Output simulated behavior (paths, decisions, logs)
-
-### 📘 Phase 5: Documentation & Final Report
-**Objectives:**
-- Prepare full documentation and final report
-
-**Tasks:**
-- [ ] Complete technical documentation
-- [ ] Write final report
-- [ ] Create visualizations and demos
-- [ ] Present findings
-
-## ⚙️ Tools and Libraries
-
-- OpenStreetMap API / Overpass API
-- osmnx – OSM data extraction with Python
-- SUMO + netconvert – Create traffic networks
-- Python – Scripting and conversion logic
-- OpenDRIVE – Standardized road format
-
-## 📂 Repository Structure
-
-```
-.
-├── data/
-│   ├── networks/     # OSM and SUMO network files
-│   ├── visualizations/ # Network visualizations
-│   └── plots/        # Static network plots
-├── src/
-│   ├── converter/    # Conversion pipeline
-│   │   ├── advanced_sumo_to_xodr.py
-│   │   ├── osm_to_sumo.py
-│   │   └── sumo_to_xodr.py
-│   ├── visualization/ # Visualization tools
-│   └── utils/        # Utility functions
-├── tests/            # Unit tests
-├── docs/             # Documentation
-├── requirements.txt  # Python dependencies
-└── README.md        # Project documentation
-```
-
-## 🚀 Getting Started
-
-1. Install dependencies:
+### **Option 1: Full Pipeline (Recommended)**
 ```bash
+# Step 1: Create foundation data
+cd v1_basic_method
+python fetch_and_convert.py
+
+# Step 2: Build advanced simulation
+cd ../v2_advanced_method  
+python advanced_uskudar_pipeline.py
+
+# Step 3: Launch interactive simulation
+cd output/uskudar/advanced_simulation
+sumo-gui uskudar_simulation.sumocfg
+```
+
+### **Option 2: Use Existing Results**
+```bash
+# Launch our pre-built Üsküdar simulation
+cd v2_advanced_method/output/uskudar/opendrive_scenario
+sumo-gui uskudar_simulation.sumocfg
+```
+
+## 📁 Repository Structure
+
+```
+SWE599/
+├── README.md                     # This file
+├── requirements.txt              # Python dependencies
+├── v1_basic_method/              # 🏗️ VERSION 1: Foundation
+│   ├── README.md
+│   ├── fetch_and_convert.py      # Main script
+│   ├── data/                     # OSM data (7.4 MB)
+│   ├── osm_fetcher/              # Basic OSM tools
+│   ├── converter/                # Basic conversion
+│   └── utils/                    # Utility functions
+└── v2_advanced_method/           # 🚀 VERSION 2: Advanced
+    ├── README.md
+    ├── advanced_uskudar_pipeline.py  # Main advanced script
+    ├── add_traffic_uskudar.py     # Traffic generation algorithm
+    ├── export_uskudar_simple.py   # Üsküdar-specific export
+    ├── test_export_simple.py      # Testing framework
+    ├── exporters/                 # Advanced export algorithms
+    │   ├── opendrive_exporter/    # OpenDRIVE export system
+    │   └── openscenario_exporter/ # OpenSCENARIO export system
+    ├── av_algorithms/             # AV-specific algorithms
+    ├── examples/                  # Advanced examples
+    ├── validation/                # Validation tools
+    ├── visualization/             # Advanced visualization
+    ├── cli/                      # Command-line interface
+    └── output/                   # 🎯 GENERATED FILES
+        └── uskudar/
+            └── opendrive_scenario/    # Working simulation
+                ├── uskudar_network.xodr       # 16.3 MB OpenDRIVE
+                ├── uskudar_av_scenario.xosc   # 6.8 KB OpenSCENARIO
+                ├── uskudar_network.net.xml    # 15.9 MB SUMO network
+                ├── uskudar_routes.rou.xml     # Traffic routes
+                ├── uskudar_simulation.sumocfg # Complete simulation
+                └── export_summary.json       # Statistics
+```
+
+## 🔧 Key Technologies & Algorithms
+
+### **Version 1 Technologies:**
+- **OSMnx** - OpenStreetMap data fetching
+- **SUMO netconvert** - Basic network conversion
+- **XML processing** - Data parsing
+
+### **Version 2 Advanced Algorithms:**
+- **🛣️ OpenDRIVE Exporter** - Professional road network format
+- **🎬 OpenSCENARIO Exporter** - AV scenario testing format  
+- **🚦 Intelligent Traffic Generator** - Real edge ID extraction
+- **🎮 SUMO Integration** - Complete simulation pipeline
+
+## 💡 Real-World Applications
+
+### **🚗 Autonomous Vehicle Development**
+- Test AV algorithms in realistic Istanbul traffic
+- Use OpenSCENARIO for scenario-based validation
+- Professional-grade simulation environment
+
+### **🏙️ Urban Planning & Traffic Research**
+- Analyze traffic patterns in Üsküdar district
+- Test traffic light optimization algorithms
+- Study real-world urban mobility
+
+### **🔬 Academic Research**
+- Ready-to-use Istanbul traffic simulation
+- Professional export formats for research tools
+- Complete pipeline for similar cities
+
+## 🌍 Geographic Coverage
+
+- **🏛️ District:** Üsküdar, Istanbul, Turkey
+- **📍 Coordinates:** 29.006°-29.092°E, 40.992°-41.078°N  
+- **🗺️ Area:** Real urban district with complex road network
+- **🚦 Infrastructure:** 42 traffic lights, major intersections
+
+## 🔗 Integration with Professional Tools
+
+The generated files are compatible with:
+
+- **🎮 esmini** - Load `.xodr` and `.xosc` for 3D simulation
+- **🎯 Unreal Engine** - Import OpenDRIVE for photorealistic AV simulation
+- **🚗 CARLA** - Use as custom map for AV research  
+- **🏭 IPG CarMaker** - Professional AV simulation platform
+- **📊 SUMO** - Traffic flow analysis and optimization
+
+## 📦 Installation & Dependencies
+
+```bash
+# Clone repository
+git clone [repository-url]
+cd SWE599
+
+# Install Python dependencies
 pip install -r requirements.txt
-```
 
-2. Install SUMO:
-```bash
-# On macOS
+# Install SUMO (macOS)
 brew install sumo
 
-# On Ubuntu
-sudo apt-get install sumo
+# Verify installation
+sumo-gui --version
 ```
 
-3. Convert OSM to SUMO:
-```bash
-python src/converter/osm_to_sumo.py data/networks/kadıköy.osm data/networks/kadıköy.net.xml
-```
+## 🎉 Project Success Metrics
 
-4. Visualize the network:
-```bash
-# Using SUMO GUI
-sumo-gui -n data/networks/kadıköy.net.xml
+✅ **Data Processing:** 7.4 MB OSM → 16.3 MB OpenDRIVE  
+✅ **Network Scale:** 9,421 nodes, 24,157 edges  
+✅ **Professional Formats:** OpenDRIVE + OpenSCENARIO export  
+✅ **Interactive Simulation:** Working SUMO-GUI with traffic  
+✅ **Real-World Data:** Actual Istanbul geography  
+✅ **Algorithm Development:** Custom export and traffic generation  
+✅ **Professional Integration:** Ready for AV development tools  
 
-# Using interactive visualization
-python src/visualization/visualize_with_folium.py data/networks/kadıköy.osm
-```
+---
 
-## 🚌 Test Networks
-
-The project includes several test networks:
-
-1. **Kadıköy, Istanbul**
-   - Complex urban network
-   - Multiple junction types
-   - Various road geometries
-
-2. **Levent, Istanbul**
-   - Business district network
-   - Regular grid layout
-   - Traffic signal systems
-
-3. **Odunpazarı, Eskişehir**
-   - Historical district
-   - Narrow streets
-   - Complex intersections
-
-## 📚 Documentation
-
-- [Format Specifications](docs/format_specifications.md)
-- [Conversion Pipeline](docs/conversion_pipeline.md)
-- [Visualization Guide](docs/visualization_guide.md)
+**📧 Contact:** Built for SWE599 - Advanced software development project  
+**🏛️ Location:** Üsküdar, Istanbul, Turkey  
+**🚀 Status:** Production-ready AV simulation environment
 
 

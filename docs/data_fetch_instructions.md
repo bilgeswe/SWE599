@@ -4,7 +4,18 @@ This document provides detailed instructions for fetching road network data for 
 
 ## 1. OSM Data Fetching
 
-### Using osmnx
+### Using the Fetcher Script
+```bash
+# Fetch network by place name
+python src/osm_fetcher/fetcher.py "Kadıköy, Istanbul, Turkey"
+
+# The script will:
+# 1. Download OSM data for the specified location
+# 2. Save it to data/osm/kadıköy__istanbul__turkey.osm
+# 3. Validate the downloaded data
+```
+
+### Using osmnx (Alternative Method)
 ```python
 import osmnx as ox
 
@@ -16,31 +27,7 @@ north, south, east, west = 41.0697, 41.0297, 29.0324, 28.9724
 network = ox.graph_from_bbox(north, south, east, west, network_type="drive")
 
 # Save as OSM file
-ox.save_graphml(network, "data/networks/kadikoy.osm")
-```
-
-### Using Overpass API
-```python
-import requests
-import json
-
-# Define query
-query = """
-[out:json][timeout:25];
-(
-  way["highway"](41.0297,28.9724,41.0697,29.0324);
-  >;
-);
-out body;
-"""
-
-# Fetch data
-response = requests.post("https://overpass-api.de/api/interpreter", data=query)
-data = response.json()
-
-# Save as OSM file
-with open("data/networks/kadikoy.osm", "w") as f:
-    json.dump(data, f)
+ox.save_graphml(network, "data/osm/kadıköy__istanbul__turkey.osm")
 ```
 
 ## 2. Test Networks
@@ -78,95 +65,58 @@ with open("data/networks/kadikoy.osm", "w") as f:
   - Narrow streets
   - Complex intersections
 
-## 3. 43R Bus Route
-
-### Route Details
-- **Start**: Kadıköy
-- **End**: Levent
-- **Stops**: 25 major stops
-- **Length**: ~15 km
-
-### Bounding Box
-- North: 41.0697
-- South: 41.0297
-- East: 29.0324
-- West: 28.9724
-
-## 4. Data Processing
+## 3. Data Processing
 
 ### OSM to SUMO Conversion
 ```bash
 # Convert OSM to SUMO
 python src/converter/osm_to_sumo.py \
-    --osm-file data/networks/kadikoy.osm \
-    --output-file data/networks/kadikoy.net.xml \
-    --default.speed 13.89 \
-    --default.lanewidth 3.5 \
-    --junctions.join true \
-    --tls.guess true
+    data/osm/kadıköy__istanbul__turkey.osm \
+    data/sumo/kadıköy__istanbul__turkey.net.xml
 ```
 
 ### SUMO to OpenDRIVE Conversion
 ```bash
 # Convert SUMO to OpenDRIVE
-python src/converter/sumo_to_xodr.py \
-    --sumo-file data/networks/kadikoy.net.xml \
-    --output-file data/networks/kadikoy.xodr \
-    --geometry.min-radius 5.0 \
-    --geometry.max-grade 0.1 \
-    --geometry.min-length 1.0
+python src/converter/advanced_sumo_to_xodr.py \
+    data/sumo/kadıköy__istanbul__turkey.net.xml \
+    data/opendrive/kadıköy__istanbul__turkey.xodr
 ```
 
-## 5. Data Validation
+## 4. Data Validation
 
-### Network Structure Validation
-```python
-from src.validator.network_validator import NetworkValidator
-
-# Create validator
-validator = NetworkValidator()
-
-# Validate network
-result = validator.validate("data/networks/kadikoy.net.xml")
-
-# Get validation report
-report = validator.get_report()
+### Network Issue Detection
+```bash
+# Detect network issues
+python src/converter/network_issue_detector.py data/sumo/kadıköy__istanbul__turkey.net.xml
 ```
 
-### Geometry Validation
-```python
-from src.validator.geometry_validator import GeometryValidator
-
-# Create validator
-validator = GeometryValidator()
-
-# Validate geometry
-result = validator.validate("data/networks/kadikoy.net.xml")
-
-# Get validation report
-report = validator.get_report()
+### OpenDRIVE Validation
+```bash
+# Validate OpenDRIVE network
+python src/converter/advanced_sumo_to_xodr.py --validate-opendrive data/opendrive/kadıköy__istanbul__turkey.xodr
 ```
 
-## 6. Data Storage
+## 5. Data Storage
 
 ### Directory Structure
 ```
 data/
-├── networks/         # Network files
-│   ├── kadikoy/     # Kadıköy network
-│   ├── levent/      # Levent network
-│   └── odunpazari/  # Odunpazarı network
-├── visualizations/   # Visualization outputs
-└── plots/           # Static plots
+├── osm/            # OSM data files
+├── sumo/           # SUMO network files
+├── opendrive/      # OpenDRIVE files
+├── visualizations/ # Visualization outputs
+└── plots/          # Static plots
 ```
 
 ### File Naming Convention
-- OSM files: `{location}.osm`
-- SUMO networks: `{location}.net.xml`
-- OpenDRIVE files: `{location}.xodr`
-- Visualizations: `{location}_{type}.html`
+- OSM files: `{location}__{city}__{country}.osm`
+- SUMO networks: `{location}__{city}__{country}.net.xml`
+- OpenDRIVE files: `{location}__{city}__{country}.xodr`
+- Visualizations: `{location}__{city}__{country}.html`
+- Plots: `{location}__{city}__{country}.png`
 
-## 7. Notes
+## 6. Notes
 
 - Always validate data after fetching
 - Keep original OSM data for reference

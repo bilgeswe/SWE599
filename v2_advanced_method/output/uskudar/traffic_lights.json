@@ -1,0 +1,674 @@
+[
+  {
+    "id": "tl_cluster_1868397697_6438477670_7680400157_7680400158",
+    "position": [
+      712.12,
+      3704.19
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_5806405036_5806405037_9751985557",
+    "position": [
+      6031.96,
+      5235.65
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_278483562_4870016970_6197933660_6197933663_#1more",
+    "position": [
+      1199.08,
+      2192.88
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_1713242641_1713242646_2102159068_9752031638",
+    "position": [
+      1199.28,
+      2128.53
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_4952032285_9752031648_9752031649_9752031662_#1more",
+    "position": [
+      1815.47,
+      1189.23
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_11824809276_11824809278_1770321634_1770321640_#3more",
+    "position": [
+      3444.49,
+      1525.75
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_7813094439",
+    "position": [
+      745.86,
+      3753.72
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_414066395",
+    "position": [
+      5150.16,
+      3110.3
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_1751147845",
+    "position": [
+      3267.06,
+      5748.38
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_1880160309",
+    "position": [
+      1518.41,
+      4439.8
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_1920247342",
+    "position": [
+      6428.75,
+      3752.53
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_1485005158_2387397887",
+    "position": [
+      2565.19,
+      5308.66
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_1920176346_355332472",
+    "position": [
+      5992.46,
+      5385.07
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_6199474748",
+    "position": [
+      1656.05,
+      2586.87
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_12309392703_2896368703_6199448129_6199633763_#3more",
+    "position": [
+      1540.26,
+      2282.36
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_1920247333",
+    "position": [
+      6209.92,
+      4043.64
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_2377624253",
+    "position": [
+      4693.91,
+      4789.03
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_409369408_8520311149_8520311150",
+    "position": [
+      5426.15,
+      4806.6
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_1880160435",
+    "position": [
+      1898.79,
+      4819.58
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_1485005141_1485005142",
+    "position": [
+      2505.7,
+      5257.41
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_278471162",
+    "position": [
+      1141.02,
+      2051.26
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_278092340_278092408",
+    "position": [
+      1274.71,
+      2743.49
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_12309338298_12309338299_12309338300_12309392701_#9more",
+    "position": [
+      1484.66,
+      2269.81
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_4424111976",
+    "position": [
+      716.5,
+      3717.04
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_1960087546_6782905202_6782905209",
+    "position": [
+      4714.25,
+      3288.89
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_6821944458",
+    "position": [
+      5410.15,
+      4803.41
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_387125681",
+    "position": [
+      6027.61,
+      5208.58
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_7875270340",
+    "position": [
+      507.99,
+      1525.2
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_2377624255",
+    "position": [
+      4687.49,
+      4796.0
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_10582903330_10582903334_278092330_278092374",
+    "position": [
+      1003.85,
+      2986.25
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_1920228361",
+    "position": [
+      5817.99,
+      5973.2
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_cluster_1868397705_6466506599",
+    "position": [
+      771.66,
+      3548.13
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_2377624254",
+    "position": [
+      4693.25,
+      4798.49
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_1920176373",
+    "position": [
+      5828.18,
+      5978.54
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_1920176363",
+    "position": [
+      5817.9,
+      5984.5
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_2268209289",
+    "position": [
+      2734.29,
+      3417.68
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_278085987",
+    "position": [
+      771.64,
+      3607.96
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_278086080",
+    "position": [
+      826.16,
+      3179.91
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_278086082",
+    "position": [
+      845.84,
+      3155.57
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_278086086",
+    "position": [
+      864.66,
+      3175.96
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_245939183",
+    "position": [
+      5854.57,
+      2693.64
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  },
+  {
+    "id": "tl_8710759177",
+    "position": [
+      6012.97,
+      5206.76
+    ],
+    "state": "RED",
+    "phases": [
+      "RED",
+      "YELLOW",
+      "GREEN"
+    ],
+    "current_phase": 0,
+    "time_in_phase": 0.0,
+    "cycle_time": 60.0
+  }
+]
